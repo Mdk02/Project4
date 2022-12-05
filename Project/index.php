@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <?php
-        $db = mysqli_connect('localhost:3306','root','password','mydb',3306);
+        $db = mysqli_connect("localhost", "root", "", "mydb");
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
             exit();

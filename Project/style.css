@@ -46,7 +46,7 @@
 /*  1. Google fonts
 /*----------------------------------------*/
 /*
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 
     font-family: 'Dosis', sans-serif;
 
@@ -977,7 +977,7 @@ h3.widget-title-modal {
 }
 .htc__btn.shop__now__btn {
     color: #3a3a3a;
-    font-family: Dosis;
+    font-family: Noto Sans;
     font-size: 16px;
     font-weight: 500;
     padding-right: 30px;
@@ -1416,11 +1416,13 @@ h3.widget-title-modal {
     margin-right: -15px;
 }
 .pro__thumb a  {
-    width: 270px;
-    height: 200px;
+    width: 100%;
+    /* height: 200px; */
 }
 .pro__thumb a img {
-    width: 100%;
+    width: 270px;
+    height: 200px;
+    object-fit: contain;
 }
 .popular__product--2 .product__action li:first-child::before,
 .product__style--7 .product__action li:first-child::before {
@@ -2149,7 +2151,7 @@ product__style--7
     float: left;
 }
 .price--filter a {
-    font-family: poppins;
+    font-family: Noto Sans;
     text-transform: uppercase;
 }
 .price--output > * {
