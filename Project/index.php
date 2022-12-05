@@ -1,11 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
-    <?php
-        $db = mysqli_connect("localhost", "root", "", "mydb");
-        if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            exit();
-        }
+    <?php   
+       require "connectDB.php";
     ?>
 <head>
     <meta charset="utf-8">
@@ -77,7 +73,7 @@
                             <ul class="menu-extra">
                                 <!-- <li class="search search__open hidden-xs"><span class="ti-search"></span></li> -->
                                 <li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
+                                <li><a href="login-register.php"><span class="ti-user"></span></a></li>
                                 <!-- <li class="cart__menu"><span class="ti-shopping-cart"></span></li> -->
                             </ul>
                         </div>
@@ -155,7 +151,7 @@
                                         $result = mysqli_query($db, $query);
                                         while($final = mysqli_fetch_row($result)){
                                             foreach($final as $q) {
-                                                ?><li><a href="cats/<?=$q?>.html"><img alt="" src="images/icons/thum8.png"> <?= $q ?> <i class="zmdi zmdi-chevron-right"></i></a></li><?
+                                                ?><li><a href="/catalog-sidebar.php?category=<?=$q?>"><img alt="" src="images/icons/thum8.png"> <?= $q ?> <i class="zmdi zmdi-chevron-right"></i></a></li><?
                                             }
                                         }
                                     ?>
@@ -167,6 +163,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- Черная пятница 1 -->
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
@@ -226,7 +224,7 @@
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                                $query = 'select nameproduct, value, priceproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.idproduct desc limit 8';
+                                                $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.idproduct desc limit 8';
                                                 $result = mysqli_query($db, $query);
                                                 while($q = mysqli_fetch_array($result)){
                                                     ?>
@@ -246,7 +244,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="product__details">
-                                                                <h2><a href="product-details.html"><?=$q[0]?></a></h2>
+                                                                <h2><a href="product-details-sticky-right.php?id=<?=$q[3]?>"><?=$q[0]?></a></h2>
                                                                 <ul class="product__price">
                                                                     <li class="new__price"><?=$q[2]?> ₽</li>
                                                                 </ul>
@@ -254,11 +252,9 @@
                                                         </div>
                                                     </div>
                                                     <?
+
                                                 }
                                             ?>
-                                            
-                                            
-
                                         </div>
                                     </div>
                                 </div>
@@ -342,7 +338,7 @@
                 </div>
             </div>
         </section>
-        <!-- End Our Product Area -->
+        <!-- Черная пятница 2 -->
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">

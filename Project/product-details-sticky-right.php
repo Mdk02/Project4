@@ -34,11 +34,19 @@
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
+<?php
+    $db = mysqli_connect('localhost:3306','root','password','mydb',3306);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        exit();
+    }
+?>
+
 <body class="search__box__show__hide"> <!-- ПОТОМ УБРАТЬ КЛАСС -->
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->  
-
+    <![endif]-->
+    
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
         <!-- Start Header Style -->
@@ -49,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="index.php">
                                     <img src="images/logo/logo.svg" alt="logo">
                                 </a>
                             </div>
@@ -114,10 +122,24 @@
             <div class="container">
                 <div class="scroll-active">
                     <div class="row">
+                    <?
+                            $query = 'select nameproduct, priceproduct, descriptionproduct, idproduct from product where product.idproduct = '.$_GET["id"].'';
+                            $result = mysqli_query($db, $query);
+                            $q = mysqli_fetch_array($result);
+
+                            $queryImage = 'select сharacteristic.NameСharacteristic, product_properties.Value from product_properties join сharacteristic on сharacteristic.IdСharacteristic = product_properties.IdCharacteristic where idproduct = '.$_GET["id"].'';
+                            $resultImage = mysqli_query($db,$queryImage);
+                            while($qe = mysqli_fetch_array($resultImage)){
+                                if($qe[0] == 'img') {
+                                    $imageString = $qe[1];
+                                    break;
+                                }                                
+                            } 
+                        ?>
                         <div class="col-md-7 col-lg-7 col-sm-5 col-xs-12">
                             <div class="product__details__container product-details-5">
                                 <div class="scroll-single-product mb--30">
-                                    <img src="images/product-details/big-img/iphone14pro gold.webp" alt="full-image">
+                                    <img src="<?=$imageString?>" alt="full-image">
                                 </div>
                                 <!-- <div class="scroll-single-product mb--30">
                                     <img src="images/product-details/big-img/11.jpg" alt="full-image">
@@ -127,10 +149,11 @@
                                 </div> -->
                             </div>
                         </div>
+                        
                         <div class="sidebar-active col-md-5 col-lg-5 col-sm-7 col-xs-12 xmt-30">
                             <div class="htc__product__details__inner ">
                                 <div class="pro__detl__title">
-                                    <h2>Смартфон Apple iPhone 14 Pro 128 ГБ, золотой</h2>
+                                    <h2><?=$q[0]?></h2>
                                 </div>
                                 <div class="pro__dtl__rating">
                                     <ul class="pro__rating">
@@ -142,15 +165,9 @@
                                     </ul>
                                     <span class="rat__qun">(Based on 0 Ratings)</span>
                                 </div>
-                                <div class="pro__details">
-                                    <p>Новый волшебный способ взаимодействия с iPhone.
-                                        Новаторские функции безопасности, призванные спасать жизни.
-                                        Инновационная 48-мегапиксельная камера для потрясающей детализации.
-                                        Все они оснащены новейшим чипом для смартфонов.</p>
-                                </div>
+                                
                                 <ul class="pro__dtl__prize">
-                                    <li class="old__prize">89 999 ₽</li>
-                                    <li>88 648 ₽</li>
+                                    <li><?=$q[1]?> ₽</li>
                                 </ul>
                                 <div class="pro__dtl__color">
                                     <h2 class="title__5">Choose Color</h2>
@@ -159,15 +176,6 @@
                                         <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
                                         <li class="perpal"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
                                         <li class="yellow"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pro__dtl__size">
-                                    <h2 class="title__5">Storage</h2>
-                                    <ul class="pro__choose__size">
-                                        <li><a href="#">128 GB</a></li>
-                                        <li><a href="#">256 GB</a></li>
-                                        <li><a href="#">512 GB</a></li>
-                                        <li><a href="#">1 TB</a></li>
                                     </ul>
                                 </div>
                                 <div class="product-action-wrap">
@@ -184,18 +192,7 @@
                                 </div>
                                 <ul class="pro__dtl__btn">
                                     <li class="buy__now__btn"><a href="#">buy now</a></li>
-                                    <li><a href="#"><span class="ti-heart"></span></a></li>
-                                    <li><a href="#"><span class="ti-email"></span></a></li>
                                 </ul>
-                                <div class="pro__social__share">
-                                    <h2>Share :</h2>
-                                    <ul class="pro__soaial__link">
-                                        <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -229,21 +226,7 @@
                                 <div class="product__description__wrap">
                                     <div class="product__desc">
                                         <h2 class="title__6">Details</h2>
-                                        <p>Новый волшебный способ взаимодействия с iPhone.
-                                            Новаторские функции безопасности, призванные спасать жизни.
-                                            Инновационная 48-мегапиксельная камера для потрясающей детализации.
-                                            Все они оснащены новейшим чипом для смартфонов.
-                                            С керамическим экраном, более прочным, чем стекло любого смартфона. Водонепроницаемость. Нержавеющая сталь хирургического класса.
-                                            Представляем Dynamic Island, по-настоящему инновационную разработку Apple, состоящую из аппаратного и программного обеспечения. Он воспроизводит музыку, спортивные результаты, FaceTime и многое другое — и все это, не отвлекая вас от того, что вы делаете.
-                                            Дисплей всегда включен. Всегда наготове. Дисплей, который на солнце становится в 2 раза ярче. Теперь экран блокировки всегда виден, поэтому вам даже не нужно нажимать на него, чтобы оставаться в курсе событий. Когда iPhone повернут лицевой стороной вниз или лежит в кармане, он гаснет, чтобы сэкономить время автономной работы.
-                                            iOS 16 позволяет по-новому настраивать экран блокировки. Наложите слой на фотографию, чтобы сделать ее всплывающей. Отслеживайте свои звонки активности. И смотрите текущие обновления из ваших любимых приложений.
-                                            iPhone 14 Pro поднимает планку возможностей 48 мегапикселей, обеспечивая в 4 раза большее разрешение в ProRAW для умопомрачительной детализации в каждом кадре.
-                                            Новая система Pro Camera System добавляет к диапазону зума телеобъектив оптического качества в 2 раза, что обеспечивает большую гибкость при съемке.
-                                            Кинематографический режим теперь снимает в формате 4K HDR со скоростью 24 кадра в секунду — стандарт киноиндустрии. Пусть ваши сотрудники позвонят нашим сотрудникам.
-                                            Теперь вы можете легко редактировать вместе с другими профессиональными кадрами в формате 4K со скоростью 24 или 30 кадров в секунду. Вы даже можете отредактировать эффект глубины после съемки.
-                                            Делайте самые четкие, красочные снимки крупным планом и групповые снимки благодаря новой фронтальной камере TrueDepth с автофокусом и увеличенной диафрагмой.
-                                            Несмотря на оооочень много новых возможностей, iPhone 14 Pro по‑прежнему обеспечивает потрясающее время автономной работы в течение всего дня.
-                                            Получайте еще больше удовольствия от своего iPhone.</p>
+                                        <p><?=$q[2]?><</p>
                                     </div>
                                     <div class="pro__feature">
                                         <!-- <h2 class="title__6">Features</h2>
@@ -262,13 +245,16 @@
                                 <div class="pro__feature">
                                         <h2 class="title__6">Data sheet</h2>
                                         <ul class="feature__list">
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in reprehenderit in voluptate velit esse</a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
+                                            <? 
+                                                $queryChars = 'select сharacteristic.NameСharacteristic, product_properties.Value from product_properties join сharacteristic on сharacteristic.IdСharacteristic = product_properties.IdCharacteristic where idproduct = '.$q[3].'';
+                                                $resultChars = mysqli_query($db,$queryChars);
+                                                while($q = mysqli_fetch_array($resultChars)){
+                                                    if($q[0] != 'img') {
+                                                        ?><li><i class="zmdi zmdi-play-circle"></i><?=$q[0]?> : <?=$q[1]?></li><?
+                                                    }
+                                                    
+                                                } 
+                                            ?>
                                         </ul>
                                     </div>
                             </div>
