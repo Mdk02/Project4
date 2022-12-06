@@ -37,6 +37,24 @@
 <body class="search__box__show__hide"> <!-- ПОТОМ УБРАТЬ КЛАСС -->  
 <?php   
        require "connectDB.php";
+
+       $x = $_GET["category"];
+       switch($x) {
+           case 'монитор':
+               $x = 1;
+               break;
+           case 'ноутбук':
+               $x = 2;
+               break;
+           case 'телевизор LED':
+               $x = 3;
+               break;
+           case 'смартфон':
+               $x = 4;
+               break;
+       }
+       echo($x);
+
     ?>
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
@@ -155,10 +173,29 @@
                                         
 
                                     <div class="htc__shop__cat">
-                                        <h4 class="section-title-4">CHOOSE Diagonal</h4>
-                                        <ul class="sidebar__list">
-                                            
 
+
+                                        <? if ($x == 1) {?>
+
+
+                                            <h4 class="section-title-4">CHOOSE Diagonal</h4>
+                                            <ul class="sidebar__list">
+                                            <ul class="sidebar__list">
+                                                <li><a href="#"> from 20''<span>0</span></a></li>
+                                                <li><a href="#"> from 30''<span>0</span></a></li>
+                                                <li><a href="#"> from 40''<span>2</span></a></li>
+                                                <li><a href="#"> from 50''<span>2</span></a></li>
+                                                <li><a href="#"> from 60''<span>0</span></a></li>
+                                                <li><a href="#"> from 70''<span>0</span></a></li>
+                                                <li   li><a href="#"> from 80''<span>0</span></a></li>
+                                            </ul>
+                                    
+                                        
+                                        <?}
+                                    
+
+
+                                        ?>
 
                                         </ul>
                                     </div>
@@ -211,58 +248,43 @@
                                 <!-- Start Single View -->
                                 <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
 
-                                    <? 
-                                        $x = $_GET["category"];
-                                        switch($x) {
-                                            case 'монитор':
-                                                $x = 1;
-                                                break;
-                                            case 'ноутбук':
-                                                $x = 2;
-                                                break;
-                                            case 'телевизор LED':
-                                                $x = 3;
-                                                break;
-                                            case 'смартфон':
-                                                $x = 4;
-                                                break;
-                                        }
-                                        $query = 'select nameproduct, priceproduct, idproduct from product where idcategory = '.$x.'';
-                                        $result = mysqli_query($db, $query);
-                                        while($q = mysqli_fetch_array($result)){
-                                            ?>
-                                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
-                                                    <div class="product">
-                                                        <div class="product__inner">
-                                                            <div class="pro__thumb">
-                                                                <a href="#">
-                                                                    <?
-                                                                        $queryImage = 'select value from product_properties where idproduct = '.$q[2].' and idcharacteristic = 3';
-                                                                        $resultImage = mysqli_query($db,$queryImage);
-                                                                        $qw = mysqli_fetch_array($resultImage);
-                                                                    ?>
-                                                                    <img src="<?=$qw[0]?>" alt="product images">
-                                                                    
-                                                                </a>
+                                   <?
+                                                $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
+                                                where product.IdCategory ='.$x.'
+                                                and product.idproduct = product_properties.idproduct 
+                                                and product_properties.idcharacteristic=3 
+                                                order by product.idproduct';
+                                                $result = mysqli_query($db, $query);
+                                                while($q = mysqli_fetch_array($result)){
+                                                    ?>
+                                                    <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
+                                                        <div class="product">
+                                                            <div class="product__inner">
+                                                                <div class="pro__thumb">
+                                                                    <a href="product-details-sticky-right.php?id=<?=$q[3]?>">
+                                                                        <img src="<?=$q[1]?>"  alt="product images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product__hover__info">
+                                                                    <ul class="product__action">
+                                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" 
+                                                                        class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
-                                                            <div class="product__hover__info">
-                                                                <ul class="product__action">
-                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                    <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                                            <div class="product__details">
+                                                                <h2><a href="product-details-sticky-right.php?id=<?=$q[3]?>"><?=$q[0]?></a></h2>
+                                                                <ul class="product__price">
+                                                                    <li class="new__price"><?=$q[2]?> ₽</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="product__details">
-                                                            <h2><a href="product-details.html"><?=$q[0]?></a></h2>
-                                                            <ul class="product__price">
-                                                                <!-- <li class="old__price">$16.00</li> -->
-                                                                <li class="new__price"><?=$q[1]?> ₽</li>
-                                                            </ul>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            <?
-                                        }
+                                                    <?
+
+                                                }
+                                            ?>
                                     ?>
 
                                     <!-- Start Single Product -->
