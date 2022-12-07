@@ -224,7 +224,9 @@
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                                $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.idproduct desc limit 8';
+                                                $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
+                                                where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
+                                                 order by product.idproduct desc limit 8';
                                                 $result = mysqli_query($db, $query);
                                                 while($q = mysqli_fetch_array($result)){
                                                     ?>
@@ -232,14 +234,15 @@
                                                         <div class="product">
                                                             <div class="product__inner">
                                                                 <div class="pro__thumb">
-                                                                    <a href="#">
-                                                                        <img src="<?=$q[1]?>" alt="product images">
+                                                                    <a href="product-details-sticky-right.php?id=<?=$q[3]?>">
+                                                                        <img src="<?=$q[1]?>"  alt="product images">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product__hover__info">
                                                                     <ul class="product__action">
-                                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                        <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" 
+                                                                        class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>

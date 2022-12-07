@@ -35,11 +35,7 @@
 </head>
 
 <?php
-    $db = mysqli_connect('localhost:3306','root','password','mydb',3306);
-    if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        exit();
-    }
+    require 'connectDB.php';
 ?>
 
 <body class="search__box__show__hide"> <!-- ПОТОМ УБРАТЬ КЛАСС -->
