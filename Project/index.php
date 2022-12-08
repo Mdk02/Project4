@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype htpm>
 <html class="no-js" lang="en">
     <?php   
        require "connectDB.php";
@@ -43,48 +43,12 @@
 
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
-        <!-- Start Header Style -->
-        <header id="header" class="htc-header header--3 bg__white">
-            <!-- Start Mainmenu Area -->
-            <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header scroll-header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="images/logo/logo.svg" alt="logo">
-                                </a>
-                            </div>
-                        </div>
-                            <div class="col-md-8 col-lg-8" >
-                                <div class="search__area">
-                                    <div class="search__inner">
-                                        <form action="#" method="get">
-                                            <input placeholder="Search here... " type="text">
-                                            <button type="submit"><span class="ti-search"></span></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        <!-- Start MAinmenu Ares -->
-                        <div class="col-md-1 col-lg-1 col-sm-6 col-xs-6">
-                           
-                            <!-- End MAinmenu Ares --> 
-                            <ul class="menu-extra">
-                                <!-- <li class="search search__open hidden-xs"><span class="ti-search"></span></li> -->
-                                <li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                <li><a href="login-register.php"><span class="ti-user"></span></a></li>
-                                <!-- <li class="cart__menu"><span class="ti-shopping-cart"></span></li> -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="mobile-menu-area"></div>
-                </div>
-            </div>
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Style -->
         
+        <!-- components/header.php -->
+        <?  include('components/header.php'); ?>
+
+
+
         <div class="body__overlay"></div>
         <!-- Start Offset Wrapper -->
         
@@ -111,7 +75,7 @@
                                                 <div class="slider__inner">
                                                     <h1 class="text--white">New <br><span class="text--theme">Iphone 14 Pro</span></h1>
                                                     <div class="slider__btn">
-                                                        <a class="htc__btn text--white" href="cart.html">see now</a>
+                                                        <a class="htc__btn text--white" href="cart.php">see now</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,7 +91,7 @@
                                                 <div class="slider__inner">
                                                     <h1>New Product <span class="text--theme">Collection</span></h1>
                                                     <div class="slider__btn">
-                                                        <a class="htc__btn" href="cart.html">shop now</a>
+                                                        <a class="htc__btn" href="cart.php">shop now</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,6 +103,8 @@
                         </div>
                         <!-- Start Slider Area -->
                     </div>
+
+
                     <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 float-right-style">
                         <div class="categories-menu mrg-xs">
                             <div class="category-heading">
@@ -149,17 +115,19 @@
                                     <?
                                         $query = 'select namecategory from category';
                                         $result = mysqli_query($db, $query);
-                                        while($final = mysqli_fetch_row($result)){
+                                        $final = mysqli_fetch_all($result);
                                             foreach($final as $q) {
-                                                ?><li><a href="/catalog-sidebar.php?category=<?=$q?>"><img alt="" src="images/icons/thum8.png"> <?= $q ?> <i class="zmdi zmdi-chevron-right"></i></a></li><?
+                                                ?><li><a href="/catalog-sidebar.php?category=<?=$q[0]?>"><img alt="" src="images/icons/thum8.png"> <?= $q[0] ?> <i class="zmdi zmdi-chevron-right"></i></a></li><?
                                             }
-                                        }
+                                        
                                     ?>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Left Feature -->
+
+                    
                 </div>
             </div>
         </section>
@@ -168,7 +136,7 @@
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
-                    <a href="shop-sidebar.html"><img src="images/new-product/6.jpg" alt="new product"></a>
+                    <a href="shop-sidebar.php"><img src="images/new-product/6.jpg" alt="new product"></a>
                 </div>
             </div>
         </div>
@@ -240,8 +208,15 @@
                                                                 </div>
                                                                 <div class="product__hover__info">
                                                                     <ul class="product__action">
-                                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" 
-                                                                        class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                        <li>
+                                                                            <a data-toggle="modal" data-target="#productModal" title="Quick View" 
+                                                                                class="quick-view modal-view detail-link" href="#">
+
+                                                                                <span class="ti-plus"></span>
+                                                                                
+                                                                            </a>
+                                                                        </li>
+
                                                                         <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                     </ul>
                                                                 </div>
@@ -280,12 +255,12 @@
                                                                 <div class="product__hover__info">
                                                                     <ul class="product__action">
                                                                         <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                        <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                             <div class="product__details">
-                                                                <h2><a href="product-details.html"><?=$q[0]?></a></h2>
+                                                                <h2><a href="product-details.php"><?=$q[0]?></a></h2>
                                                                 <ul class="product__price">
                                                                     <li class="new__price"><?=$q[2]?> ₽</li>
                                                                 </ul>
@@ -317,12 +292,12 @@
                                                                 <div class="product__hover__info">
                                                                     <ul class="product__action">
                                                                         <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                        <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                             <div class="product__details">
-                                                                <h2><a href="product-details.html"><?=$q[0]?></a></h2>
+                                                                <h2><a href="product-details.php"><?=$q[0]?></a></h2>
                                                                 <ul class="product__price">
                                                                     <li class="new__price"><?=$q[2]?> ₽</li>
                                                                 </ul>
@@ -345,7 +320,7 @@
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
-                    <a href="shop-sidebar.html"><img src="images/new-product/6.jpg" alt="new product"></a>
+                    <a href="shop-sidebar.php"><img src="images/new-product/6.jpg" alt="new product"></a>
                 </div>
             </div>
         </div>
@@ -414,13 +389,12 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">43" (109 см) Телевизор LED Xiaomi MI TV P1 43 черный</a></h2>
+                                                        <h2><a href="product-details.php">43" (109 см) Телевизор LED Xiaomi MI TV P1 43 черный</a></h2>
                                                         <ul class="product__price">
                                                             <!-- <li class="old__price">$16.00</li> -->
                                                             <li class="new__price">28 999 ₽</li>
@@ -439,13 +413,12 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">55" (139 см) Телевизор LED LG 55UP80006LA черный</a></h2>
+                                                        <h2><a href="product-details.php">55" (139 см) Телевизор LED LG 55UP80006LA черный</a></h2>
                                                         <ul class="product__price">
                                                             <li class="old__price">64 999 ₽</li>
                                                             <li class="new__price">60 999 ₽</li>
@@ -464,13 +437,12 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">55" (139 см) Телевизор LED Samsung UE55AU7100UXCE черный</a></h2>
+                                                        <h2><a href="product-details.php">55" (139 см) Телевизор LED Samsung UE55AU7100UXCE черный</a></h2>
                                                         <ul class="product__price">
                                                             <!-- <li class="old__price">$16.00</li> -->
                                                             <li class="new__price">61 999 ₽</li>
@@ -489,16 +461,15 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
+                                                            <li class="old__price">16</li>
+                                                            <li class="new__price">10</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -514,16 +485,15 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
+                                                            <li class="old__price">12</li>
+                                                            <li class="new__price">10</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -556,13 +526,13 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
                                                             <li class="old__price">$16.00</li>
                                                             <li class="new__price">$10.00</li>
@@ -581,13 +551,13 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
                                                             <li class="old__price">$16.00</li>
                                                             <li class="new__price">$10.00</li>
@@ -606,13 +576,13 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
                                                             <li class="old__price">$16.00</li>
                                                             <li class="new__price">$10.00</li>
@@ -631,13 +601,13 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
                                                             <li class="old__price">$16.00</li>
                                                             <li class="new__price">$10.00</li>
@@ -656,13 +626,13 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
                                                             <li class="old__price">$16.00</li>
                                                             <li class="new__price">$10.00</li>
@@ -681,13 +651,13 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details.html">Simple Black Clock</a></h2>
+                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
                                                         <ul class="product__price">
                                                             <li class="old__price">$16.00</li>
                                                             <li class="new__price">$10.00</li>
@@ -707,127 +677,9 @@
         <!-- End Our Product Area -->
         
         
-        <!-- Start Footer Area -->
-        <footer class="htc__foooter__area gray-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="footer__container clearfix">
-                         <!-- Start Single Footer Widget -->
-                        <div class="col-md-3 col-lg-3 col-sm-6">
-                            <div class="ft__widget">
-                                <div class="ft__logo">
-                                    <a href="index.html">
-                                        <img src="images/logo/logo.svg" alt="footer logo" style="margin-left: -20px;">
-                                    </a>
-                                </div>
-                                <div class="footer-address">
-                                    <ul>
-                                        <li>
-                                            <div class="address-icon">
-                                                <i class="zmdi zmdi-pin"></i>
-                                            </div>
-                                            <div class="address-text">
-                                                <p>РФ, г. Уфа ул. Кирова 65</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="address-icon">
-                                                <i class="zmdi zmdi-email"></i>
-                                            </div>
-                                            <div class="address-text">
-                                                <a href="#"> neverket@gmail.com</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="address-icon">
-                                                <i class="zmdi zmdi-phone-in-talk"></i>
-                                            </div>
-                                            <div class="address-text">
-                                                <p>7(***)***-**-** </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- <ul class="social__icon">
-                                    <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                </ul> -->
-                            </div>
-                        </div>
-                        <!-- End Single Footer Widget -->
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
-                            <div class="ft__widget">
-                                <h2 class="ft__title">Categories</h2>
-                                <ul class="footer-categories">
-                                    <li><a href="shop-sidebar.html">Monitors</a></li>
-                                    <li><a href="shop-sidebar.html">Notebooks</a></li>
-                                    <li><a href="shop-sidebar.html">TV</a></li>
-                                    <li><a href="shop-sidebar.html">Smartphones</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
-                            <div class="ft__widget">
-                                <h2 class="ft__title">Infomation</h2>
-                                <ul class="footer-categories">
-                                    <li><a href="about.html">About Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Start Single Footer Widget -->
-                        <!-- <div class="col-md-3 col-lg-3 col-lg-offset-1 col-sm-6 smt-30 xmt-30">
-                            <div class="ft__widget">
-                                <h2 class="ft__title">Newsletter</h2>
-                                <div class="newsletter__form">
-                                    <p>Subscribe to our newsletter and get 10% off your first purchase .</p>
-                                    <div class="input__box">
-                                        <div id="mc_embed_signup">
-                                            <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                                <div id="mc_embed_signup_scroll" class="htc__news__inner">
-                                                    <div class="news__input">
-                                                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
-                                                    </div> -->
-                                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                    <!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                    <div class="clearfix subscribe__btn"><input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="bst__btn btn--white__color">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>        
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- End Single Footer Widget -->
-                    </div>
-                </div>
-                <!-- Start Copyright Area -->
-                <div class="htc__copyright__area">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                            <div class="copyright__inner">
-                                <div class="copyright">
-                                    <p>© 2022 <a href="#">MARKET</a>
-                                    All Right Reserved.</p>
-                                </div>
-                                <!-- <ul class="footer__menu">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Copyright Area -->
-            </div>
-        </footer>
-        <!-- End Footer Area -->
+        
+        <!-- components/footer.php -->
+        <? include('components/footer.php'); ?>
     </div>
     <!-- Body main wrapper end -->
     <!-- QUICKVIEW PRODUCT -->
@@ -931,4 +783,4 @@
 
 </body>
 
-</html>
+</php>

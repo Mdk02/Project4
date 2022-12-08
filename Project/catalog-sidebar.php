@@ -1,9 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!doctype php>
+<php class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Tmart-Minimalist eCommerce HTML5 Template</title>
+    <title>Каталог</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -35,107 +35,118 @@
 </head>
 
 <body class="search__box__show__hide"> <!-- ПОТОМ УБРАТЬ КЛАСС -->  
+
 <?php   
        require "connectDB.php";
 
-       $x = $_GET["category"];
-       switch($x) {
+
+        $all_product_list;
+
+        $search_by_text = $_GET["search"];
+        if ($search_by_text){
+            
+            $search_by_text_sql = 'UPPER(product.NameProduct) LIKE UPPER(\'%'.$search_by_text.'%\') and ';
+            $search_by_text = '&search='.$search_by_text;
+        };
+
+
+       $category_id = $_GET["category"];
+       switch($category_id) {
            case 'монитор':
-               $x = 1;
+               $category_id = 1;
                break;
            case 'ноутбук':
-               $x = 2;
+               $category_id = 2;
                break;
            case 'телевизор LED':
-               $x = 3;
+               $category_id = 3;
                break;
            case 'смартфон':
-               $x = 4;
+               $category_id = 4;
                break;
        }
-       echo($x);
+       if ($category_id != 0){
+        $category_sql = 'product.IdCategory ='.$category_id.' and ' ;
 
-    ?>
+        
+       };
+
+?>
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
-        <!-- Start Header Style -->
-        <header id="header" class="htc-header header--3 bg__white">
-            <!-- Start Mainmenu Area -->
-            <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header scroll-header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
-                            <div class="logo">
-                                <a href="index.php">
-                                    <img src="images/logo/logo.svg" alt="logo">
-                                </a>
-                            </div>
-                        </div>
-                         <div class="col-md-8 col-lg-8" >
-                                <div class="search__area">
-                                    <div class="search__inner">
-                                        <form action="#" method="get">
-                                            <input placeholder="Search here... " type="text">
-                                            <button type="submit"><span class="ti-search"></span></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        <!-- Start MAinmenu Ares -->
-                        <div class="col-md-1 col-lg-1 col-sm-6 col-xs-6">
-                           
-                            <!-- End MAinmenu Ares --> 
-                            <ul class="menu-extra">
-                                
-                                <!-- <li class="search search__open hidden-xs"><span class="ti-search"></span></li> -->
-                                <li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
-                                <!-- <li class="cart__menu"><span class="ti-shopping-cart"></span></li> -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="mobile-menu-area"></div>
-                </div>
-            </div>
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Style -->
+        <!-- components/header.php -->
+        <?  include('components/header.php'); ?>
         <div class="body__overlay"></div>
         <!-- Start Offset Wrapper -->
         <!-- End Offset Wrapper -->
         <div style="height: 100px;">
             <!-- offset top -->
         </div>
-        <!-- Start Bradcaump area -->
-        <!-- <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">Shop Sidebar</h2>
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.php">Home</a>
-                                  <span class="brd-separetor">/</span>
-                                  <span class="breadcrumb-item active">Shop Sidebar</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- End Bradcaump area --> 
-        <!-- Start Our ShopSide Area -->
+        
         <section class="htc__shop__sidebar bg__white ">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <div class="htc__shop__left__sidebar">
+
+
+
+                            <?
+                            // Категории найденных товаров
+                            if (!isset($category_id)){
+                                
+                                $query = 'select category.NameCategory , Count(*) from product , category
+                                where '.$search_by_text_sql.'
+                                product.IdCategory = category.IdCategory
+                                GROUP BY category.NameCategory';
+                                $result = mysqli_query($db, $query);
+                                $final = mysqli_fetch_all($result);
+                                if (count($final)>1 ){
+
+                                
+                                ?>
+                                        
+                                <div class="categories-menu mrg-xs">
+                                    <div class="category-heading">
+                                        <h3>Категории </h3>
+                                    </div>
+
+                                    <div class="category-menu-list">
+                                        <ul>
+                                            <?
+                                               
+                                                    if(count($final)>1){
+                                                            foreach($final as $q) {
+                                                            ?>
+                                                            <li>
+                                                                <a href="/catalog-sidebar.php?category=<?=$q[0].$search_by_text?>">
+                                                                    <img alt="" src="images/icons/thum8.png">
+                                                                    <?= $q[0] ?> <i class="zmdi">
+                                                                    <?= $q[1]?>
+                                                                    </i></a>
+                                                            </li>
+                                                        <?
+                                                        }
+                                                    }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            
+
+
+                            <?
+                            };
+                            };
+                            ?>
+
+
+
+
                             <!-- Start Range -->
                             <!-- Фильтр цены -->
-                            <div class="htc-grid-range">
-                                <h4 class="section-title-4">FILTER BY PRICE</h4>
+                            <div class="htc-grid-range pt--100">
+                                <h4 class="section-title-4">Поиск по цене</h4>
                                 <div class="content-shopby">
                                     <div class="price_filter s-filter clear">
                                         <form action="#" method="GET">
@@ -145,12 +156,12 @@
 
                                                 
                                                     <div class="price--output">
-                                                        <span>Price :</span><input type="text" id="amount" readonly>
+                                                        <span>Цена :</span><input type="text" id="amount" readonly>
                                                     </div>
 
 
                                                     <div class="price--filter">
-                                                        <button><a href="#">Filter</a></button>
+                                                        <input type="submit" placeholder="Показать"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,31 +180,22 @@
 
                              <!-- 
                                 монитр: диаганаль , разрешение , частота -->
-                             
-                                        
-
                                     <div class="htc__shop__cat">
-
-
-                                        <? if ($x == 1) {?>
-
-
-                                            <h4 class="section-title-4">CHOOSE Diagonal</h4>
-                                            <ul class="sidebar__list">
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> from 20''<span>0</span></a></li>
-                                                <li><a href="#"> from 30''<span>0</span></a></li>
-                                                <li><a href="#"> from 40''<span>2</span></a></li>
-                                                <li><a href="#"> from 50''<span>2</span></a></li>
-                                                <li><a href="#"> from 60''<span>0</span></a></li>
-                                                <li><a href="#"> from 70''<span>0</span></a></li>
-                                                <li   li><a href="#"> from 80''<span>0</span></a></li>
-                                            </ul>
-                                    
+                                        <? 
                                         
-                                        <?}
-                                    
 
+
+                                        if ($category_id == 1) {?>
+                                            <h4 class="section-title-4">Диаганаль</h4>
+                                            <ul class="sidebar__list">
+                                                <li><a href="#"> 0 - 20<span>0</span></a></li>
+                                                <li><a href="#"> 20 - 25<span>0</span></a></li>
+                                                <li><a href="#"> 25.1 - 27<span>0</span></a></li>
+                                                <li><a href="#"> 27.1 - 32<span>0</span></a></li>
+                                                <li><a href="#"> 32 -<span>0</span></a></li>
+                                            </ul>
+
+                                        <?};
 
                                         ?>
 
@@ -250,33 +252,37 @@
 
                                    <?
                                                 $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
-                                                where product.IdCategory ='.$x.'
-                                                and product.idproduct = product_properties.idproduct 
+                                                where '.$category_sql.$search_by_text_sql.' product.idproduct = product_properties.idproduct 
                                                 and product_properties.idcharacteristic=3 
                                                 order by product.idproduct';
                                                 $result = mysqli_query($db, $query);
-                                                while($q = mysqli_fetch_array($result)){
+                                                while($all_product_list = mysqli_fetch_array($result)){
                                                     ?>
                                                     <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
                                                         <div class="product">
-                                                            <div class="product__inner">
+                                                            <div class="product__inner"> 
                                                                 <div class="pro__thumb">
-                                                                    <a href="product-details-sticky-right.php?id=<?=$q[3]?>">
-                                                                        <img src="<?=$q[1]?>"  alt="product images">
+                                                                    <a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>">
+                                                                        <img src="<?=$all_product_list[1]?>"  alt="product images">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product__hover__info">
                                                                     <ul class="product__action">
-                                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" 
-                                                                        class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                        <li>
+                                                                            <a data-toggle="modal" data-target="components/quickview.php/productModal" title="Quick View" 
+                                                                                class="quick-view modal-view detail-link" href="#">
+                                                                                
+                                                                                <span class="ti-plus"></span>
+
+                                                                            </a>
+                                                                        </li>
                                                                         <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                    </ul>
-                                                                </div>
+                                                                    </ul>                                                                </div>
                                                             </div>
                                                             <div class="product__details">
-                                                                <h2><a href="product-details-sticky-right.php?id=<?=$q[3]?>"><?=$q[0]?></a></h2>
+                                                                <h2><a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>"><?=$all_product_list[0]?></a></h2>
                                                                 <ul class="product__price">
-                                                                    <li class="new__price"><?=$q[2]?> ₽</li>
+                                                                    <li class="new__price"><?=$all_product_list[2]?> ₽</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -285,7 +291,7 @@
 
                                                 }
                                             ?>
-                                    ?>
+                                    
 
                                     <!-- Start Single Product -->
                                     
@@ -300,127 +306,74 @@
             </div>
         </section>
         <!-- End Our ShopSide Area -->
-        <!-- Start Footer Area -->
-        <footer class="htc__foooter__area gray-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="footer__container clearfix">
-                         <!-- Start Single Footer Widget -->
-                        <div class="col-md-3 col-lg-3 col-sm-6">
-                            <div class="ft__widget">
-                                <div class="ft__logo">
-                                    <a href="index.php">
-                                        <img src="images/logo/logo.svg" alt="footer logo" style="margin-left: -20px;">
-                                    </a>
+
+
+         <!-- Быстрой просмотр  -->
+
+
+            <div id="quickview-wrapper">
+                 <!-- Modal -->
+                <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+                     <div class="modal-dialog modal__container" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-product">
+                            <!-- Start product images -->
+                            <div class="product-images">
+                                <div class="main-image images">
+                                    <img alt="big images" src="images/product/big-img/1.jpg">
                                 </div>
-                                <div class="footer-address">
-                                    <ul>
-                                        <li>
-                                            <div class="address-icon">
-                                                <i class="zmdi zmdi-pin"></i>
-                                            </div>
-                                            <div class="address-text">
-                                                <p>РФ, г. Уфа ул. Кирова 65</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="address-icon">
-                                                <i class="zmdi zmdi-email"></i>
-                                            </div>
-                                            <div class="address-text">
-                                                <a href="#"> neverket@gmail.com</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="address-icon">
-                                                <i class="zmdi zmdi-phone-in-talk"></i>
-                                            </div>
-                                            <div class="address-text">
-                                                <p>7(***)***-**-** </p>
-                                            </div>
-                                        </li>
+                            </div>
+                            <!-- end product images -->
+                            <div class="product-info">
+                                <h1>Simple Fabric Bags</h1>
+                                <div class="rating__and__review">
+                                    <ul class="rating">
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
                                     </ul>
+                                    <div class="review">
+                                        <a href="#">4 customer reviews</a>
+                                    </div>
                                 </div>
-                                <!-- <ul class="social__icon">
-                                    <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                </ul> -->
-                            </div>
-                        </div>
-                        <!-- End Single Footer Widget -->
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
-                            <div class="ft__widget">
-                                <h2 class="ft__title">Categories</h2>
-                                <ul class="footer-categories">
-                                    <li><a href="shop-sidebar.html">Monitors</a></li>
-                                    <li><a href="shop-sidebar.html">Notebooks</a></li>
-                                    <li><a href="shop-sidebar.html">TV</a></li>
-                                    <li><a href="shop-sidebar.html">Smartphones</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
-                            <div class="ft__widget">
-                                <h2 class="ft__title">Infomation</h2>
-                                <ul class="footer-categories">
-                                    <li><a href="about.html">About Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Start Single Footer Widget -->
-                        <!-- <div class="col-md-3 col-lg-3 col-lg-offset-1 col-sm-6 smt-30 xmt-30">
-                            <div class="ft__widget">
-                                <h2 class="ft__title">Newsletter</h2>
-                                <div class="newsletter__form">
-                                    <p>Subscribe to our newsletter and get 10% off your first purchase .</p>
-                                    <div class="input__box">
-                                        <div id="mc_embed_signup">
-                                            <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                                <div id="mc_embed_signup_scroll" class="htc__news__inner">
-                                                    <div class="news__input">
-                                                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
-                                                    </div> -->
-                                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                    <!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                    <div class="clearfix subscribe__btn"><input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="bst__btn btn--white__color">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>        
+                                <div class="price-box-3">
+                                    <div class="s-price-box">
+                                        <span class="new-price">$17.20</span>
+                                        <span class="old-price">$45.00</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div> -->
-                        <!-- End Single Footer Widget -->
-                    </div>
-                </div>
-                <!-- Start Copyright Area -->
-                <div class="htc__copyright__area">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                            <div class="copyright__inner">
-                                <div class="copyright">
-                                    <p>© 2022 <a href="#">MARKET</a>
-                                    All Right Reserved.</p>
+                                <div class="quick-desc">
+                                    Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
                                 </div>
-                                <!-- <ul class="footer__menu">
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="shop.html">Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Copyright Area -->
-            </div>
-        </footer>
-        <!-- End Footer Area -->
+                                
+                                <div class="addtocart-btn">
+                                    <a href="#">Add to cart</a>
+                                </div>
+                            </div><!-- .product-info -->
+                        </div><!-- .modal-product -->
+                    </div><!-- .modal-body -->
+                </div><!-- .modal-content -->
+            </div><!-- .modal-dialog -->
+        </div>
+        <!-- END Modal -->
+        </div>
+
+          <!-- Конец Быстрого про смотра  -->
+
+
+
+
+
+
+        
+        <!-- components/footer.php -->
+        <? include('components/footer.php'); ?>
     </div>
     <!-- Body main wrapper end -->
     
@@ -439,6 +392,9 @@
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
 
+
+
+    
 </body>
 
-</html>
+</php>
