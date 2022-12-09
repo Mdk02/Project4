@@ -42,40 +42,14 @@
 
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
-        <!-- Start Header Style -->
+        
         <!-- components/header.php -->
         <?  include('components/header.php'); ?>
         
         <div class="body__overlay"></div>
-        <!-- Start Offset Wrapper -->
         
-        <!-- End Offset Wrapper -->
-        <div style="height: 100px;">
-            <!-- offset top -->
-        </div>
-        <!-- End Offset Wrapper -->
-        <!-- Start Bradcaump area -->
-        <!-- <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">Checkout</h2>
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.php">Home</a>
-                                  <span class="brd-separetor">/</span>
-                                  <span class="breadcrumb-item active">Checkout</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- End Bradcaump area -->
         <!-- Start Checkout Area -->
-        <section class="our-checkout-area bg__white">
+        <section class="our-checkout-area bg__white pt--100">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-lg-8">
@@ -197,5 +171,4 @@
     <script src="js/main.js"></script>
 
 </body>
-
 </php>

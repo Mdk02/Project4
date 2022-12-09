@@ -16,6 +16,11 @@
 	Footer Default
 ------------------------------*/
 
+footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(246, 246, 248, 0.9);
+}
+
 
 .footer__container {
     padding-bottom: 65px;

@@ -48,18 +48,10 @@
         <?  include('components/header.php'); ?>
 
 
-
         <div class="body__overlay"></div>
-        <!-- Start Offset Wrapper -->
-        
-        <!-- End Offset Wrapper -->
-        <div style="height: 100px;">
-            <!-- offset top -->
-        </div>
-
         
         <!-- Start Feature Product -->
-        <section class="categories-slider-area bg__white">
+        <section class="categories-slider-area bg__white pt--100">
             <div class="container">
                 <div class="row">
                     <!-- Start Left Feature -->
@@ -131,6 +123,7 @@
                 </div>
             </div>
         </section>
+        <!-- End Our Product Area -->
 
         <!-- Черная пятница 1 -->
         <div class="only-banner ptb--100 bg__white">
@@ -140,6 +133,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Start Our Product Area -->
         <section class="htc__product__area bg__white">
             <div class="container">
@@ -316,6 +310,8 @@
                 </div>
             </div>
         </section>
+        <!-- End Our Product Area -->
+
         <!-- Черная пятница 2 -->
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
@@ -324,6 +320,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Start Our Product Area -->
         <section class="htc__product__area pb--100 bg__white">
             <div class="container">
@@ -677,7 +674,6 @@
         <!-- End Our Product Area -->
         
         
-        
         <!-- components/footer.php -->
         <? include('components/footer.php'); ?>
     </div>
@@ -782,5 +778,4 @@
     <script src="js/main.js"></script>
 
 </body>
-
 </php>
