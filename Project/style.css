@@ -46,7 +46,7 @@
 /*  1. Google fonts
 /*----------------------------------------*/
 /*
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 
     font-family: 'Dosis', sans-serif;
 
@@ -627,6 +627,11 @@
   04. Log In Register Area
 --------------------------------*/
 
+.validation_error{
+    color: red;
+    font-size: 13px;
+}
+
 .single__tabs__panel.tab-pane:not(.active) {
     display: none;
 }
@@ -675,6 +680,11 @@
     margin-bottom: 20px;
     margin-top: 40px;
 }
+.login small + input {
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
 .tabs__checkbox span.forget a {
     float: right;
     color: #ff4136;
@@ -698,16 +708,17 @@
     text-transform: capitalize;
     padding-left: 5px;
 }
-.htc__login__btn a {
+.htc__login__btn input {
     border: 1px solid #d5d5d5;
+    background-color: white;
     display: inline-block;
-    font-size: 20px;
+    font-size: 100%;
     height: 50px;
     line-height: 50px;
     text-align: center;
     text-transform: capitalize;
     transition: all 0.5s ease 0s;
-    width: 150px;
+    width: 100%;
     color: #4b4b4b;
     text-transform: uppercase;
 }
@@ -754,7 +765,7 @@
     color: #686868 !important;
     font-size: 16px !important;
 }
-.htc__login__btn a:hover {
+.htc__login__btn input:hover {
     background: #ff4136;
     color: #fff;
     border: 1px solid #ff4136;
@@ -977,7 +988,7 @@ h3.widget-title-modal {
 }
 .htc__btn.shop__now__btn {
     color: #3a3a3a;
-    font-family: Noto Sans;
+    font-family: Dosis;
     font-size: 16px;
     font-weight: 500;
     padding-right: 30px;
@@ -1416,13 +1427,11 @@ h3.widget-title-modal {
     margin-right: -15px;
 }
 .pro__thumb a  {
-    width: 100%;
-    /* height: 200px; */
-}
-.pro__thumb a img {
     width: 270px;
     height: 200px;
-    object-fit: contain;
+}
+.pro__thumb a img {
+    width: 100%;
 }
 .popular__product--2 .product__action li:first-child::before,
 .product__style--7 .product__action li:first-child::before {
@@ -2151,7 +2160,7 @@ product__style--7
     float: left;
 }
 .price--filter a {
-    font-family: Noto Sans;
+    font-family: poppins;
     text-transform: uppercase;
 }
 .price--output > * {

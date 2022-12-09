@@ -89,17 +89,17 @@
         </header>
         <!-- End Header Style -->
         
-        <div class="body__overlay"></div>
-        <!-- Start Offset Wrapper -->
-        
-        <!-- End Offset Wrapper -->
-        <div style="height: 100px;">
-            <!-- offset top -->
-        </div>
+<<<<<<< Updated upstream
+=======
+        <!-- components/header.php -->
+        <?  include('components/header.php'); ?>
 
+
+>>>>>>> Stashed changes
+        <div class="body__overlay"></div>
         
         <!-- Start Feature Product -->
-        <section class="categories-slider-area bg__white">
+        <section class="categories-slider-area bg__white pt--100">
             <div class="container">
                 <div class="row">
                     <!-- Start Left Feature -->
@@ -167,6 +167,12 @@
                 </div>
             </div>
         </section>
+<<<<<<< Updated upstream
+=======
+        <!-- End Our Product Area -->
+
+        <!-- Черная пятница 1 -->
+>>>>>>> Stashed changes
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
@@ -174,6 +180,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Start Our Product Area -->
         <section class="htc__product__area bg__white">
             <div class="container">
@@ -343,6 +350,11 @@
             </div>
         </section>
         <!-- End Our Product Area -->
+<<<<<<< Updated upstream
+=======
+
+        <!-- Черная пятница 2 -->
+>>>>>>> Stashed changes
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
@@ -350,6 +362,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Start Our Product Area -->
         <section class="htc__product__area pb--100 bg__white">
             <div class="container">
@@ -708,6 +721,7 @@
         <!-- End Our Product Area -->
         
         
+<<<<<<< Updated upstream
         <!-- Start Footer Area -->
         <footer class="htc__foooter__area gray-bg">
             <div class="container">
@@ -829,6 +843,10 @@
             </div>
         </footer>
         <!-- End Footer Area -->
+=======
+        <!-- components/footer.php -->
+        <? include('components/footer.php'); ?>
+>>>>>>> Stashed changes
     </div>
     <!-- Body main wrapper end -->
     <!-- QUICKVIEW PRODUCT -->
@@ -931,5 +949,9 @@
     <script src="js/main.js"></script>
 
 </body>
+<<<<<<< Updated upstream
 
 </html>
+=======
+</php>
+>>>>>>> Stashed changes
