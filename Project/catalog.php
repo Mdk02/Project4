@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.svg">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
 
@@ -116,7 +116,7 @@
                                                             foreach($final as $q) {
                                                             ?>
                                                             <li>
-                                                                <a href="/catalog-sidebar.php?category=<?=$q[0].$search_by_text?>">
+                                                                <a href="/catalog.php?category=<?=$q[0].$search_by_text?>">
                                                                     <img alt="" src="images/icons/thum8.png">
                                                                     <?= $q[0] ?> <i class="zmdi">
                                                                     <?= $q[1]?>
@@ -259,7 +259,7 @@
                                                         <div class="product">
                                                             <div class="product__inner"> 
                                                                 <div class="pro__thumb">
-                                                                    <a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>">
+                                                                    <a href="product.php?id=<?=$all_product_list[3]?>">
                                                                         <img src="<?=$all_product_list[1]?>"  alt="product images">
                                                                     </a>
                                                                 </div>
@@ -277,7 +277,7 @@
                                                                     </ul>                                                                </div>
                                                             </div>
                                                             <div class="product__details">
-                                                                <h2><a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>"><?=$all_product_list[0]?></a></h2>
+                                                                <h2><a href="product.php?id=<?=$all_product_list[3]?>"><?=$all_product_list[0]?></a></h2>
                                                                 <ul class="product__price">
                                                                     <li class="new__price"><?=$all_product_list[2]?> ₽</li>
                                                                 </ul>

@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home</title>
+    <title>Главная</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -109,7 +109,7 @@
                                         $result = mysqli_query($db, $query);
                                         $final = mysqli_fetch_all($result);
                                             foreach($final as $q) {
-                                                ?><li><a href="/catalog-sidebar.php?category=<?=$q[0]?>"><img alt="" src="images/icons/thum8.png"> <?= $q[0] ?> <i class="zmdi zmdi-chevron-right"></i></a></li><?
+                                                ?><li><a href="/catalog.php?category=<?=$q[0]?>"><img alt="" src="images/icons/thum8.png"> <?= $q[0] ?> <i class="zmdi zmdi-chevron-right"></i></a></li><?
                                             }
                                         
                                     ?>
@@ -196,7 +196,7 @@
                                                         <div class="product">
                                                             <div class="product__inner">
                                                                 <div class="pro__thumb">
-                                                                    <a href="product-details-sticky-right.php?id=<?=$q[3]?>">
+                                                                    <a href="product.php?id=<?=$q[3]?>">
                                                                         <img src="<?=$q[1]?>"  alt="product images">
                                                                     </a>
                                                                 </div>
@@ -216,7 +216,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="product__details">
-                                                                <h2><a href="product-details-sticky-right.php?id=<?=$q[3]?>"><?=$q[0]?></a></h2>
+                                                                <h2><a href="product.php?id=<?=$q[3]?>"><?=$q[0]?></a></h2>
                                                                 <ul class="product__price">
                                                                     <li class="new__price"><?=$q[2]?> ₽</li>
                                                                 </ul>
