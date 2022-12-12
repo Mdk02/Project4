@@ -80,6 +80,8 @@
 }
 .owl-carousel .owl-item img {
   display: block;
+  object-fit: contain;
+  height: 200px;
 }
 .slider__btn {
     margin-top: 14px;

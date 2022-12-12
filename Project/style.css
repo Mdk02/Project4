@@ -256,6 +256,7 @@
     color: #444444;
     font-size: 14px;
     font-weight: 500;
+    min-height: 32px;
 }
 .product__details {
     padding-top: 27px;
@@ -1432,6 +1433,8 @@ h3.widget-title-modal {
 }
 .pro__thumb a img {
     width: 100%;
+    object-fit: contain;
+    height: 200px;
 }
 .popular__product--2 .product__action li:first-child::before,
 .product__style--7 .product__action li:first-child::before {
