@@ -1,19 +1,20 @@
 <!doctype htpm>
 <html class="no-js" lang="en">
-    <?php   
-       require "connectDB.php";
-    ?>
+<?php
+require "connectDB.php";
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Главная</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="images/logo.svg">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -36,20 +37,21 @@
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
-<body class="search__box__show__hide"> <!-- ПОТОМ УБРАТЬ КЛАСС -->
+<body class="search__box__show__hide">
+    <!-- ПОТОМ УБРАТЬ КЛАСС -->
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->  
+    <![endif]-->
 
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
-        
+
         <!-- components/header.php -->
-        <?  include('components/header.php'); ?>
+        <? include('components/header.php'); ?>
 
 
         <div class="body__overlay"></div>
-        
+
         <!-- Start Feature Product -->
         <section class="categories-slider-area bg__white pt--100">
             <div class="container">
@@ -100,26 +102,24 @@
                     <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 float-right-style">
                         <div class="categories-menu mrg-xs">
                             <div class="category-heading">
-                               <h3>Categories</h3>
+                                <h3>Categories</h3>
                             </div>
                             <div class="category-menu-list">
                                 <ul>
                                     <?
-                                        $query = 'select namecategory from category';
-                                        $result = mysqli_query($db, $query);
-                                        $final = mysqli_fetch_all($result);
-                                            foreach($final as $q) {
-                                                ?><li><a href="/catalog.php?category=<?=$q[0]?>"><img alt="" src="images/icons/thum8.png"> <?= $q[0] ?> <i class="zmdi zmdi-chevron-right"></i></a></li><?
-                                            }
-                                        
-                                    ?>
+                                    $query = 'select namecategory from category';
+                                    $result = mysqli_query($db, $query);
+                                    $final = mysqli_fetch_all($result);
+                                    foreach ($final as $q) {?>
+                                        <li><a href="/catalog.php?category=<?= $q[0] ?>"><img alt="" src="images/icons/thum8.png"> <?= $q[0] ?> <i class="zmdi zmdi-chevron-right"></i></a></li>
+                                    <?}?>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- End Left Feature -->
 
-                    
+
                 </div>
             </div>
         </section>
@@ -186,47 +186,54 @@
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                                $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
+                                            $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
                                                 where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
                                                  order by product.idproduct desc limit 8';
-                                                $result = mysqli_query($db, $query);
-                                                while($q = mysqli_fetch_array($result)){
-                                                    ?>
-                                                    <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                        <div class="product">
-                                                            <div class="product__inner">
-                                                                <div class="pro__thumb">
-                                                                    <a href="product.php?id=<?=$q[3]?>">
-                                                                        <img src="<?=$q[1]?>"  alt="product images">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="product__hover__info">
-                                                                    <ul class="product__action">
-                                                                        <li>
-                                                                            <a data-toggle="modal" data-target="#productModal" title="Quick View" 
-                                                                                class="quick-view modal-view detail-link" href="#">
-
-                                                                                <span class="ti-plus"></span>
-                                                                                
-                                                                            </a>
-                                                                        </li>
-
-                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                    </ul>
-                                                                </div>
+                                            $result = mysqli_query($db, $query);
+                                            while ($q = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
+                                                    <div class="product">
+                                                        <div class="product__inner">
+                                                            <div class="pro__thumb">
+                                                                <a href="product.php?id=<?= $q[3] ?>">
+                                                                    <img src="<?= $q[1] ?>" alt="product images">
+                                                                </a>
                                                             </div>
-                                                            <div class="product__details">
-                                                                <h2><a href="product.php?id=<?=$q[3]?>"><?=$q[0]?></a></h2>
-                                                                <ul class="product__price">
-                                                                    <li class="new__price"><?=$q[2]?> ₽</li>
+                                                            <div class="product__hover__info">
+                                                                <ul class="product__action">
+                                                                    <li>
+                                                                        <a  data-toggle="modal" 
+                                                                            data-target="#productModal"
+                                                                            title="Quick View"
+                                                                            class="quick-view modal-view detail-link"
+                                                                            href="#"
+                                                                            onclick="idelVer1('<?=$q[3]?>','<?=$q[1]?>','<?echo json_decode($q[0])?>' ,'Рейтинг','<?=$q[2]?>', '<?=$q[2]?>', '<?=$q[4]?>')"
+                                                                            >
+                                                                             
+                                                                            <span class="ti-plus"></span>
+
+                                                                        </a>
+                                                                    </li>
+
+                                                                    <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <div class="product__details">
+                                                            <h2><a href="product.php?id=<?= $q[3] ?>"><?= $q[0] ?></a></h2>
+                                                            <ul class="product__price">
+                                                                <li class="new__price"><?= $q[2] ?> ₽</li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                    <?
+                                                </div>
+                                            <?
 
-                                                }
+                                            }
+                                            
                                             ?>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -234,35 +241,37 @@
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                                $query = 'select nameproduct, value, priceproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.priceproduct asc limit 8';
-                                                $result = mysqli_query($db, $query);
-                                                while($q = mysqli_fetch_array($result)){
-                                                    ?>
-                                                    <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                        <div class="product">
-                                                            <div class="product__inner">
-                                                                <div class="pro__thumb">
-                                                                    <a href="#">
-                                                                        <img src="<?=$q[1]?>" alt="product images">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="product__hover__info">
-                                                                    <ul class="product__action">
-                                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                    </ul>
-                                                                </div>
+                                            $query = 'select nameproduct, value, priceproduct from product,product_properties 
+                                            where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
+                                             order by product.priceproduct asc limit 8';
+                                            $result = mysqli_query($db, $query);
+                                            while ($q = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
+                                                    <div class="product">
+                                                        <div class="product__inner">
+                                                            <div class="pro__thumb">
+                                                                <a href="#">
+                                                                    <img src="<?= $q[1] ?>" alt="product images">
+                                                                </a>
                                                             </div>
-                                                            <div class="product__details">
-                                                                <h2><a href="product-details.php"><?=$q[0]?></a></h2>
-                                                                <ul class="product__price">
-                                                                    <li class="new__price"><?=$q[2]?> ₽</li>
+                                                            <div class="product__hover__info">
+                                                                <ul class="product__action">
+                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                    <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <div class="product__details">
+                                                            <h2><a href="product-details.php"><?= $q[0] ?></a></h2>
+                                                            <ul class="product__price">
+                                                                <li class="new__price"><?= $q[2] ?> ₽</li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                    <?
-                                                }
+                                                </div>
+                                            <?
+                                            }
                                             ?>
                                         </div>
                                     </div>
@@ -271,35 +280,35 @@
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                                $query = 'select nameproduct, value, priceproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.score desc limit 8';
-                                                $result = mysqli_query($db, $query);
-                                                while($q = mysqli_fetch_array($result)){
-                                                    ?>
-                                                    <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                        <div class="product">
-                                                            <div class="product__inner">
-                                                                <div class="pro__thumb">
-                                                                    <a href="#">
-                                                                        <img src="<?=$q[1]?>" alt="product images">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="product__hover__info">
-                                                                    <ul class="product__action">
-                                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                    </ul>
-                                                                </div>
+                                            $query = 'select nameproduct, value, priceproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.score desc limit 8';
+                                            $result = mysqli_query($db, $query);
+                                            while ($q = mysqli_fetch_array($result)) {
+                                            ?>
+                                                <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
+                                                    <div class="product">
+                                                        <div class="product__inner">
+                                                            <div class="pro__thumb">
+                                                                <a href="#">
+                                                                    <img src="<?= $q[1] ?>" alt="product images">
+                                                                </a>
                                                             </div>
-                                                            <div class="product__details">
-                                                                <h2><a href="product-details.php"><?=$q[0]?></a></h2>
-                                                                <ul class="product__price">
-                                                                    <li class="new__price"><?=$q[2]?> ₽</li>
+                                                            <div class="product__hover__info">
+                                                                <ul class="product__action">
+                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                    <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
+                                                        <div class="product__details">
+                                                            <h2><a href="product-details.php"><?= $q[0] ?></a></h2>
+                                                            <ul class="product__price">
+                                                                <li class="new__price"><?= $q[2] ?> ₽</li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                    <?
-                                                }
+                                                </div>
+                                            <?
+                                            }
                                             ?>
                                         </div>
                                     </div>
@@ -501,10 +510,10 @@
                                 <div class="tab-pane" id="home6">
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
-                                            
-                                            
 
-                                            
+
+
+
 
                                         </div>
                                     </div>
@@ -672,8 +681,8 @@
             </div>
         </section>
         <!-- End Our Product Area -->
-        
-        
+
+
         <!-- components/footer.php -->
         <? include('components/footer.php'); ?>
     </div>
@@ -691,13 +700,15 @@
                         <div class="modal-product">
                             <!-- Start product images -->
                             <div class="product-images">
-                                <div class="main-image images">
-                                    <img alt="big images" src="images/product/big-img/1.jpg">
+                                <div class="main-image images"> 
+                                    <img id="img-quick" alt="big images">
+                                    <!-- тут фото -->
                                 </div>
                             </div>
                             <!-- end product images -->
                             <div class="product-info">
-                                <h1>Simple Fabric Bags</h1>
+                                <!-- вот тут имя -->
+                                <h1 id="product-name-quick"></h1>
                                 <div class="rating__and__review">
                                     <ul class="rating">
                                         <li><span class="ti-star"></span></li>
@@ -712,44 +723,14 @@
                                 </div>
                                 <div class="price-box-3">
                                     <div class="s-price-box">
-                                        <span class="new-price">$17.20</span>
-                                        <span class="old-price">$45.00</span>
+                                        <span id="new-price-quick" class="new-price">$17.20</span>
+                                        <span id="old-price-quick" class="old-price">$45.00</span>
                                     </div>
                                 </div>
-                                <div class="quick-desc">
+                                <div id="quick-desc" class="quick-desc">
                                     Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
                                 </div>
-                                <div class="select__color">
-                                    <h2>Select color</h2>
-                                    <ul class="color__list">
-                                        <li class="red"><a title="Red" href="#">Red</a></li>
-                                        <li class="gold"><a title="Gold" href="#">Gold</a></li>
-                                        <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                        <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                    </ul>
-                                </div>
-                                <div class="select__size">
-                                    <h2>Select size</h2>
-                                    <ul class="color__list">
-                                        <li class="l__size"><a title="L" href="#">L</a></li>
-                                        <li class="m__size"><a title="M" href="#">M</a></li>
-                                        <li class="s__size"><a title="S" href="#">S</a></li>
-                                        <li class="xl__size"><a title="XL" href="#">XL</a></li>
-                                        <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-                                    </ul>
-                                </div>
-                                <div class="social-sharing">
-                                    <div class="widget widget_socialsharing_widget">
-                                        <h3 class="widget-title-modal">Share this product</h3>
-                                        <ul class="social-icons">
-                                            <li><a target="_blank" title="rss" href="#" class="rss social-icon"><i class="zmdi zmdi-rss"></i></a></li>
-                                            <li><a target="_blank" title="Linkedin" href="#" class="linkedin social-icon"><i class="zmdi zmdi-linkedin"></i></a></li>
-                                            <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a></li>
-                                            <li><a target="_blank" title="Tumblr" href="#" class="tumblr social-icon"><i class="zmdi zmdi-tumblr"></i></a></li>
-                                            <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                                 <div class="addtocart-btn">
                                     <a href="#">Add to cart</a>
                                 </div>
@@ -776,6 +757,9 @@
     <script src="js/waypoints.min.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
+
+    
+    <script src="js/idel.js"></script>
 
 </body>
 </php>

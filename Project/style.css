@@ -46,9 +46,53 @@
 /*  1. Google fonts
 /*----------------------------------------*/
 /*
-    font-family: 'Poppins', sans-serif;
+    
+/* Начало Стили Иделья для рейтинга*/
+.rating-area1{
+	overflow: hidden;
+	width: 210px;
+	margin: 0 0;
+}
+.rating-area1:not(:checked) > input {
+	display: none;
+}
+.rating-area1:not(:checked) > label {
+	float: right;
+	width: 42px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 32px;
+	line-height: 32px;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+.rating-area1:not(:checked) > label:before {
+    
+	content: '★';
+}
+.rating-area1 > input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px #c60;
+}
+.rating-area1:not(:checked) > label:hover,
+.rating-area1:not(:checked) > label:hover ~ label {
+	color: gold;
+}
+.rating-area1 > input:checked + label:hover,
+.rating-area1 > input:checked + label:hover ~ label,
+.rating-area1 > input:checked ~ label:hover,
+.rating-area1 > input:checked ~ label:hover ~ label,
+.rating-area1 > label:hover ~ input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px goldenrod;
+}
+.rate-area1 > label:active {
+	position: relative;
+}
 
-    font-family: 'Dosis', sans-serif;
+
+/* Конец Стили Иделья для рейтинга*/
+
 
 */
 /*---------------------------------------
@@ -989,7 +1033,7 @@ h3.widget-title-modal {
 }
 .htc__btn.shop__now__btn {
     color: #3a3a3a;
-    font-family: Dosis;
+    font-family: Noto Sans;
     font-size: 16px;
     font-weight: 500;
     padding-right: 30px;
@@ -2163,7 +2207,7 @@ product__style--7
     float: left;
 }
 .price--filter a {
-    font-family: poppins;
+    font-family: Noto Sans;
     text-transform: uppercase;
 }
 .price--output > * {
