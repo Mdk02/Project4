@@ -356,7 +356,7 @@ $('.fixed__footer').css({'margin-bottom': $newsletter_height.height() + 'px'});
       margin:0,
       nav:true,
       navText: [ '<i class="zmdi zmdi-chevron-left"></i>', '<i class="zmdi zmdi-chevron-right"></i>' ],
-      items:3,
+      items:4,
       responsive:{
         0:{
           items:1
@@ -371,13 +371,13 @@ $('.fixed__footer').css({'margin-bottom': $newsletter_height.height() + 'px'});
           items:3
         },
         1200:{
-          items:3
+          items:4
         },
         1400:{
-          items:3
+          items:4
         },
         1920:{
-          items:3
+          items:4
         }
       }
     });

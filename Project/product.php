@@ -123,35 +123,16 @@
                                             <li><span class="ti-star"></span></li>
                                             <li><span class="ti-star"></span></li>
                                         </ul>
-                                        <span class="rat__qun">(Based on 0 Ratings)</span>
+                                        <span class="rat__qun">(Рейтинг)</span>
                                     </div>
 
                                     <ul class="pro__dtl__prize">
                                         <li><?= $q[1] ?> ₽</li>
                                     </ul>
-                                    <div class="pro__dtl__color">
-                                        <h2 class="title__5">Choose Color</h2>
-                                        <ul class="pro__choose__color">
-                                            <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                            <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                            <li class="perpal"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                            <li class="yellow"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-action-wrap">
-                                        <div class="prodict-statas"><span>Quantity :</span></div>
-                                        <div class="product-quantity">
-                                            <form id='myform' method='POST' action='#'>
-                                                <div class="product-quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
+                                    
+                                    
                                     <ul class="pro__dtl__btn">
-                                        <li class="buy__now__btn"><a href="#">buy now</a></li>
+                                        <li class="buy__now__btn"><a href="#">В корзину</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -167,13 +148,13 @@
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <ul class="product__deatils__tab mb--60" role="tablist">
                                 <li role="presentation" class="active">
-                                    <a href="#description" role="tab" data-toggle="tab">Description</a>
+                                    <a href="#description" role="tab" data-toggle="tab">Описание</a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#sheet" role="tab" data-toggle="tab">Data sheet</a>
+                                    <a href="#sheet" role="tab" data-toggle="tab">характеристики</a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#reviews" role="tab" data-toggle="tab">Reviews</a>
+                                    <a href="#reviews" role="tab" data-toggle="tab">Отзывы</a>
                                 </li>
                             </ul>
                         </div>
@@ -185,7 +166,7 @@
                                 <div role="tabpanel" id="description" class="product__tab__content fade in active">
                                     <div class="product__description__wrap">
                                         <div class="product__desc">
-                                            <h2 class="title__6">Details</h2>
+                                            <h2 class="title__6">Описание</h2>
                                             <p><?= $q[2] ?></p>
                                         </div>
                                         
@@ -195,7 +176,7 @@
                                 <!-- Start Single Content -->
                                 <div role="tabpanel" id="sheet" class="product__tab__content fade">
                                     <div class="pro__feature">
-                                        <h2 class="title__6">Data sheet</h2>
+                                        <h2 class="title__6">Характеристики</h2>
                                         <ul class="feature__list">
                                             <?
                                             $queryChars = 'select сharacteristic.NameСharacteristic, product_properties.Value from product_properties join сharacteristic
@@ -249,7 +230,7 @@
                                             </div>
                                             <div class="review__details">
                                                 <div class="review__info">
-                                                    <h4><a href="#">Gerald Barnes</a></h4>
+                                                    <h4><a href="#">Шарипов Идель</a></h4>
                                                     <ul class="rating">
                                                         <li><i class="zmdi zmdi-star"></i></li>
                                                         <li><i class="zmdi zmdi-star"></i></li>
@@ -263,7 +244,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="review__date">
-                                                    <span>27 Jun, 2016 at 2:30pm</span>
+                                                    <span>27 Июня 2016</span>
                                                 </div>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
                                             </div>
@@ -274,20 +255,35 @@
                                     <?
 
                                     
-                                    if (isset($_SESSION['idUsers'])) {
+                                    if (!isset($_SESSION['idUsers'])) {
                                         ?> 
-                                        <h2 class="rating-title">Авториз</h2> <?
+                                        <h2 class="rating-title">Ваш отзыв</h2> <?
                                         $queryChars = 'select order_product.IdProduct from `order` join order_product 
                                         on `order`.IdOrder = order_product.IdOrder 
                                         WHERE order_product.IdProduct ='.$_GET['id'].
                                         'and `order`.`IdUser` =' .$_SESSION['idUsers'].';' .'';
                                         $resultChars = mysqli_query($db, $queryChars);
-                                        if ($resultChars){
+                                        if (!$resultChars){
                                     ?>
 
-                                        <div class="rating__wrap">
-                                            <h4 class="rating-title-2">Ваш рейтинг</h4>
+                                       
 
+
+
+
+
+                                        <!-- End RAting Area -->
+                                        <div class="review__box">
+                                            <form id="review-form">
+                                                <div class="single-review-form">
+                                                    <div class="review-box message">
+                                                        <textarea placeholder="Напишите ваш отзыв"></textarea>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="rating__wrap">
+                                            <h4 class="rating-title-2"> Ваш рейтинг товара</h4>
                                             <div class="rating-area1">
                                                 <input type="radio" id="star-5" name="rating" value="5">
                                                 <label for="star-5" title="Оценка «5»"></label>
@@ -306,24 +302,8 @@
 
 
 
-
-
-                                        <!-- End RAting Area -->
-                                        <div class="review__box">
-                                            <form id="review-form">
-                                                <div class="single-review-form">
-                                                    <div class="review-box name">
-                                                        <input type="text" placeholder="Type your name">
-                                                        <input type="email" placeholder="Type your email">
-                                                    </div>
-                                                </div>
-                                                <div class="single-review-form">
-                                                    <div class="review-box message">
-                                                        <textarea placeholder="Write your review"></textarea>
-                                                    </div>
-                                                </div>
                                                 <div class="review-btn">
-                                                    <a class="fv-btn" onclick="alert('Сохранено')" href="#">submit review</a>
+                                                    <a class="fv-btn" onclick="alert('Сохранено')" href="#">Оставить отзыв</a>
                                                 </div>
                                             </form>
                                         </div>

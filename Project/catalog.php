@@ -240,7 +240,7 @@
                                                 <div class="product">
                                                     <div class="product__inner"> 
                                                         <div class="pro__thumb">
-                                                            <a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>">
+                                                            <a href="product.php?id=<?=$all_product_list[3]?>">
                                                                 <img src="<?=$all_product_list[1]?>"  alt="product images">
                                                             </a>
                                                         </div>
@@ -256,7 +256,7 @@
                                                             </ul>                                                                </div>
                                                     </div>
                                                     <div class="product__details">
-                                                        <h2><a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>"><?=$all_product_list[0]?></a></h2>
+                                                        <h2><a href="product.php?id=<?=$all_product_list[3]?>"><?=$all_product_list[0]?></a></h2>
                                                         <ul class="product__price">
                                                             <li class="new__price"><?=$all_product_list[2]?> ₽</li>
                                                         </ul>

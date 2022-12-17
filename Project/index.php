@@ -149,21 +149,21 @@ require "connectDB.php";
                                     <li class="active">
                                         <a href="#home1" data-toggle="tab">
                                             <div class="tab-menu-text">
-                                                <h4>latest </h4>
+                                                <h4>Новое </h4>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#home2" data-toggle="tab">
                                             <div class="tab-menu-text">
-                                                <h4>best sale </h4>
+                                                <h4>Лучшая цена </h4>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#home3" data-toggle="tab">
                                             <div class="tab-menu-text">
-                                                <h4>top rated</h4>
+                                                <h4>Популяроне</h4>
                                             </div>
                                         </a>
                                     </li>
