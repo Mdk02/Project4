@@ -1,6 +1,9 @@
-<!doctype html>
+<!doctype htpm>
 <html class="no-js" lang="en">
-<?php require "connectDB.php"; ?>
+<?php
+require "connectDB.php";
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -100,7 +103,7 @@
                     <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 float-right-style">
                         <div class="categories-menu mrg-xs">
                             <div class="category-heading">
-                                <h3>Категории</h3>
+                                <h3>Categories</h3>
                             </div>
                             <div class="category-menu-list">
                                 <ul>
@@ -174,7 +177,7 @@
                                             $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
                                                 where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
                                                  order by product.idproduct desc limit 8';
-                                            echo $query;
+                                            
                                             $result = mysqli_query($db, $query);
                                             $delete = '"';
                                             while ($q = mysqli_fetch_array($result)) {
@@ -195,7 +198,7 @@
                                                                             title="Quick View"
                                                                             class="quick-view modal-view detail-link"
                                                                             href="#"
-                                                                            onclick="idelVer1('<?=$q[3]?>','<?=$q[1]?>','<?echo str_replace($delete, ' ', $q[0])?>' ,'Рейтинг','<?=$q[2]?>', '<?=$q[2]?>', '<?echo str_replace($delete, ' ', $q[4])?>?>')"
+                                                                            onclick="idelVer1('<?=$q[3]?>','<?=$q[1]?>','<?echo str_replace($delete, ' ', $q[0])?>' ,'Рейтинг','<?=$q[2]?>', '<?=$q[2]?>', '<?echo str_replace($delete, ' ', $q[4])?>')"
                                                                             >
                                                                              
                                                                             <span class="ti-plus"></span>

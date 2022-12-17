@@ -84,7 +84,6 @@ require "connectDB.php";
 
                                             }
                                             $productFromCookies = trim($productFromCookies , ',');
-                                            echo $productFromCookies;
                                             if ($productFromCookies != '') {
                                                 
                                                 $query = "SELECT product_properties.Value, product.NameProduct, product.PriceProduct, product.IdProduct

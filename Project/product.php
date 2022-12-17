@@ -1,5 +1,5 @@
 <!doctype php>
-<php class="no-js" lang="zxx">
+<html class="no-js" lang="zxx">
 
     <head>
         <meta charset="utf-8">
@@ -186,9 +186,9 @@
                                             while ($q = mysqli_fetch_array($resultChars)) {
                                                 if ($q[0] != 'img') {
                                             ?><li><i class="zmdi zmdi-play-circle"></i><?= $q[0] ?> : <?= $q[1] ?></li><?
-                                                                                                                    }
-                                                                                                                }
-                                                                                                                        ?>
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                                ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -265,30 +265,6 @@
                                         $resultChars = mysqli_query($db, $queryChars);
                                         if (!$resultChars){
                                     ?>
-                                        <h2 class="rating-title">Авториз</h2> <?
-                                                                                $queryChars = 'select order_product.IdProduct from `order` join order_product 
-                                        on `order`.IdOrder = order_product.IdOrder 
-                                        WHERE order_product.IdProduct =' . $_GET['id'] .
-                                                                                    'and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
-                                                                                $resultChars = mysqli_query($db, $queryChars);
-                                                                                if ($resultChars) {
-                                                                                ?>
-
-                                            <div class="rating__wrap">
-                                                <h4 class="rating-title-2">Ваш рейтинг</h4>
-
-                                                <div class="rating-area1">
-                                                    <input type="radio" id="star-5" name="rating" value="5">
-                                                    <label for="star-5" title="Оценка «5»"></label>
-                                                    <input type="radio" id="star-4" name="rating" value="4">
-                                                    <label for="star-4" title="Оценка «4»"></label>
-                                                    <input type="radio" id="star-3" name="rating" value="3">
-                                                    <label for="star-3" title="Оценка «3»"></label>
-                                                    <input type="radio" id="star-2" name="rating" value="2">
-                                                    <label for="star-2" title="Оценка «2»"></label>
-                                                    <input type="radio" id="star-1" name="rating" value="1">
-                                                    <label for="star-1" title="Оценка «1»"></label>
-                                                </div>
 
                                        
 
@@ -322,6 +298,7 @@
                                             </div>
 
 
+                                        </div>
 
 
 
@@ -362,4 +339,4 @@
 
     </body>
 
-</php>
+</html>

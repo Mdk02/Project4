@@ -42,7 +42,6 @@
         require "connectDB.php";
 
 
-        $all_product_list;
         $sort;
 
         $search_by_text = $_GET["search"];
@@ -115,7 +114,7 @@
                                                         foreach ($final as $q) {
                                                     ?>
                                                             <li>
-                                                                <a href="/catalog-sidebar.php?category=<?= $q[0] . $search_by_text ?>">
+                                                                <a href="/catalog.php?category=<?= $q[0] . $search_by_text ?>">
                                                                     <img alt="" src="images/icons/thum8.png">
                                                                     <?= $q[0] ?> <i class="zmdi">
                                                                         <?= $q[1] ?>
@@ -229,7 +228,6 @@
                                         where ' . $category_sql . $search_by_text_sql . ' product.idproduct = product_properties.idproduct 
                                         and product_properties.idcharacteristic=3 
                                         order by ' . $sort;
-                                        echo $query;
                                         $result = mysqli_query($db, $query);
                                         $delete = '"';
                                         while ($all_product_list = mysqli_fetch_array($result)) {
@@ -246,7 +244,7 @@
                                                             <ul class="product__action">
                                                                 <li>
                                                                     <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" 
-                                                                    onclick="idelVer1('<?= $$all_product_list[3] ?>','<?= $$all_product_list[1] ?>','<? echo str_replace($delete, ' ', $$all_product_list[0]) ?>' ,'Рейтинг','<?= $$all_product_list[2] ?>', '<?= $$all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $$all_product_list[4]) ?>?>')">
+                                                                    onclick="idelVer1('<?= $all_product_list[3] ?>','<?=$all_product_list[1] ?>','<? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
                                                                         <span class="ti-plus"></span>
                                                                     </a>
                                                                 </li>
