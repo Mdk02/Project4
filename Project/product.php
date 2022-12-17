@@ -153,8 +153,8 @@ require 'connectDB.php';
                             <!-- Start Single Content -->
                             <div role="tabpanel" id="sheet" class="product__tab__content fade">
                                 <div class="pro__feature">
-                                    <h2 class="title__6">Характеристики</h2>
-                                    <ul class="feature__list">
+                                    <!-- <h2 class="title__6">Характеристики</h2> -->
+                                    <div class="сharacteristics_list">
                                         <?
                                         $queryChars = 'select сharacteristic.NameСharacteristic, product_properties.Value from product_properties join сharacteristic
                                              on сharacteristic.IdСharacteristic = product_properties.IdCharacteristic
@@ -162,13 +162,19 @@ require 'connectDB.php';
                                         $resultChars = mysqli_query($db, $queryChars);
                                         while ($q = mysqli_fetch_array($resultChars)) {
                                             if ($q[0] != 'img') { ?>
-                                                <li>
-                                                    <i class="zmdi zmdi-play-circle"></i><?= $q[0] ?> : <?= $q[1] ?>
-                                                </li>
+                                                <div class="сharacteristic_row">
+                                                    <!-- <i class="zmdi zmdi-play-circle"></i> -->
+                                                    <div class="сharacteristic_name">
+                                                        <?= $q[0] ?>
+                                                    </div>
+                                                    <div class="сharacteristic_value">
+                                                        <?= $q[1] ?>
+                                                    </div>
+                                                </div>
                                             <? }
                                         }
                                         ?>
-                                    </ul>
+                                    </div>
                                 </div>
                             </div>
                             <!-- End Single Content -->

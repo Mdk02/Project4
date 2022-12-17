@@ -4222,3 +4222,29 @@ a.shipping-calculator-button:hover {
 :focus {
     outline: -webkit-focus-ring-color auto 0px;
 }
+
+
+
+/* own */
+div.сharacteristics_list {
+    margin: 0 auto;
+    width: fit-content;
+}
+div.сharacteristic_row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+div.сharacteristic_row:hover {
+    background-color: #f6f6f6;
+}
+div.сharacteristic_name {
+    padding-right: 20px;
+    color: #606060;
+}
+div.сharacteristic_value {
+    padding-left: 30px;
+}
