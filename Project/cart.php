@@ -66,7 +66,7 @@ require "connectDB.php";
                                         <thead>
                                             <tr>
                                                 <th class="product-thumbnail">Фото</th>
-                                                <th class="product-name">Продукт</th>
+                                                <th class="product-name-1">Продукт</th>
                                                 <th class="product-price-1">Цена</th>
                                                 <th class="product-remove">Удалить</th>
                                             </tr>
@@ -130,7 +130,7 @@ require "connectDB.php";
                                                 </tbody>
                                             </table>
                                             <div class="wc-proceed-to-checkout">
-                                                <a href="https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount=1&successUrl=http://project/index.php&comment=Привет">Оплатить</a>
+                                                <a id="buy_but" href="">Оплатить</a>
                                             </div>
                                         </div>
                                     </div>
@@ -144,14 +144,16 @@ require "connectDB.php";
 
                         sum = 0;
                         console.log(sum);
+                        buy_product = '';
                         product = document.getElementsByClassName('product-price');
-                        console.log(product);
+                        nameProduct = document.getElementsByClassName('product-name');
                         for (i = 0; i < product.length; i++) {
-
-                            console.log(product[i].textContent.slice(0, product[i].textContent.length - 1));
+                            buy_product += i+1 +'. '+ nameProduct[i].textContent + '-               -\n';
+                            console.log(buy_product);
                             sum += Number(product[i].textContent.slice(0, product[i].textContent.length - 1));
                         }
-
+                        
+                        document.getElementById('buy_but').href ='https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount='+sum+'&successUrl=http://project/index.php&comment='+buy_product  ;
                         document.getElementById("amount_cart").textContent = sum + '₽';
                     }
 

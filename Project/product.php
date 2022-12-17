@@ -52,9 +52,33 @@ require 'connectDB.php';
         <? include('components/header.php'); ?>
 
         <div class="body__overlay"></div>
-
+        <!-- Start Offset Wrapper -->
+        <!-- End Offset Wrapper -->
+        <div style="height: 100px;">
+            <!-- offset top -->
+        </div>
+        <!-- Start Bradcaump area -->
+        <!-- <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-center">
+                                <h2 class="bradcaump-title">Product Details sticky</h2>
+                                <nav class="bradcaump-inner">
+                                  <a class="breadcrumb-item" href="index.php">Home</a>
+                                  <span class="brd-separetor">/</span>
+                                  <span class="breadcrumb-item active">sticky right</span>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- End Bradcaump area -->
         <!-- Start Product Details -->
-        <section class="htc__product__details pt--100 pb--50 bg__white">
+        <section class="htc__product__details pb--100 bg__white">
             <div class="container">
                 <div class="scroll-active">
                     <div class="row">
@@ -72,7 +96,7 @@ require 'connectDB.php';
                             }
                         }
                         ?>
-                        <div class="col-md-6 col-lg-6 col-sm-5 col-xs-12">
+                        <div class="col-md-7 col-lg-7 col-sm-5 col-xs-12">
                             <div class="product__details__container product-details-5">
                                 <div class="scroll-single-product mb--30">
                                     <img src="<?= $imageString ?>" alt="full-image">
@@ -86,10 +110,9 @@ require 'connectDB.php';
                             </div>
                         </div>
 
-                        <div class="sidebar-active col-md-6 col-lg-6 col-sm-7 col-xs-12 xmt-30">
-                            <div class="pt--100"></div>
+                        <div class="sidebar-active col-md-5 col-lg-5 col-sm-7 col-xs-12 xmt-30">
                             <div class="htc__product__details__inner ">
-                                <div class="pro__detl__title" style="min-height: 8em;">
+                                <div class="pro__detl__title">
                                     <h2><?= $q[0] ?></h2>
                                 </div>
                                 <div class="pro__dtl__rating">
@@ -153,116 +176,87 @@ require 'connectDB.php';
                             <!-- Start Single Content -->
                             <div role="tabpanel" id="sheet" class="product__tab__content fade">
                                 <div class="pro__feature">
-                                    <!-- <h2 class="title__6">Характеристики</h2> -->
-                                    <div class="сharacteristics_list">
+                                    <h2 class="title__6">Характеристики</h2>
+                                    <ul class="feature__list">
                                         <?
                                         $queryChars = 'select сharacteristic.NameСharacteristic, product_properties.Value from product_properties join сharacteristic
                                              on сharacteristic.IdСharacteristic = product_properties.IdCharacteristic
                                               where idproduct = ' . $q[3] . '';
                                         $resultChars = mysqli_query($db, $queryChars);
                                         while ($q = mysqli_fetch_array($resultChars)) {
-                                            if ($q[0] != 'img') { ?>
-                                                <div class="сharacteristic_row">
-                                                    <!-- <i class="zmdi zmdi-play-circle"></i> -->
-                                                    <div class="сharacteristic_name">
-                                                        <?= $q[0] ?>
-                                                    </div>
-                                                    <div class="сharacteristic_value">
-                                                        <?= $q[1] ?>
-                                                    </div>
-                                                </div>
-                                            <? }
-                                        }
-                                        ?>
-                                    </div>
+                                            if ($q[0] != 'img') {
+                                        ?><li><i class="zmdi zmdi-play-circle"></i><?= $q[0] ?> : <?= $q[1] ?></li><?
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                        ?>
+                                    </ul>
                                 </div>
                             </div>
                             <!-- End Single Content -->
                             <!-- Start Single Content -->
                             <div role="tabpanel" id="reviews" class="product__tab__content fade">
                                 <div class="review__address__inner">
-                                    <!-- Start Single Review -->
-                                    <div class="pro__review">
-                                        <div class="review__thumb">
-                                            <img src="images/review/1.jpg" alt="review images">
-                                        </div>
-                                        <div class="review__details">
-                                            <div class="review__info">
-                                                <h4><a href="#">Gerald Barnes</a></h4>
-                                                <ul class="rating">
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star-half"></i></li>
-                                                    <li><i class="zmdi zmdi-star-half"></i></li>
-                                                </ul>
-                                                <div class="rating__send">
-                                                    <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
-                                                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                    <?
+                                    $queryComment = 'SELECT users.SurnameUser, users.NameUser, `сomment`.*    FROM `сomment` inner join users ON `сomment`.`IdUser` = users.idUsers WHERE IdProduct=' . $_GET['id'];
+
+                                    $resultComment = mysqli_query($db, $queryComment);
+                                    //SELECT * FROM `сomment` inner join users ON `сomment`.`IdUser` = users.idUsers WHERE IdProduct= 109;
+                                    while ($comments = mysqli_fetch_array($resultComment)) { ?>
+
+
+
+
+
+                                        <!-- Start Single Review -->
+                                        <div class="pro__review ans">
+                                            <div class="review__thumb">
+                                                <img src="images/review/2.jpg" alt="review images">
+                                            </div>
+                                            <div class="review__details">
+                                                <div class="review__info">
+                                                    <h4><?= ($comments[0] . " " . $comments[1]) ?></h4>
+                                                    <div class="rating-result">
+                                                        <?for ($i = 0 ; $i < $comments[6]; $i++ ){?>
+                                                        <span class="active"></span>
+                                                        
+                                                        <?}  
+                                                        for ($i = 0 ; $i < (5-$comments[6]); $i++ ){?>
+                                                            
+                                                            <span></span>
+                                                        
+                                                        <?}?>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="review__date">
-                                                <span>27 Jun, 2016 at 2:30pm</span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Review -->
-                                    <!-- Start Single Review -->
-                                    <div class="pro__review ans">
-                                        <div class="review__thumb">
-                                            <img src="images/review/2.jpg" alt="review images">
-                                        </div>
-                                        <div class="review__details">
-                                            <div class="review__info">
-                                                <h4><a href="#">Шарипов Идель</a></h4>
-                                                <ul class="rating">
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star-half"></i></li>
-                                                    <li><i class="zmdi zmdi-star-half"></i></li>
-                                                </ul>
-                                                <div class="rating__send">
-                                                    <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
-                                                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                                <div class="review__date">
+                                                    <span><?=$comments[5]?></span>
                                                 </div>
+                                                <p><?= $comments[7] ?></p>
                                             </div>
-                                            <div class="review__date">
-                                                <span>27 Июня 2016</span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
                                         </div>
-                                    </div>
-                                    <!-- End Single Review -->
+                                        <!-- End Single Review -->
+                                    <? }
+                                    ?>
                                 </div>
                                 <!-- Start RAting Area -->
                                 <?
 
 
-                                if (!isset($_SESSION['idUsers'])) {
-                                ?>
-                                    <h2 class="rating-title">Ваш отзыв</h2> <?
-                                                                            $queryChars = 'select order_product.IdProduct from `order` join order_product 
+                                if (isset($_SESSION['idUsers'])) {
+
+                                    $queryChars = 'select order_product.IdProduct from `order` join order_product 
                                         on `order`.IdOrder = order_product.IdOrder 
                                         WHERE order_product.IdProduct =' . $_GET['id'] .
-                                                                                'and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
-                                                                            $resultChars = mysqli_query($db, $queryChars);
-                                                                            if (!$resultChars) {
-                                                                            ?>
-
-
-
-
-
-
-
+                                        'and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
+                                    $resultChars = mysqli_query($db, $queryChars);
+                                    if (!$resultChars) {
+                                ?>
+                                        <h2 class="rating-title">Ваш отзыв</h2>
                                         <!-- End RAting Area -->
                                         <div class="review__box">
-                                            <form id="review-form">
+                                            <form id="comment-form" action="product.php?id=<?= $_GET['id'] ?>&" method="post">
                                                 <div class="single-review-form">
                                                     <div class="review-box message">
-                                                        <textarea placeholder="Напишите ваш отзыв"></textarea>
+                                                        <textarea name="сommentText" placeholder="Напишите ваш отзыв"></textarea>
                                                     </div>
                                                 </div>
 
@@ -287,13 +281,28 @@ require 'connectDB.php';
 
 
 
-                                                <div class="review-btn">
-                                                    <a class="fv-btn" href="#" onclick="alert('Сохранено')">Оставить отзыв</a>
+                                                <div class="htc__login__btn mt--30">
+                                                    <input class="fv-btn" form="comment-form" type="submit" value="Оставить отзыв" />
                                                 </div>
                                             </form>
+
+                                            <? if (isset($_POST['сommentText']) & isset($_POST['rating'])) {
+
+                                                $today = date("Y-m-d");
+                                                //INSERT INTO 'comment' (IdСomment, IdUser, IdProduct, DateOfCreate, Score, CommentText) VALUES (NULL,'20','113','2022-12-17','2', '222')
+
+                                                //INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '20', '113', '2022-12-02', '2', '2223123wdsads');
+                                                //$sql = "INSERT INTO 'comment' ('IdСomment', 'IdUser', 'IdProduct', 'DateOfCreate', 'Score', 'CommentText') VALUES (NULL,'{$_SESSION['idUsers']}','{$_GET['id']}','{$today}','{$_POST['rating']}', '{$_POST['сommentText']}')";
+                                                $sql = "INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '{$_SESSION['idUsers']}', '{$_GET['id']}', '{$today}', '{$_POST['rating']}', '{$_POST['сommentText']}')";
+
+                                                mysqli_query($db, $sql);
+                                                //header( 'Location: index.php' );
+                                            } ?>
+
+
                                         </div>
                                 <? }
-                                                                        }; ?>
+                                }; ?>
                             </div>
                             <!-- End Single Content -->
                         </div>
