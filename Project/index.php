@@ -85,6 +85,7 @@ require "connectDB.php";
                                                 <div class="slider__inner">
                                                     <h1>New Product <span class="text--theme">Collection</span></h1>
                                                     <div class="slider__btn">
+                                                        
                                                         <a class="htc__btn" href="cart.php">shop now</a>
                                                     </div>
                                                 </div>
@@ -134,26 +135,13 @@ require "connectDB.php";
             </div>
         </div>
 
+        
         <!-- Start Our Product Area -->
         <section class="htc__product__area bg__white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="product-categories-all">
-                            <div class="product-categories-title">
-                                <h3>Monitors</h3>
-                            </div>
-                            <div class="product-categories-menu">
-                                <ul>
-                                    <li><a href="#"> TN</a></li>
-                                    <li><a href="#"> IPS</a></li>
-                                    <li><a href="#"> WA</a></li>
-                                    <li><a href="#"> OLED</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
+                
+                    <div class="col-md-12">
                         <div class="product-style-tab">
                             <div class="product-tab-list">
                                 <!-- Nav tabs -->
@@ -190,6 +178,7 @@ require "connectDB.php";
                                                 where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
                                                  order by product.idproduct desc limit 8';
                                             $result = mysqli_query($db, $query);
+                                            $delete = '"';
                                             while ($q = mysqli_fetch_array($result)) {
                                             ?>
                                                 <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
@@ -208,7 +197,7 @@ require "connectDB.php";
                                                                             title="Quick View"
                                                                             class="quick-view modal-view detail-link"
                                                                             href="#"
-                                                                            onclick="idelVer1('<?=$q[3]?>','<?=$q[1]?>','<?echo json_decode($q[0])?>' ,'Рейтинг','<?=$q[2]?>', '<?=$q[2]?>', '<?=$q[4]?>')"
+                                                                            onclick="idelVer1('<?=$q[3]?>','<?=$q[1]?>','<?echo str_replace($delete, ' ', $q[0])?>' ,'Рейтинг','<?=$q[2]?>', '<?=$q[2]?>', '<?echo str_replace($delete, ' ', $q[4])?>?>')"
                                                                             >
                                                                              
                                                                             <span class="ti-plus"></span>
@@ -331,355 +320,7 @@ require "connectDB.php";
         </div>
 
         <!-- Start Our Product Area -->
-        <section class="htc__product__area pb--100 bg__white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="product-categories-all">
-                            <div class="product-categories-title">
-                                <h3>TV</h3>
-                            </div>
-                            <div class="product-categories-menu">
-                                <ul>
-                                    <li><a href="#">20''</a></li>
-                                    <li><a href="#">30''</a></li>
-                                    <li><a href="#">40''</a></li>
-                                    <li><a href="#">50''</a></li>
-                                    <li><a href="#">60''</a></li>
-                                    <li><a href="#">70''</a></li>
-                                    <li><a href="#">80''</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="product-style-tab">
-                            <div class="product-tab-list">
-                                <!-- Nav tabs -->
-                                <ul class="tab-style" role="tablist">
-                                    <li class="active">
-                                        <a href="#home5" data-toggle="tab">
-                                            <div class="tab-menu-text">
-                                                <h4>latest </h4>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#home6" data-toggle="tab">
-                                            <div class="tab-menu-text">
-                                                <h4>best sale </h4>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#home7" data-toggle="tab">
-                                            <div class="tab-menu-text">
-                                                <h4>top rated</h4>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-content another-product-style jump">
-                                <div class="tab-pane active" id="home5">
-                                    <div class="row">
-                                        <div class="product-slider-active owl-carousel">
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/xiaomi led tv.webp" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">43" (109 см) Телевизор LED Xiaomi MI TV P1 43 черный</a></h2>
-                                                        <ul class="product__price">
-                                                            <!-- <li class="old__price">$16.00</li> -->
-                                                            <li class="new__price">28 999 ₽</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/lg led tv.webp" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">55" (139 см) Телевизор LED LG 55UP80006LA черный</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">64 999 ₽</li>
-                                                            <li class="new__price">60 999 ₽</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/samsung led tv.webp" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">55" (139 см) Телевизор LED Samsung UE55AU7100UXCE черный</a></h2>
-                                                        <ul class="product__price">
-                                                            <!-- <li class="old__price">$16.00</li> -->
-                                                            <li class="new__price">61 999 ₽</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/4.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">16</li>
-                                                            <li class="new__price">10</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/5.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">12</li>
-                                                            <li class="new__price">10</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="home6">
-                                    <div class="row">
-                                        <div class="product-slider-active owl-carousel">
-
-
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="home7">
-                                    <div class="row">
-                                        <div class="product-slider-active owl-carousel">
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/2.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/1.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/5.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/4.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/3.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                <div class="product">
-                                                    <div class="product__inner">
-                                                        <div class="pro__thumb">
-                                                            <a href="#">
-                                                                <img src="images/product/7.png" alt="product images">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product__hover__info">
-                                                            <ul class="product__action">
-                                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                                <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                <li><a title="Wishlist" href="wishlist.php"><span class="ti-heart"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product__details">
-                                                        <h2><a href="product-details.php">Simple Black Clock</a></h2>
-                                                        <ul class="product__price">
-                                                            <li class="old__price">$16.00</li>
-                                                            <li class="new__price">$10.00</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- End Our Product Area -->
 
 
@@ -723,17 +364,17 @@ require "connectDB.php";
                                 </div>
                                 <div class="price-box-3">
                                     <div class="s-price-box">
-                                        <span id="new-price-quick" class="new-price">$17.20</span>
-                                        <span id="old-price-quick" class="old-price">$45.00</span>
+                                        <span id="new-price-quick" class="new-price">новыая цена</span>
+                                        <span id="old-price-quick" class="old-price">старая цена</span>
                                     </div>
                                 </div>
-                                <div id="quick-desc" class="quick-desc">
-                                    Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
+
+                                
+
+                                <div id="quick-desc" class="quick-desc"> описание (если ты это видишь, то оно сломалось )
                                 </div>
                                 
-                                <div class="addtocart-btn">
-                                    <a href="#">Add to cart</a>
-                                </div>
+                            
                             </div><!-- .product-info -->
                         </div><!-- .modal-product -->
                     </div><!-- .modal-body -->

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
 
@@ -41,6 +41,7 @@
 
 
         $all_product_list;
+        $sort;
 
         $search_by_text = $_GET["search"];
         if ($search_by_text){
@@ -49,24 +50,23 @@
             $search_by_text = '&search='.$search_by_text;
         };
 
-
-       $category_id = $_GET["category"];
-       switch($category_id) {
-           case 'монитор':
-               $category_id = 1;
-               break;
-           case 'ноутбук':
-               $category_id = 2;
-               break;
-           case 'телевизор LED':
-               $category_id = 3;
-               break;
-           case 'смартфон':
-               $category_id = 4;
-               break;
-       }
-       if ($category_id != 0){
-        $category_sql = 'product.IdCategory ='.$category_id.' and ' ;
+        $category_id = $_GET["category"];
+        switch($category_id) {
+            case 'монитор':
+                $category_id = 1;
+                break;
+            case 'ноутбук':
+                $category_id = 2;
+                break;
+            case 'телевизор LED':
+                $category_id = 3;
+                break;
+            case 'смартфон':
+                $category_id = 4;
+                break;
+        }
+        if ($category_id != 0){
+            $category_sql = 'product.IdCategory ='.$category_id.' and ' ;
 
         
        };
@@ -76,11 +76,14 @@
     <div class="wrapper fixed__footer">
         <!-- components/header.php -->
         <?  include('components/header.php'); ?>
-
-        
         <div class="body__overlay"></div>
+        <!-- Start Offset Wrapper -->
+        <!-- End Offset Wrapper -->
+        <div style="height: 100px;">
+            <!-- offset top -->
+        </div>
         
-        <section class="htc__shop__sidebar bg__white pt--100 pb--100">
+        <section class="htc__shop__sidebar bg__white ">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
@@ -98,11 +101,8 @@
                                 GROUP BY category.NameCategory';
                                 $result = mysqli_query($db, $query);
                                 $final = mysqli_fetch_all($result);
-                                if (count($final)>1 ){
-
-                                
-                                ?>
-                                        
+                                if (count($final)>1 ){ 
+                                ?>         
                                 <div class="categories-menu mrg-xs">
                                     <div class="category-heading">
                                         <h3>Категории </h3>
@@ -110,36 +110,28 @@
 
                                     <div class="category-menu-list">
                                         <ul>
-                                            <?
-                                               
-                                                    if(count($final)>1){
-                                                            foreach($final as $q) {
-                                                            ?>
-                                                            <li>
-                                                                <a href="/catalog.php?category=<?=$q[0].$search_by_text?>">
-                                                                    <img alt="" src="images/icons/thum8.png">
-                                                                    <?= $q[0] ?> <i class="zmdi">
-                                                                    <?= $q[1]?>
-                                                                    </i></a>
-                                                            </li>
-                                                        <?
-                                                        }
+                                            <?   
+                                                if(count($final)>1){
+                                                        foreach($final as $q) {
+                                                        ?>
+                                                        <li>
+                                                            <a href="/catalog-sidebar.php?category=<?=$q[0].$search_by_text?>">
+                                                                <img alt="" src="images/icons/thum8.png">
+                                                                <?= $q[0] ?> <i class="zmdi">
+                                                                <?= $q[1]?>
+                                                                </i></a>
+                                                        </li>
+                                                    <?
                                                     }
+                                                }
                                             ?>
                                         </ul>
                                     </div>
                                 </div>
-                            
-
-
                             <?
                             };
                             };
                             ?>
-
-
-
-
                             <!-- Start Range -->
                             <!-- Фильтр цены -->
                             <div class="htc-grid-range pt--100">
@@ -149,14 +141,10 @@
                                         <form action="#" method="GET">
                                             <div id="slider-range"></div>
                                             <div class="slider__range--output">
-                                                <div class="price__output--wrap">
-
-                                                
+                                                <div class="price__output--wrap">                               
                                                     <div class="price--output">
                                                         <span>Цена :</span><input type="text" id="amount" readonly>
                                                     </div>
-
-
                                                     <div class="price--filter">
                                                         <input type="submit" placeholder="Показать"/>
                                                     </div>
@@ -167,51 +155,28 @@
                                 </div>
                             </div>
                             <!-- End Range -->
-
-                                <!-- Фильтр характеристики -->
-
-
-
+                            <!-- Фильтр характеристики -->
                              <div>
-
-
                              <!-- 
                                 монитр: диаганаль , разрешение , частота -->
-                                    <div class="htc__shop__cat">
-                                        <? 
-                                        
-
-
-                                        if ($category_id == 1) {?>
-                                            <h4 class="section-title-4">Диаганаль</h4>
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> 0 - 20<span>0</span></a></li>
-                                                <li><a href="#"> 20 - 25<span>0</span></a></li>
-                                                <li><a href="#"> 25.1 - 27<span>0</span></a></li>
-                                                <li><a href="#"> 27.1 - 32<span>0</span></a></li>
-                                                <li><a href="#"> 32 -<span>0</span></a></li>
-                                            </ul>
-
-                                        <?};
-
-                                        ?>
-
+                                <div class="htc__shop__cat">
+                                    <? 
+                                    if ($category_id == 1) {?>
+                                        <h4 class="section-title-4">Диаганаль</h4>
+                                        <ul class="sidebar__list">
+                                            <li><a href="#"> 0 - 20<span>0</span></a></li>
+                                            <li><a href="#"> 20 - 25<span>0</span></a></li>
+                                            <li><a href="#"> 25.1 - 27<span>0</span></a></li>
+                                            <li><a href="#"> 27.1 - 32<span>0</span></a></li>
+                                            <li><a href="#"> 32 -<span>0</span></a></li>
                                         </ul>
-                                    </div>
-                                
-
-                            
-                            </div>   
-                           
+                                    <?};
+                                    ?>
+                                    </ul>
+                                </div>                      
+                            </div>                         
                         </div>
                     </div>
-
-
-
-
-
-
-
                     <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 smt-30">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -219,18 +184,35 @@
                                     <!-- Start Short Form -->
                                     <div class="product__list__option">
                                         <div class="order-single-btn">
-                                            <select class="select-color selectpicker">
-                                              <option>Sort by newness</option>
-                                              <option>Match</option>
-                                              <option>Updated</option>
-                                              <option>Title</option>
-                                              <option>Category</option>
-                                              <option>Rating</option>
+                                            <select class="select-color selectpicker" id="sortCatalog"  onchange="getOption()">
+                                                <option value="noSort">Без сортировки</option>
+                                                <option value='sortPriceAsce'>По возрастанию цены</option>
+                                                <option value='sortPriceDesce'>По убыванию цены</option>
+                                                <option value='raiting'>Рейтинг</option>
                                             </select>
                                         </div>
-                                        <div class="shp__pro__show">
-                                            <span>Showing 1 - 4 of 4 results</span>
-                                        </div>
+                                        <script>
+                                            function getOption(){
+                                                let elem = document.getElementById('sortCatalog');
+                                                if(elem.value == 'sortPriceAsce'){
+                                                    console.log(elem.value)
+                                                    <?$sort = 'product.PriceProduct'?>
+                                                }
+                                                else if(elem.value == 'sortPriceDesce'){
+                                                    console.log(elem.value)
+                                                    <?$sort = 'product.PriceProduct desc'?>
+                                                }
+                                                else if(elem.value == 'raiting')
+                                                {
+                                                    console.log(elem.value)
+                                                    <?$sort = 'Score'?>
+                                                }
+                                                else{
+                                                    <?$sort = 'product.idproduct'?>
+                                                }
+                                                
+                                            }
+                                        </script>
                                     </div>
                                     <!-- End Short Form -->
                                     <!-- Start List And Grid View -->
@@ -246,54 +228,63 @@
                             <div class="shop__grid__view__wrap another-product-style">
                                 <!-- Start Single View -->
                                 <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
-
-                                   <?
-                                                $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
-                                                where '.$category_sql.$search_by_text_sql.' product.idproduct = product_properties.idproduct 
-                                                and product_properties.idcharacteristic=3 
-                                                order by product.idproduct';
-                                                $result = mysqli_query($db, $query);
-                                                while($all_product_list = mysqli_fetch_array($result)){
-                                                    ?>
-                                                    <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                                        <div class="product">
-                                                            <div class="product__inner"> 
-                                                                <div class="pro__thumb">
-                                                                    <a href="product.php?id=<?=$all_product_list[3]?>">
-                                                                        <img src="<?=$all_product_list[1]?>"  alt="product images">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="product__hover__info">
-                                                                    <ul class="product__action">
-                                                                        <li>
-                                                                            <a data-toggle="modal" data-target="#productModal" title="Quick View" 
-                                                                                class="quick-view modal-view detail-link" href="#">
-                                                                                
-                                                                                <span class="ti-plus"></span>
-
-                                                                            </a>
-                                                                        </li>
-                                                                        <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
-                                                                    </ul>                                                                </div>
-                                                            </div>
-                                                            <div class="product__details">
-                                                                <h2><a href="product.php?id=<?=$all_product_list[3]?>"><?=$all_product_list[0]?></a></h2>
-                                                                <ul class="product__price">
-                                                                    <li class="new__price"><?=$all_product_list[2]?> ₽</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?
-
-                                                }
+                                    <?
+                                        $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
+                                        where '.$category_sql.$search_by_text_sql.' product.idproduct = product_properties.idproduct 
+                                        and product_properties.idcharacteristic=3 
+                                        order by '.$sort;
+                                        $result = mysqli_query($db, $query);
+                                        while($all_product_list = mysqli_fetch_array($result)){
                                             ?>
-                                    
-
-                                    <!-- Start Single Product -->
-                                    
-
-                                    <!-- End List Content-->
+                                            <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12" id=''>
+                                                <div class="product">
+                                                    <div class="product__inner"> 
+                                                        <div class="pro__thumb">
+                                                            <a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>">
+                                                                <img src="<?=$all_product_list[1]?>"  alt="product images">
+                                                            </a>
+                                                        </div>
+                                                        <div class="product__hover__info">
+                                                            <ul class="product__action">
+                                                                <li>
+                                                                    <a data-toggle="modal" data-target="#productModal" title="Просмотреть краткую информацию" 
+                                                                        class="quick-view modal-view detail-link" href="#">                                                                     
+                                                                        <span class="ti-plus"></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li><a title="Добавить в корзину" onclick="addToCart(this)" id=<?=$all_product_list[3]?>><span class="ti-shopping-cart"></span></a></li>
+                                                            </ul>                                                                </div>
+                                                    </div>
+                                                    <div class="product__details">
+                                                        <h2><a href="product-details-sticky-right.php?id=<?=$all_product_list[3]?>"><?=$all_product_list[0]?></a></h2>
+                                                        <ul class="product__price">
+                                                            <li class="new__price"><?=$all_product_list[2]?> ₽</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?
+                                        }
+                                    ?>
+                                    <script>
+                                        function addToCart(elem){
+                                            document.cookie = "product" + elem.id + "=" + elem.id;
+                                        }
+                                    </script>
+                                    <script>
+                                        $.ajax(
+                                        'request_ajax_data.php',
+                                        {
+                                            success: function(data) {
+                                                alert('AJAX call was successful!');
+                                                alert('Data from the server' + data);
+                                            },
+                                            error: function() {
+                                                alert('There was some error performing the AJAX call!');
+                                            }
+                                        }
+                                        );
+                                    </script>
                                 </div>
                                 <!-- End Single View -->
                             </div>
@@ -306,63 +297,74 @@
 
 
          <!-- Быстрой просмотр  -->
-        <div id="quickview-wrapper">
-            <!-- Modal -->
-            <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal__container" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="modal-product">
-                                <!-- Start product images -->
-                                <div class="product-images">
-                                    <div class="main-image images">
-                                        <img alt="big images" src="images/product/big-img/1.jpg">
+
+
+            <div id="quickview-wrapper">
+                 <!-- Modal -->
+                <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+                     <div class="modal-dialog modal__container" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-product">
+                            <!-- Start product images -->
+                            <div class="product-images">
+                                <div class="main-image images">
+                                    <img alt="big images" src="images/product/big-img/1.jpg">
+                                </div>
+                            </div>
+                            <!-- end product images -->
+                            <div class="product-info">
+                                <h1>Simple Fabric Bags</h1>
+                                <div class="rating__and__review">
+                                    <ul class="rating">
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                    </ul>
+                                    <div class="review">
+                                        <a href="#">4 customer reviews</a>
                                     </div>
                                 </div>
-                                <!-- end product images -->
-                                <div class="product-info">
-                                    <h1>Simple Fabric Bags</h1>
-                                    <div class="rating__and__review">
-                                        <ul class="rating">
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                        </ul>
-                                        <div class="review">
-                                            <a href="#">4 customer reviews</a>
-                                        </div>
+                                <div class="price-box-3">
+                                    <div class="s-price-box">
+                                        <span class="new-price">$17.20</span>
+                                        <span class="old-price">$45.00</span>
                                     </div>
-                                    <div class="price-box-3">
-                                        <div class="s-price-box">
-                                            <span class="new-price">$17.20</span>
-                                            <span class="old-price">$45.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="quick-desc">
-                                        Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
-                                    </div>
-                                    
-                                    <div class="addtocart-btn">
-                                        <a href="#">Add to cart</a>
-                                    </div>
-                                </div><!-- .product-info -->
-                            </div><!-- .modal-product -->
-                        </div><!-- .modal-body -->
-                    </div><!-- .modal-content -->
-                </div><!-- .modal-dialog -->
-            </div>  <!-- END Modal -->
-        </div> <!-- Конец Быстрого про смотра  -->
+                                </div>
+                                <div class="quick-desc">
+                                    Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
+                                </div>
+                                
+                                <div class="addtocart-btn">
+                                    <a href="#">Add to cart</a>
+                                </div>
+                            </div><!-- .product-info -->
+                        </div><!-- .modal-product -->
+                    </div><!-- .modal-body -->
+                </div><!-- .modal-content -->
+            </div><!-- .modal-dialog -->
+        </div>
+        <!-- END Modal -->
+        </div>
+
+          <!-- Конец Быстрого про смотра  -->
 
 
+
+
+
+
+        
         <!-- components/footer.php -->
         <? include('components/footer.php'); ?>
     </div>
     <!-- Body main wrapper end -->
+    
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!-- jquery latest version -->
@@ -378,5 +380,9 @@
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
 
+
+
+    
 </body>
+
 </php>

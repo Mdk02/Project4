@@ -54,63 +54,21 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-8">
                         <div class="ckeckout-left-sidebar">
-                            <!-- Start Checkbox Area -->
-                            <div class="checkout-form">
-                                <h2 class="section-title-3">Billing details</h2>
-                                <div class="checkout-form-inner">
-                                    <div class="single-checkout-box">
-                                        <input type="text" placeholder="First Name*">
-                                        <input type="text" placeholder="Last Name*">
-                                    </div>
-                                    <div class="single-checkout-box">
-                                        <input type="email" placeholder="Email*">
-                                        <input type="text" placeholder="Phone*">
-                                    </div>
-                                    <div class="single-checkout-box">
-                                        <textarea name="message" placeholder="Message*"></textarea>
-                                    </div>
-                                    <div class="single-checkout-box select-option mt--40">
-                                        <select>
-                                            <option>Country*</option>
-                                            <option>Bangladesh</option>
-                                            <option>Bangladesh</option>
-                                            <option>Bangladesh</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                        <input type="text" placeholder="Company Name*">
-                                    </div>
-                                    <div class="single-checkout-box">
-                                        <input type="email" placeholder="State*">
-                                        <input type="text" placeholder="Zip Code*">
-                                    </div>
-                                    <div class="single-checkout-box checkbox">
-                                        <input id="remind-me" type="checkbox">
-                                        <label for="remind-me"><span></span>Create a Account ?</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Checkbox Area -->
+                           
                             <!-- Start Payment Box -->
-                            <div class="payment-form">
-                                <h2 class="section-title-3">payment details</h2>
+                            <form class="payment-form">
+                                <h2 class="section-title-3">платежные реквизиты</h2>
                                 <!-- <p>Lorem ipsum dolor sit amet, consectetur kgjhyt</p> -->
                                 <div class="payment-form-inner">
                                     <div class="single-checkout-box">
-                                        <input type="text" placeholder="Name on Card*">
-                                        <input type="text" placeholder="Card Number*">
+                                        <input type="text" placeholder="Номер карты*">
                                     </div>
                                     <div class="single-checkout-box select-option">
-                                        <select>
-                                            <option>Date*</option>
-                                            <option>Date</option>
-                                            <option>Date</option>
-                                            <option>Date</option>
-                                            <option>Date</option>
-                                        </select>
-                                        <input type="text" placeholder="Security Code*">
+                                        <input type="text" name="input1" placeholder="(MM-ГГ) Дата конца обслуживания*" required pattern="[0-9]{2}-[0-9]{2}"/>
+                                        <input type="text" placeholder="(ххх) СVC-код*" required pattern="[0-9]{3}">
                                     </div>
                                 </div>
-                            </div>
+</form>
                             <!-- End Payment Box -->
                             <!-- Start Payment Way -->
                             <div class="our-payment-sestem">
@@ -142,7 +100,7 @@
                             </div>
                             <div class="puick-contact-area mt--60">
                                 <h2 class="section-title-3">Quick Contract</h2>
-                                <a href="phone:+8801722889963">+012 345 678 102 </a>
+                                <a href="phone:+8801722889963">+8 965 657 79 12 </a>
                             </div>
                         </div>
                     </div>

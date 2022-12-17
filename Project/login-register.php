@@ -76,9 +76,12 @@
                                 </div>          
                             </div>
                             <?
+                            if (isset($_POST['userEmail']) & isset($_POST['userPassword'])  ){
+
+                            
                                 $sql = 'SELECT * from mydb.users';
                                 $result = mysqli_query($db, $sql);
-
+                                
                                 while ($row = mysqli_fetch_array($result)) {
                                     if($row[5] == $_POST['userEmail']){
                                         if($row[7] == $_POST['userPassword']){
@@ -91,10 +94,12 @@
                                         }
                                     }                                       
                                 }  
+                            }
                             ?>
                             <!-- End Single Content -->
                             <!-- Start Single Content -->
-                            <?      
+                            <? 
+                            if (isset($_POST['tel']) & isset($_POST['mail'])){
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {                                                     
                                     $sql = 'SELECT * from mydb.users';
                                     $result1 = mysqli_query($db, $sql);
@@ -115,7 +120,8 @@
                                         header( "Location: login-register.php" );
 		                                die;   
                                     }   
-                                }                              
+                                }   
+                            }                 
                             ?>
                             <!-- Добавить паттерны для строк, очистить форму -->
                             <div id="register" role="tabpanel" class="single__tabs__panel tab-pane fade">

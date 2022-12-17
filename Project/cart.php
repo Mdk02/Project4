@@ -1,14 +1,17 @@
+<?
+    require "connectDB.php";                                    
+?>
 <!doctype php>
 <php class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Корзина</title>
+    <title>Tmart-Minimalist eCommerce php5 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
 
@@ -41,14 +44,17 @@
 
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
-        
         <!-- components/header.php -->
         <?  include('components/header.php'); ?>
         
         <div class="body__overlay"></div>
+        <!-- Start Offset Wrapper -->
         
-        <!-- cart-main-area start -->
-        <div class="cart-main-area bg__white pt--100 pb--100">
+        <!-- End Offset Wrapper -->
+        <div style="height: 100px;">
+            <!-- offset top -->
+        </div>
+        <div class="cart-main-area bg__white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -60,84 +66,76 @@
                                             <th class="product-thumbnail">Image</th>
                                             <th class="product-name">Product</th>
                                             <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
                                             <th class="product-remove">Remove</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/product/xiaomi mi curved monitor.webp" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">27" Монитор Xiaomi Mi 2K Gaming Monitor черный</a></td>
-                                            <td class="product-price"><span class="amount">27 999 ₽</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">27 999 ₽</td>
-                                            <td class="product-remove"><a href="#">X</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/product/lg led tv.webp" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">55" (139 см) Телевизор LED LG 55UP80006LA черный</a></td>
-                                            <td class="product-price"><span class="amount">60 999 ₽</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">60 999 ₽</td>
-                                            <td class="product-remove"><a href="#">X</a></td>
-                                        </tr>
-                                    </tbody>
+                                    <script>
+                                        var deleteFromCart = function(elem){
+                                            let idProduct = elem.id;
+                                            document.cookie = 'product'+idProduct+'= ; expires = Thu, 01 Jan 1970 00:00:00 GMT';
+                                            let tr = document.getElementById(idProduct+"p");
+                                            tr.remove();
+                                        };
+                                    </script>
+                                    <?php
+                                        if(count($_COOKIE) > 0){
+                                            $productFromCookies = '';
+                                            $i = 0;
+                                            foreach ($_COOKIE as $key=>$val){
+                                                if(!(strpos($key, 'product') === false)){
+                                                    if($i == 0){
+                                                        $productFromCookies .= $val;
+                                                        $i += 1;
+                                                    }
+                                                    else{
+                                                        $productFromCookies .= ",".$val;
+                                                    }
+                                                }
+                                            }
+
+                                            $query = "SELECT product_properties.Value, product.NameProduct, product.PriceProduct, product.IdProduct
+                                                from product join product_properties 
+                                                on product_properties.IdProduct = product.IdProduct
+                                                where product_properties.IdCharacteristic = 3 and product.IdProduct in ($productFromCookies)";
+
+                                            $result = mysqli_query($db, $query);
+                                            $sum = 0;
+                                            while($all_product_list = mysqli_fetch_array($result)){
+                                                $sum += $all_product_list[2];
+                                            ?>
+                                            <tr id="<?=$all_product_list[3]?>p">
+                                                <td class="product-thumbnail"><a href="#"><img src="<?=$all_product_list[0]?>" alt="product img" /></a></td>
+                                                <td class="product-name"><a href="#"><?=$all_product_list[1]?></a></td>
+                                                <td class="product-price"><span class="amount"><?=$all_product_list[2]?>₽</span></td>
+                                                <td class="product-remove"><a onclick="deleteFromCart(this)" id="<?=$all_product_list[3]?>">X</a></td>
+                                            </tr>
+                                            <?
+                                            }
+                                        }
+                                    ?>
                                 </table>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-7 col-xs-12">
                                     <div class="buttons-cart">
-                                        <!-- <input type="submit" value="Update Cart" /> -->
                                         <a href="index.php">Continue Shopping</a>
                                     </div>
-                                    <!-- <div class="coupon">
-                                        <h3>Coupon</h3>
-                                        <p>Enter your coupon code if you have one.</p>
-                                        <input type="text" placeholder="Coupon code" />
-                                        <input type="submit" value="Apply Coupon" />
-                                    </div> -->
                                 </div>
                                 <div class="col-md-4 col-sm-5 col-xs-12">
                                     <div class="cart_totals">
-                                        <h2>Cart Totals</h2>
                                         <table>
                                             <tbody>
                                                 <tr class="cart-subtotal">
-                                                    <th>Subtotal</th>
-                                                    <td><span class="amount">88 998 ₽</span></td>
-                                                </tr>
-                                                <tr class="shipping">
-                                                    <th>Shipping</th>
-                                                    <td>
-                                                        <ul id="shipping_method">
-                                                            <li>
-                                                                <input type="radio" /> 
-                                                                <label>
-                                                                    Flat Rate: <span class="amount">£7.00</span>
-                                                                </label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" /> 
-                                                                <label>
-                                                                    Free Shipping
-                                                                </label>
-                                                            </li>
-                                                            <li></li>
-                                                        </ul>
-                                                        <p><a class="shipping-calculator-button" href="#">Calculate Shipping</a></p>
-                                                    </td>
-                                                </tr>
                                                 <tr class="order-total">
                                                     <th>Total</th>
                                                     <td>
-                                                        <strong><span class="amount">88 998 ₽</span></strong>
+                                                        <strong><span class="amount"><?=$sum?>₽</span></strong>
                                                     </td>
                                                 </tr>                                           
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="checkout.php">Proceed to Checkout</a>
+                                            <a href="https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount=1&successUrl=http://project/index.php&comment=Привет">Оплатить</a>
                                         </div>
                                     </div>
                                 </div>

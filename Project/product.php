@@ -188,15 +188,7 @@
                                             <h2 class="title__6">Details</h2>
                                             <p><?= $q[2] ?></p>
                                         </div>
-                                        <div class="pro__feature">
-                                            <!-- <h2 class="title__6">Features</h2>
-                                        <ul class="feature__list">
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in reprehenderit in voluptate velit esse</a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
-                                        </ul> -->
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <!-- End Single Content -->

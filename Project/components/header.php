@@ -1,3 +1,6 @@
+
+
+
 <header id="header" class="htc-header header--3 bg__white">
    <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header scroll-header">
         <div class="container">
@@ -34,7 +37,7 @@
                              // ссылка на профиль. Сделайте профиль!!!!! Арслан
                         ?>
                         <!-- пока вот это-->
-                        <li><a href="profile.php"><span class="ti-user"></span></a></li>
+                        <li><a href="user-page.php"><span class="ti-user"></span></a></li>
                         
                         <? }
                         else {?>
