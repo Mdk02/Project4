@@ -1474,6 +1474,7 @@ h3.widget-title-modal {
 .pro__thumb a  {
     width: 270px;
     height: 200px;
+    margin: 0 auto;
 }
 .pro__thumb a img {
     width: 100%;
