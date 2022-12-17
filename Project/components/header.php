@@ -1,6 +1,3 @@
-
-
-
 <header id="header" class="htc-header header--3 bg__white">
    <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header scroll-header">
         <div class="container">

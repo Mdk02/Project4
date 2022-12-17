@@ -1,6 +1,16 @@
 <!doctype html>
 <html class="no-js" lang="en">
+<<<<<<< HEAD:Project/profile.php
+
+<?php
+require "connectDB.php";
+
+session_start();
+$userID = $_SESSION['idUsers'];
+?>
+=======
 <?php require "connectDB.php"; ?>
+>>>>>>> aminov:Project/about.php
 
 <head>
     <meta charset="UTF-8">
