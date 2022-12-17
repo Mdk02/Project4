@@ -24,30 +24,21 @@
                     </div>
                 <!-- Start MAinmenu Ares -->
                 <div class="col-md-1 col-lg-1 col-sm-6 col-xs-6">
-                    
                     <!-- End MAinmenu Ares --> 
                     <ul class="menu-extra">
-                        <!-- <li class="search search__open hidden-xs"><span class="ti-search"></span></li> -->
                         <li><a href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                        <?
+                            session_start();
+                            if (isset($_SESSION['idUsers'])) { ?>
+                            <!-- пока вот это-->
+                            <li><a href="profile.php"><span class="ti-user"></span></a></li>
                         
-
-                        <? 
-                        session_start();
-                        if (isset($_SESSION['idUsers'])){ 
-                             // ссылка на профиль. Сделайте профиль!!!!! Арслан
+                        <? } else { ?>
+                            <li><a href="login-register.php"><span class="ti-user"></span></a></li>
+                        <?
+                            }
+                            session_write_close();
                         ?>
-                        <!-- пока вот это-->
-                        <li><a href="user-page.php"><span class="ti-user"></span></a></li>
-                        
-                        <? }
-                        else {?>
-                        <li><a href="login-register.php"><span class="ti-user"></span></a></li>
-                        <?} 
-                        
-                        session_write_close();?>
-
-
-                        <!-- <li class="cart__menu"><span class="ti-shopping-cart"></span></li> -->
                     </ul>
                 </div>
             </div>
