@@ -865,6 +865,13 @@
     min-width: 50%;
     padding-right: 50px;
 }
+
+/* own */
+.product-images img {
+    height: 100%;
+    padding: 15px;
+}
+
 .product-info h1 {
     font-size: 20px;
     margin-bottom: 10px;
@@ -901,14 +908,14 @@
     text-decoration: line-through;
 }
 .product-info {
-    padding-left: 50px;
+    padding-left: 15px;
     width: 50%;
 }
 .quick-desc {
     color: #999;
     margin-bottom: 30px;
     margin-top: 30px;
-    width: 83%;
+    width: 90%;
 }
 .select__color {
     display: flex;
