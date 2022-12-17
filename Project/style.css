@@ -815,6 +815,24 @@
     color: #fff;
     border: 1px solid #ff4136;
 }
+
+
+
+/* own */
+.htc__login__btn.red input {
+    background-color: #dd3451;
+    color: #fff;
+    border: 1px solid #dd3451;
+    width: fit-content;
+    padding: 0 20px;
+}
+.htc__login__btn.red input:hover {
+    background-color: #b42a41;
+    color: #fff;
+    border: 1px solid #b42a41;
+}
+
+
 /*------------------------------
   05. Bradcaump Area
 --------------------------------*/
@@ -4226,7 +4244,7 @@ a.shipping-calculator-button:hover {
 
 
 /* own */
-div.сharacteristics_list {
+.сharacteristics_list {
     margin: 0 auto;
     width: fit-content;
 }
@@ -4247,4 +4265,22 @@ div.сharacteristic_name {
 }
 div.сharacteristic_value {
     padding-left: 30px;
+}
+
+.сharacteristic_name.vert-middle {
+    margin: auto 0;
+}
+.сharacteristic_value input {
+    padding: 5px;
+}
+
+.wide {
+    padding: 7px;
+}
+
+.btn-red {
+    background: #f31c39;
+}
+.btn-red:hover {
+    background: #d11830;
 }
