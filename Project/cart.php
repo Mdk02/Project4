@@ -148,6 +148,7 @@
             </div>
         </div>
         <!-- cart-main-area end -->
+        
         <!-- components/footer.php -->
         <? include('components/footer.php'); ?>
     </div>

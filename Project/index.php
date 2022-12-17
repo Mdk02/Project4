@@ -1,9 +1,6 @@
-<!doctype htpm>
+<!doctype html>
 <html class="no-js" lang="en">
-<?php
-require "connectDB.php";
-?>
-
+<?php require "connectDB.php"; ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -102,7 +99,7 @@ require "connectDB.php";
                     <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 float-right-style">
                         <div class="categories-menu mrg-xs">
                             <div class="category-heading">
-                                <h3>Categories</h3>
+                                <h3>Категории</h3>
                             </div>
                             <div class="category-menu-list">
                                 <ul>

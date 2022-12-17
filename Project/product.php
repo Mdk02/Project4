@@ -213,9 +213,9 @@
                                             while ($q = mysqli_fetch_array($resultChars)) {
                                                 if ($q[0] != 'img') {
                                             ?><li><i class="zmdi zmdi-play-circle"></i><?= $q[0] ?> : <?= $q[1] ?></li><?
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                                ?>
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                        ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -281,61 +281,62 @@
                                     <!-- Start RAting Area -->
                                     <?
 
-                                    
+
                                     if (isset($_SESSION['idUsers'])) {
-                                        ?> 
-                                        <h2 class="rating-title">Авториз</h2> <?
-                                        $queryChars = 'select order_product.IdProduct from `order` join order_product 
-                                        on `order`.IdOrder = order_product.IdOrder 
-                                        WHERE order_product.IdProduct ='.$_GET['id'].
-                                        'and `order`.`IdUser` =' .$_SESSION['idUsers'].';' .'';
-                                        $resultChars = mysqli_query($db, $queryChars);
-                                        if ($resultChars){
                                     ?>
+                                        <h2 class="rating-title">Авториз</h2> <?
+                                                                                $queryChars = 'select order_product.IdProduct from `order` join order_product 
+                                        on `order`.IdOrder = order_product.IdOrder 
+                                        WHERE order_product.IdProduct =' . $_GET['id'] .
+                                                                                    'and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
+                                                                                $resultChars = mysqli_query($db, $queryChars);
+                                                                                if ($resultChars) {
+                                                                                ?>
 
-                                        <div class="rating__wrap">
-                                            <h4 class="rating-title-2">Ваш рейтинг</h4>
+                                            <div class="rating__wrap">
+                                                <h4 class="rating-title-2">Ваш рейтинг</h4>
 
-                                            <div class="rating-area1">
-                                                <input type="radio" id="star-5" name="rating" value="5">
-                                                <label for="star-5" title="Оценка «5»"></label>
-                                                <input type="radio" id="star-4" name="rating" value="4">
-                                                <label for="star-4" title="Оценка «4»"></label>
-                                                <input type="radio" id="star-3" name="rating" value="3">
-                                                <label for="star-3" title="Оценка «3»"></label>
-                                                <input type="radio" id="star-2" name="rating" value="2">
-                                                <label for="star-2" title="Оценка «2»"></label>
-                                                <input type="radio" id="star-1" name="rating" value="1">
-                                                <label for="star-1" title="Оценка «1»"></label>
+                                                <div class="rating-area1">
+                                                    <input type="radio" id="star-5" name="rating" value="5">
+                                                    <label for="star-5" title="Оценка «5»"></label>
+                                                    <input type="radio" id="star-4" name="rating" value="4">
+                                                    <label for="star-4" title="Оценка «4»"></label>
+                                                    <input type="radio" id="star-3" name="rating" value="3">
+                                                    <label for="star-3" title="Оценка «3»"></label>
+                                                    <input type="radio" id="star-2" name="rating" value="2">
+                                                    <label for="star-2" title="Оценка «2»"></label>
+                                                    <input type="radio" id="star-1" name="rating" value="1">
+                                                    <label for="star-1" title="Оценка «1»"></label>
+                                                </div>
+
+
                                             </div>
 
 
-                                        </div>
 
 
 
-
-
-                                        <!-- End RAting Area -->
-                                        <div class="review__box">
-                                            <form id="review-form">
-                                                <div class="single-review-form">
-                                                    <div class="review-box name">
-                                                        <input type="text" placeholder="Type your name">
-                                                        <input type="email" placeholder="Type your email">
+                                            <!-- End RAting Area -->
+                                            <div class="review__box">
+                                                <form id="review-form">
+                                                    <div class="single-review-form">
+                                                        <div class="review-box name">
+                                                            <input type="text" placeholder="Type your name">
+                                                            <input type="email" placeholder="Type your email">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="single-review-form">
-                                                    <div class="review-box message">
-                                                        <textarea placeholder="Write your review"></textarea>
+                                                    <div class="single-review-form">
+                                                        <div class="review-box message">
+                                                            <textarea placeholder="Write your review"></textarea>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="review-btn">
-                                                    <a class="fv-btn" onclick="alert('Сохранено')" href="#">submit review</a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    <? }}; ?>
+                                                    <div class="review-btn">
+                                                        <a class="fv-btn" onclick="alert('Сохранено')" href="#">submit review</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                    <? }
+                                                                            }; ?>
                                 </div>
                                 <!-- End Single Content -->
                             </div>
