@@ -303,7 +303,7 @@
 
 
                                                 <div class="review-btn">
-                                                    <a class="fv-btn" onclick="alert('Сохранено')" href="#">Оставить отзыв</a>
+                                                    <a class="fv-btn" href="#" onclick="alert('Сохранено')" >Оставить отзыв</a>
                                                 </div>
                                             </form>
                                         </div>

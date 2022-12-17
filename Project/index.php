@@ -177,6 +177,7 @@ require "connectDB.php";
                                             $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
                                                 where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
                                                  order by product.idproduct desc limit 8';
+                                            echo $query;
                                             $result = mysqli_query($db, $query);
                                             $delete = '"';
                                             while ($q = mysqli_fetch_array($result)) {
@@ -205,7 +206,7 @@ require "connectDB.php";
                                                                         </a>
                                                                     </li>
 
-                                                                    <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                    <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)" ><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>

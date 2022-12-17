@@ -65,41 +65,43 @@ require "connectDB.php";
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th class="product-thumbnail">Image</th>
-                                                <th class="product-name">Product</th>
-                                                <th class="product-price-1">Price</th>
-                                                <th class="product-remove">Remove</th>
+                                                <th class="product-thumbnail">Фото</th>
+                                                <th class="product-name">Продукт</th>
+                                                <th class="product-price-1">Цена</th>
+                                                <th class="product-remove">Удалить</th>
                                             </tr>
                                         </thead>
                                         <?php
                                         if (count($_COOKIE) > 0) {
                                             $productFromCookies = '';
-                                            $i = 0;
+                                            
                                             foreach ($_COOKIE as $key => $val) {
                                                 if (!(strpos($key, 'product') === false)) {
-                                                    if ($i == 0) {
-                                                        $productFromCookies .= $val;
-                                                        $i += 1;
-                                                    } else {
+                                                    
                                                         $productFromCookies .= "," . $val;
-                                                    }
+                                                    
                                                 }
-                                            }
 
+                                            }
+                                            $productFromCookies = trim($productFromCookies , ',');
+                                            echo $productFromCookies;
                                             if ($productFromCookies != '') {
+                                                
                                                 $query = "SELECT product_properties.Value, product.NameProduct, product.PriceProduct, product.IdProduct
                                                 from product join product_properties 
                                                 on product_properties.IdProduct = product.IdProduct
                                                 where product_properties.IdCharacteristic = 3 and product.IdProduct in ($productFromCookies)";
 
                                                 $result = mysqli_query($db, $query);
+                                                
+                                                
 
                                                 while ($all_product_list = mysqli_fetch_array($result)) {
                                         ?>
                                                     <tr id="<?= $all_product_list[3] ?>p">
                                                         <td class="product-thumbnail"><a href="product.php?id=<?=$all_product_list[3]?>"><img src="<?= $all_product_list[0] ?>" alt="product img" /></a></td>
                                                         <td class="product-name"><a href="product.php?id=<?=$all_product_list[3]?>"><?= $all_product_list[1] ?></a></td>
-                                                        <td class="product-price"><span class="amount"><?= $all_product_list[2] ?>₽</span></td>
+                                                        <td class="product-price"><span class="amount"><?=$all_product_list[2] ?>₽</span></td>
                                                         <td class="product-remove"><a onclick="deleteFromCart(this)" id="<?= $all_product_list[3] ?>">X</a></td>
                                                     </tr>
                                         <?
@@ -112,7 +114,7 @@ require "connectDB.php";
                                 <div class="row">
                                     <div class="col-md-8 col-sm-7 col-xs-12">
                                         <div class="buttons-cart">
-                                            <a href="index.php">Continue Shopping</a>
+                                            <a href="index.php">Продолжить покупки</a>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-sm-5 col-xs-12">
@@ -121,7 +123,7 @@ require "connectDB.php";
                                                 <tbody>
                                                     <tr class="cart-subtotal">
                                                     <tr class="order-total">
-                                                        <th>Total</th>
+                                                        <th>Всего: </th>
                                                         <td>
                                                             <strong><span id="amount_cart" class="amount" onload=></span></strong>
                                                         </td>

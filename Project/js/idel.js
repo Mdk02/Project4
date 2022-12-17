@@ -10,6 +10,10 @@ function idelVer1(id_product, img_url, name_product, rating,
     document.getElementById("quick-desc").innerHTML = description;
 };
 
+function addToCart(elem){
+    document.cookie = "product" + elem.id + "=" + elem.id;
+}
+
 function idelVer2() {
 
     alert(  "<div role=\"tabpanel\" id=\"sheet\" class=\"product__tab__content fade\">"+
