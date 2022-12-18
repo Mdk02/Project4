@@ -37,7 +37,7 @@
                              // ссылка на профиль. Сделайте профиль!!!!! Арслан
                         ?>
                         <!-- пока вот это-->
-                        <li><a href="user-page.php"><span class="ti-user"></span></a></li>
+                        <li><a href="profile.php"><span class="ti-user"></span></a></li>
                         
                         <? }
                         else {?>
