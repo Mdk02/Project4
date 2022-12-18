@@ -231,13 +231,13 @@ require 'connectDB.php';
                                         WHERE order_product.IdProduct =' . $_GET['id'] .
                                         'and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
                                     $resultChars = mysqli_query($db, $queryChars);
-                                    if (!$resultChars) {
+                                    if ($resultChars) {
                                 ?>
                                         <h2 class="rating-title">Ваш отзыв</h2>
                                         <!-- End RAting Area -->
                                         <div class="review__box">
                                             <form id="comment-form" action="product.php?id=<?= $_GET['id'] ?>&" method="post">
-                                                <div class="single-review-form pb--50">
+                                                <div class="single-review-form">
                                                     <div class="review-box message">
                                                         <textarea name="сommentText" placeholder="Напишите ваш отзыв"></textarea>
                                                     </div>
