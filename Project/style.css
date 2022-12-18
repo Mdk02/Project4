@@ -91,8 +91,8 @@
 }
 
 .rating-result {
-	width: 265px;
-	margin: 0 auto;
+	/* width: 265px; */
+	/* margin: 0 auto; */
 }
 .rating-result span {
 	padding: 0;
@@ -4367,3 +4367,18 @@ div.сharacteristic_value {
     min-width: auto;
 }
 
+.comment_row {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #606060;
+}
+
+
+
+/* PADDINGS */
+.p--20 {
+    padding: 20px;
+}

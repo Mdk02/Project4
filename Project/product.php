@@ -191,13 +191,14 @@ require 'connectDB.php';
 
 
                                         <!-- Start Single Review -->
-                                        <div class="pro__review ans">
-                                            <div class="review__thumb">
-                                                <img src="images/review/2.jpg" alt="review images">
-                                            </div>
+                                        <div class="pro__review ans border-simple p--20">
                                             <div class="review__details">
                                                 <div class="review__info">
-                                                    <h4><?= ($comments[0] . " " . $comments[1]) ?></h4>
+                                                    <div class="comment_row">
+                                                        <h4><?= ($comments[0] . " " . $comments[1]) ?></h4>
+                                                        <span><?= $comments[5] ?></span>
+                                                    </div>
+
                                                     <div class="rating-result">
                                                         <? for ($i = 0; $i < $comments[6]; $i++) { ?>
                                                             <span class="active"></span>
@@ -210,10 +211,9 @@ require 'connectDB.php';
                                                         <? } ?>
                                                     </div>
                                                 </div>
-                                                <div class="review__date">
-                                                    <span><?= $comments[5] ?></span>
+                                                <div class="comment_row">
+                                                    <div><?= $comments[7] ?></div>
                                                 </div>
-                                                <p><?= $comments[7] ?></p>
                                             </div>
                                         </div>
                                         <!-- End Single Review -->
