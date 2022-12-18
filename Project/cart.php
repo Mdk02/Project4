@@ -7,12 +7,12 @@ require "connectDB.php";
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Tmart-Minimalist eCommerce php5 Template</title>
+        <title>Корзина</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico in the root directory -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.svg">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
@@ -50,13 +50,8 @@ require "connectDB.php";
             <? include('components/header.php'); ?>
 
             <div class="body__overlay"></div>
-            <!-- Start Offset Wrapper -->
-
-            <!-- End Offset Wrapper -->
-            <div style="height: 100px;">
-                <!-- offset top -->
-            </div>
-            <div class="cart-main-area bg__white">
+            
+            <div class="cart-main-area bg__white ptb--100">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -129,7 +124,7 @@ require "connectDB.php";
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="wc-proceed-to-checkout">
+                                            <div class="wc-proceed-to-checkout pt--50">
                                                 <a id="buy_but" href="">Оплатить</a>
                                             </div>
                                         </div>

@@ -289,22 +289,12 @@
                                                 }
                                             </script>
                                         </div>
-<<<<<<< HEAD
 
                                         <!-- <ul class="view__mode" role="tablist">
                                             <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
                                             <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
                                         </ul> -->
 
-=======
-                                        <!-- End Short Form -->
-                                        <!-- Start List And Grid View -->
-                                        <ul class="view__mode" role="tablist">
-                                            <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
-                                            <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
-                                        </ul>
-                                        <!-- End List And Grid View -->
->>>>>>> 6c248b0a325c3be315af52e9822f3f07a69f3217
                                     </div>
                                 </div>
                             </div>
@@ -362,11 +352,6 @@
                                         }
                                         ?>
                                     </div>
-<<<<<<< HEAD
-
-=======
-                                    <!-- End Single View -->
->>>>>>> 6c248b0a325c3be315af52e9822f3f07a69f3217
                                 </div>
                             </div>
                         </div>
