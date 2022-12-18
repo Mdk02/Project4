@@ -201,7 +201,7 @@ require "connectDB.php";
                                                                             onclick="idelVer1('<?=$q[3]?>','<?=$q[1]?>','<?echo str_replace($delete, ' ', $q[0])?>' ,'Рейтинг','<?=$q[2]?>', '<?=$q[2]?>', '<?echo str_replace($delete, ' ', $q[4])?>')"
                                                                             >
                                                                              
-                                                                            <span class="ti-plus"></span>
+                                                                            <span class="ti-eye"></span>
 
                                                                         </a>
                                                                     </li>
@@ -247,7 +247,7 @@ require "connectDB.php";
                                                             </div>
                                                             <div class="product__hover__info">
                                                                 <ul class="product__action">
-                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-eye"></span></a></li>
                                                                     <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
@@ -284,7 +284,7 @@ require "connectDB.php";
                                                             </div>
                                                             <div class="product__hover__info">
                                                                 <ul class="product__action">
-                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-eye"></span></a></li>
                                                                     <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
