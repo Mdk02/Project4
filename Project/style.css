@@ -4302,3 +4302,31 @@ div.сharacteristic_value {
 .btn-red:hover {
     background: #d11830;
 }
+
+/* .orange {
+    color: #ff4136;
+} */
+
+.bg-gray {
+    background-color: rgb(246, 246, 248);
+}
+
+.border-simple {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.description_row {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #606060;
+}
+
+.simple_text {
+    margin: 5px;
+    font-size: 20px;
+    line-height: 30px;
+    /* color: #606060; */
+}

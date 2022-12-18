@@ -244,7 +244,7 @@
                                                                 <li>
                                                                     <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" 
                                                                     onclick="idelVer1('<?= $all_product_list[3] ?>','<?=$all_product_list[1] ?>','<? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
-                                                                        <span class="ti-plus"></span>
+                                                                        <span class="ti-eye"></span>
                                                                     </a>
                                                                 </li>
                                                                 <li><a title="Добавить в корзину" id=<?= $all_product_list[3] ?> onclick="addToCart(this)"><span class="ti-shopping-cart"></span></a></li>
