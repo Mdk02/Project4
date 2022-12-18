@@ -52,33 +52,9 @@ require 'connectDB.php';
         <? include('components/header.php'); ?>
 
         <div class="body__overlay"></div>
+
         <!-- Start Offset Wrapper -->
-        <!-- End Offset Wrapper -->
-        <div style="height: 100px;">
-            <!-- offset top -->
-        </div>
-        <!-- Start Bradcaump area -->
-        <!-- <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">Product Details sticky</h2>
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.php">Home</a>
-                                  <span class="brd-separetor">/</span>
-                                  <span class="breadcrumb-item active">sticky right</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- End Bradcaump area -->
-        <!-- Start Product Details -->
-        <section class="htc__product__details pb--100 bg__white">
+        <section class="htc__product__details pt--100 pb--50 bg__white">
             <div class="container">
                 <div class="scroll-active">
                     <div class="row">
@@ -96,7 +72,7 @@ require 'connectDB.php';
                             }
                         }
                         ?>
-                        <div class="col-md-7 col-lg-7 col-sm-5 col-xs-12">
+                        <div class="col-md-6 col-lg-6 col-sm-5 col-xs-12">
                             <div class="product__details__container product-details-5">
                                 <div class="scroll-single-product mb--30">
                                     <img src="<?= $imageString ?>" alt="full-image">
@@ -110,7 +86,8 @@ require 'connectDB.php';
                             </div>
                         </div>
 
-                        <div class="sidebar-active col-md-5 col-lg-5 col-sm-7 col-xs-12 xmt-30">
+                        <div class="sidebar-active col-md-6 col-lg-6 col-sm-7 col-xs-12 xmt-30">
+                        <div class="pt--100"></div>
                             <div class="htc__product__details__inner ">
                                 <div class="pro__detl__title">
                                     <h2><?= $q[0] ?></h2>
@@ -176,20 +153,27 @@ require 'connectDB.php';
                             <!-- Start Single Content -->
                             <div role="tabpanel" id="sheet" class="product__tab__content fade">
                                 <div class="pro__feature">
-                                    <h2 class="title__6">Характеристики</h2>
-                                    <ul class="feature__list">
+                                <div class="сharacteristics_list">
                                         <?
                                         $queryChars = 'select сharacteristic.NameСharacteristic, product_properties.Value from product_properties join сharacteristic
                                              on сharacteristic.IdСharacteristic = product_properties.IdCharacteristic
                                               where idproduct = ' . $q[3] . '';
                                         $resultChars = mysqli_query($db, $queryChars);
                                         while ($q = mysqli_fetch_array($resultChars)) {
-                                            if ($q[0] != 'img') {
-                                        ?><li><i class="zmdi zmdi-play-circle"></i><?= $q[0] ?> : <?= $q[1] ?></li><?
-                                                                                                                    }
-                                                                                                                }
-                                                                                                                        ?>
-                                    </ul>
+                                            if ($q[0] != 'img') { ?>
+                                                <div class="сharacteristic_row">
+                                                    <!-- <i class="zmdi zmdi-play-circle"></i> -->
+                                                    <div class="сharacteristic_name">
+                                                        <?= $q[0] ?>
+                                                    </div>
+                                                    <div class="сharacteristic_value">
+                                                        <?= $q[1] ?>
+                                                    </div>
+                                                </div>
+                                        <? }
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- End Single Content -->
