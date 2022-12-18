@@ -91,8 +91,8 @@
 }
 
 .rating-result {
-	width: 265px;
-	margin: 0 auto;
+	/* width: 265px; */
+	/* margin: 0 auto; */
 }
 .rating-result span {
 	padding: 0;
@@ -4262,6 +4262,8 @@ a.shipping-calculator-button:hover {
 
 
 /* own */
+
+/* CHARACTERISTICS */
 .сharacteristics_list {
     margin: 0 auto;
     width: fit-content;
@@ -4291,6 +4293,7 @@ div.сharacteristic_value {
 .сharacteristic_value input {
     padding: 5px;
 }
+
 
 .wide {
     padding: 7px;
@@ -4329,4 +4332,53 @@ div.сharacteristic_value {
     font-size: 20px;
     line-height: 30px;
     /* color: #606060; */
+}
+
+
+
+/* ORDERS */
+.order-thumbnail {
+    min-width: 8%;
+}
+.order-dates {
+    min-width: 8%;
+}
+.order-content {
+    min-width: auto;
+}
+.order-price {
+    min-width: 10%;
+}
+.order-status {
+    min-width: 10%;
+}
+
+/* COMMENTS */
+.comment-product {
+    min-width: 10%;
+}
+.comment-date {
+    min-width: 8%;
+}
+.comment-score {
+    min-width: 8%;
+}
+.comment-text {
+    min-width: auto;
+}
+
+.comment_row {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #606060;
+}
+
+
+
+/* PADDINGS */
+.p--20 {
+    padding: 20px;
 }

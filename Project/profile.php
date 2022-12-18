@@ -90,7 +90,7 @@ if (isset($_SESSION['idUsers'])) {
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="tab-content another-product-style jump">
+                                <div class="tab-content another-product-style jump pt--20">
                                     <div class="tab-pane active" id="info">
                                         <div class="row">
                                             <div class="col-md-6 col-md-offset-3">
@@ -201,12 +201,106 @@ if (isset($_SESSION['idUsers'])) {
                                     </div>
                                     <div class="tab-pane" id="orders">
                                         <div class="row">
+                                            <div class="table-content table-responsive">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="order-thumbnail">ID заказа</th>
+                                                            <th class="order-dates">Даты</th>
+                                                            <th class="order-content">Содержимое</th>
+                                                            <th class="order-price">Цена</th>
+                                                            <th class="order-status">Статус</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <?
 
+                                                    $query_o = "SELECT o.* 
+                                                        FROM `order` as o 
+                                                        WHERE o.IdUser = '3'";
+
+                                                    $result_o = mysqli_query($db, $query_o);
+
+                                                    while ($order = mysqli_fetch_array($result_o)) { ?>
+                                                        <tr id="<?= $order[0] ?>">
+                                                            <td class="order-thumbnail">
+                                                                <span><?= $order[0] ?></span>
+                                                            </td>
+                                                            <td class="order-dates">
+                                                                <span><?= $order[3] ?></span>
+                                                                <br>
+                                                                <span><?= $order[4] ?></span>
+                                                            </td>
+                                                            <td class="order-content">
+                                                                <?
+                                                                $query_p_op = "SELECT p.IdProduct, p.NameProduct, op.Count 
+                                                                    FROM `order_product` as op, `product` as p 
+                                                                    WHERE op.IdProduct = p.IdProduct AND op.IdOrder = " . $order[0] . "";
+                                                                $result_p_op = mysqli_query($db, $query_p_op);
+
+                                                                while ($row = mysqli_fetch_array($result_p_op)) { ?>
+                                                                    <div>
+                                                                        <a href="product.php?id=<?= $row[0] ?>"> <?= $row[1] ?> </a>
+                                                                        <!-- <span> - </span>
+                                                                        <span><?= $row[2] ?></span>
+                                                                        <span> шт.</span> -->
+                                                                    </div>
+                                                                <? }
+                                                                ?>
+                                                            </td>
+                                                            <td class="order-price">
+                                                                <span class="amount"><?= $order[2] ?> ₽</span>
+                                                            </td>
+                                                            <td class="order-status">
+                                                                <span class="amount"><?= $order[5] ?></span>
+                                                            </td>
+                                                        </tr>
+                                                    <? }
+
+                                                    ?>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="comments">
                                         <div class="row">
+                                            <div class="table-content table-responsive">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="comment-product">Продукт</th>
+                                                            <th class="comment-date">Дата</th>
+                                                            <th class="comment-score">Оценка</th>
+                                                            <th class="comment-text">Текст</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <?
 
+                                                    $query_c_p = "SELECT c.*, p.idProduct, p.NameProduct 
+                                                        FROM `сomment` as c, `product` as p 
+                                                        WHERE c.IdProduct = p.IdProduct AND c.IdUser = '3'";
+
+                                                    $result_c_p = mysqli_query($db, $query_c_p);
+
+                                                    while ($comment = mysqli_fetch_array($result_c_p)) { ?>
+                                                        <tr id="<?= $comment[0] ?>">
+                                                            <td class="comment-product">
+                                                                <a href="product.php?id=<?= $comment[6] ?>"> <?= $comment[7] ?> </a>
+                                                            </td>
+                                                            <td class="comment-date">
+                                                                <span><?= $comment[3] ?></span>
+                                                            </td>
+                                                            <td class="comment-score">
+                                                                <span><?= $comment[4] ?></span>
+                                                            </td>
+                                                            <td class="comment-text">
+                                                                <span><?= $comment[5] ?></span>
+                                                            </td>
+                                                        </tr>
+                                                    <? }
+
+                                                    ?>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
