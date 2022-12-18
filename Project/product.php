@@ -142,9 +142,8 @@ require 'connectDB.php';
                             <!-- Start Single Content -->
                             <div role="tabpanel" id="description" class="product__tab__content fade in active">
                                 <div class="product__description__wrap">
-                                    <div class="product__desc">
-                                        <h2 class="title__6">Описание</h2>
-                                        <p><?= $q[2] ?></p>
+                                    <div class="description_row">
+                                        <div><?= $q[2] ?></div>
                                     </div>
 
                                 </div>

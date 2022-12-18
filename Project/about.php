@@ -43,10 +43,89 @@
 
         <div class="body__overlay"></div>
 
-        <section class="bg__white ptb--100">
+        <section class="bg__white pt--100 pb--50">
             <div class="container">
                 <div class="row">
-                    lol
+                    <h2 class="section-title-3 pb--20 ">О проекте</h2>
+                    <div class="simple_text">*НАЗВАНИЕ* - это такой-то проект для чего-то там. 
+                        привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg__white pb--100">
+            <div class="container">
+                <div class="row">
+                    <h2 class="section-title-3 pb--20">Команда разработчиков</h2>
+                    <div class="portfolio-style">
+                        <div class="row grid">
+                            <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
+                                <div class="single-portfolio mb--30 border-simple">
+                                    <div class="portfolio-img-title">
+                                        <a href="single-portfolio.html">
+                                            <img src="images/dev_profiles/github_bulat.png" alt="" />
+                                        </a>
+                                        <div class="portfolio-title hover-title">
+                                            <h3><a href="single-portfolio.html">Булат</a></h3>
+                                            <span>Backеnd разработчик</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
+                                <div class="single-portfolio mb--30 border-simple">
+                                    <div class="portfolio-img-title">
+                                        <a href="single-portfolio.html">
+                                            <img src="images/dev_profiles/github_gosha.jfif" alt="" />
+                                        </a>
+                                        <div class="portfolio-title hover-title">
+                                            <h3><a href="single-portfolio.html">Георгий</a></h3>
+                                            <span>Тестировщик</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
+                                <div class="single-portfolio mb--30 border-simple">
+                                    <div class="portfolio-img-title">
+                                        <a href="single-portfolio.html">
+                                            <img src="images/dev_profiles/github_idel.png" alt="" />
+                                        </a>
+                                        <div class="portfolio-title hover-title">
+                                            <h3><a href="single-portfolio.html">Идель</a></h3>
+                                            <span>Менеджер программы</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
+                                <div class="single-portfolio mb--30 border-simple">
+                                    <div class="portfolio-img-title">
+                                        <a href="single-portfolio.html">
+                                            <img src="images/dev_profiles/github_zahar.png" alt="" />
+                                        </a>
+                                        <div class="portfolio-title hover-title">
+                                            <h3><a href="single-portfolio.html">Захар</a></h3>
+                                            <span>Менеджер продукта</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat1 cat3">
+                                <div class="single-portfolio mb--30 border-simple">
+                                    <div class="portfolio-img-title">
+                                        <a href="single-portfolio.html">
+                                            <img src="images/dev_profiles/github_arslan.jfif" alt="" />
+                                        </a>
+                                        <div class="portfolio-title hover-title">
+                                            <h3><a href="single-portfolio.html">Арслан</a></h3>
+                                            <span>Frontеnd Разработчик</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
