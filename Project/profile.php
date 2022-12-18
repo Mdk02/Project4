@@ -212,6 +212,7 @@ if (isset($_SESSION['idUsers'])) {
                                                             <th class="order-content">Содержимое</th>
                                                             <th class="order-price">Цена</th>
                                                             <th class="order-status">Статус</th>
+                                                            <th class="order-download"></th>
                                                         </tr>
                                                     </thead>
                                                     <?
@@ -253,7 +254,12 @@ if (isset($_SESSION['idUsers'])) {
                                                                 <span class="amount"><?= $order[2] ?> ₽</span>
                                                             </td>
                                                             <td class="order-status">
-                                                                <span class="amount"><?= $order[5] ?></span>
+                                                                <span><?= $order[5] ?></span>
+                                                            </td>
+                                                            <td class="order-download">
+                                                                <a href="check.php?id_order=<?= $order[0] ?>">
+                                                                    <span class="ti-download"></span>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     <? }
