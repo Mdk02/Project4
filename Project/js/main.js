@@ -642,7 +642,7 @@ $('.image-popup').magnificPopup({
     
     
     
-})(jQuery);
+})
 
 
 

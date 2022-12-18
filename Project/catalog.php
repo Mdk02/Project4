@@ -91,6 +91,8 @@
 
 
                                 <?
+
+
                                 // Категории найденных товаров
                                 if (!isset($category_id)) {
 
@@ -100,6 +102,9 @@
                                 GROUP BY category.NameCategory';
                                     $result = mysqli_query($db, $query);
                                     $final = mysqli_fetch_all($result);
+
+
+
                                     if (count($final) > 1) {
                                 ?>
                                         <div class="categories-menu mrg-xs">
@@ -158,9 +163,16 @@
                                 <div>
                                     <!-- 
                                 монитр: диаганаль , разрешение , частота -->
-                                    <div class="htc__shop__cat">
-                                        <?
-                                        if ($category_id == 1) { ?>
+
+                                    <?
+
+                                    if ($category_id == 1) { ?>
+
+
+
+
+
+                                        <div class="htc__shop__cat">
                                             <h4 class="section-title-4">Диаганаль</h4>
                                             <ul class="sidebar__list">
                                                 <li><a href="#"> 0 - 20<span>0</span></a></li>
@@ -169,10 +181,78 @@
                                                 <li><a href="#"> 27.1 - 32<span>0</span></a></li>
                                                 <li><a href="#"> 32 -<span>0</span></a></li>
                                             </ul>
-                                        <? };
-                                        ?>
-                                        </ul>
-                                    </div>
+                                        </div>
+                                        <div class="htc__shop__cat">
+                                            <h4 class="section-title-4">Тип матрицы</h4>
+                                            <ul class="sidebar__list">
+                                                <li><a href="#"> IPS<span>0</span></a></li>
+                                                <li><a href="#"> VA<span>0</span></a></li>
+                                                <li><a href="#"> TN<span>0</span></a></li>
+                                            </ul>
+                                        </div>
+
+                                    <? };
+
+                                    if ($category_id == 3) { ?>
+                                        <div class="htc__shop__cat">
+                                            <h4 class="section-title-4">Диаганаль</h4>
+                                            <ul class="sidebar__list">
+                                                <li><a href="#"> Меннее 20<span>0</span></a></li>
+                                                <li><a href="#"> 20 - 25<span>0</span></a></li>
+                                                <li><a href="#"> 25.1 - 27<span>0</span></a></li>
+                                                <li><a href="#"> 27.1 - 32<span>0</span></a></li>
+                                                <li><a href="#"> 32 - 38.9<span>0</span></a></li>
+                                                <li><a href="#"> 39 - 48.9<span>0</span></a></li>
+                                                <li><a href="#"> 49 - 54.9 3<span>0</span></a></li>
+                                                <li><a href="#"> 65 и более<span>0</span></a></li>
+
+
+
+                                            </ul>
+                                        </div>
+                                        <div class="htc__shop__cat">
+                                            <h4 class="section-title-4">Тип матрицы</h4>
+                                            <ul class="sidebar__list">
+                                                <li><a href="#"> MVA<span>0</span></a></li>
+                                                <li><a href="#"> VA<span>0</span></a></li>
+                                                <li><a href="#"> HVA<span>0</span></a></li>
+                                                <li><a href="#"> TFT<span>0</span></a></li>
+                                            </ul>
+                                        </div>
+
+                                    <? };
+
+                                    if ($category_id == 2) { ?>
+                                        <div class="htc__shop__cat">
+                                            <h4 class="section-title-4">Диаганаль</h4>
+                                            <ul class="sidebar__list">
+                                                <li><a href="#"> Менее 12.9<span>0</span></a></li>
+                                                <li><a href="#"> 13 - 13.9<span>0</span></a></li>
+                                                <li><a href="#"> 14 - 14.9<span>0</span></a></li>
+                                                <li><a href="#"> 15 - 15.9<span>0</span></a></li>
+                                                <li><a href="#"> 16 и более<span>0</span></a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="htc__shop__cat">
+                                            <h4 class="section-title-4">Тип матрицы</h4>
+                                            <ul class="sidebar__list">
+                                                <li><a href="#"> MVA<span>0</span></a></li>
+                                                <li><a href="#"> VA<span>0</span></a></li>
+                                                <li><a href="#"> HVA<span>0</span></a></li>
+                                                <li><a href="#"> TFT<span>0</span></a></li>
+                                            </ul>
+                                        </div>
+
+                                    <? };
+                                    ?>
+
+
+
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -209,12 +289,12 @@
                                                 }
                                             </script>
                                         </div>
-                                        
+
                                         <!-- <ul class="view__mode" role="tablist">
                                             <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
                                             <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
                                         </ul> -->
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -229,8 +309,17 @@
                                         order by ' . $sort;
                                         $result = mysqli_query($db, $query);
                                         $delete = '"';
+                                        ?>
+                                        <script>
+                                                a = <?=((mysqli_fetch_array($result))[3]);?>;
+                                                console.log('asdfsadfds');
+                                                console.log(a);
+                                            </script>
+                                        <?
                                         while ($all_product_list = mysqli_fetch_array($result)) {
                                         ?>
+
+                                            
                                             <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12" id=''>
                                                 <div class="product">
                                                     <div class="product__inner">
@@ -242,8 +331,7 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li>
-                                                                    <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" 
-                                                                    onclick="idelVer1('<?= $all_product_list[3] ?>','<?=$all_product_list[1] ?>','<? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
+                                                                    <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $all_product_list[3] ?>','<?= $all_product_list[1] ?>','<? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
                                                                         <span class="ti-plus"></span>
                                                                     </a>
                                                                 </li>
@@ -263,7 +351,7 @@
                                         }
                                         ?>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
