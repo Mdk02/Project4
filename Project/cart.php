@@ -50,13 +50,8 @@ require "connectDB.php";
             <? include('components/header.php'); ?>
 
             <div class="body__overlay"></div>
-            <!-- Start Offset Wrapper -->
 
-            <!-- End Offset Wrapper -->
-            <div style="height: 100px;">
-                <!-- offset top -->
-            </div>
-            <div class="cart-main-area bg__white">
+            <div class="cart-main-area bg__white ptb--100">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -74,36 +69,30 @@ require "connectDB.php";
                                         <?php
                                         if (count($_COOKIE) > 0) {
                                             $productFromCookies = '';
-                                            
+
                                             foreach ($_COOKIE as $key => $val) {
                                                 if (!(strpos($key, 'product') === false)) {
-                                                    
-                                                        $productFromCookies .= "," . $val;
-                                                    
-                                                }
 
+                                                    $productFromCookies .= "," . $val;
+                                                }
                                             }
-                                            $productFromCookies = trim($productFromCookies , ',');
+                                            $productFromCookies = trim($productFromCookies, ',');
                                             if ($productFromCookies != '') {
-                                                
+
                                                 $query = "SELECT product_properties.Value, product.NameProduct, product.PriceProduct, product.IdProduct
                                                 from product join product_properties 
                                                 on product_properties.IdProduct = product.IdProduct
                                                 where product_properties.IdCharacteristic = 3 and product.IdProduct in ($productFromCookies)";
 
                                                 $result = mysqli_query($db, $query);
-                                                
-                                                
 
-                                                while ($all_product_list = mysqli_fetch_array($result)) {
-                                        ?>
+                                                while ($all_product_list = mysqli_fetch_array($result)) { ?>
                                                     <tr id="<?= $all_product_list[3] ?>p">
-                                                        <td class="product-thumbnail"><a href="product.php?id=<?=$all_product_list[3]?>"><img src="<?= $all_product_list[0] ?>" alt="product img" /></a></td>
-                                                        <td class="product-name"><a href="product.php?id=<?=$all_product_list[3]?>"><?= $all_product_list[1] ?></a></td>
-                                                        <td class="product-price"><span class="amount"><?=$all_product_list[2] ?>₽</span></td>
+                                                        <td class="product-thumbnail"><a href="product.php?id=<?= $all_product_list[3] ?>"><img src="<?= $all_product_list[0] ?>" alt="product img" /></a></td>
+                                                        <td class="product-name"><a href="product.php?id=<?= $all_product_list[3] ?>"><?= $all_product_list[1] ?></a></td>
+                                                        <td class="product-price"><span class="amount"><?= $all_product_list[2] ?>₽</span></td>
                                                         <td class="product-remove"><a onclick="deleteFromCart(this)" id="<?= $all_product_list[3] ?>">X</a></td>
-                                                    </tr>
-                                        <?
+                                                    </tr> <? 
                                                 }
                                             }
                                         }
@@ -129,7 +118,7 @@ require "connectDB.php";
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="wc-proceed-to-checkout">
+                                            <div class="wc-proceed-to-checkout pt--50">
                                                 <a id="buy_but" href="">Оплатить</a>
                                             </div>
                                         </div>
@@ -148,12 +137,12 @@ require "connectDB.php";
                         product = document.getElementsByClassName('product-price');
                         nameProduct = document.getElementsByClassName('product-name');
                         for (i = 0; i < product.length; i++) {
-                            buy_product += i+1 +'. '+ nameProduct[i].textContent + '-               -\n';
+                            buy_product += i + 1 + '. ' + nameProduct[i].textContent + '-               -\n';
                             console.log(buy_product);
                             sum += Number(product[i].textContent.slice(0, product[i].textContent.length - 1));
                         }
-                        
-                        document.getElementById('buy_but').href ='https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount='+sum+'&successUrl=http://project/index.php&comment='+buy_product  ;
+
+                        document.getElementById('buy_but').href = 'https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount=' + sum + '&successUrl=http://project/index.php&comment=' + buy_product;
                         document.getElementById("amount_cart").textContent = sum + '₽';
                     }
 
