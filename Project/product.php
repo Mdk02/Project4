@@ -87,7 +87,7 @@ require 'connectDB.php';
                         </div>
 
                         <div class="sidebar-active col-md-6 col-lg-6 col-sm-7 col-xs-12 xmt-30">
-                        <div class="pt--100"></div>
+                            <div class="pt--100"></div>
                             <div class="htc__product__details__inner ">
                                 <div class="pro__detl__title">
                                     <h2><?= $q[0] ?></h2>
@@ -152,7 +152,7 @@ require 'connectDB.php';
                             <!-- Start Single Content -->
                             <div role="tabpanel" id="sheet" class="product__tab__content fade">
                                 <div class="pro__feature">
-                                <div class="сharacteristics_list">
+                                    <div class="сharacteristics_list">
                                         <?
                                         $queryChars = 'select сharacteristic.NameСharacteristic, product_properties.Value from product_properties join сharacteristic
                                              on сharacteristic.IdСharacteristic = product_properties.IdCharacteristic
@@ -199,19 +199,19 @@ require 'connectDB.php';
                                                 <div class="review__info">
                                                     <h4><?= ($comments[0] . " " . $comments[1]) ?></h4>
                                                     <div class="rating-result">
-                                                        <?for ($i = 0 ; $i < $comments[6]; $i++ ){?>
-                                                        <span class="active"></span>
-                                                        
-                                                        <?}  
-                                                        for ($i = 0 ; $i < (5-$comments[6]); $i++ ){?>
-                                                            
+                                                        <? for ($i = 0; $i < $comments[6]; $i++) { ?>
+                                                            <span class="active"></span>
+
+                                                        <? }
+                                                        for ($i = 0; $i < (5 - $comments[6]); $i++) { ?>
+
                                                             <span></span>
-                                                        
-                                                        <?}?>
+
+                                                        <? } ?>
                                                     </div>
                                                 </div>
                                                 <div class="review__date">
-                                                    <span><?=$comments[5]?></span>
+                                                    <span><?= $comments[5] ?></span>
                                                 </div>
                                                 <p><?= $comments[7] ?></p>
                                             </div>

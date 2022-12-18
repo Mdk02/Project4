@@ -85,7 +85,7 @@ require "connectDB.php";
                                                 <div class="slider__inner">
                                                     <h1>New Product <span class="text--theme">Collection</span></h1>
                                                     <div class="slider__btn">
-                                                        
+
                                                         <a class="htc__btn" href="cart.php">shop now</a>
                                                     </div>
                                                 </div>
@@ -111,9 +111,9 @@ require "connectDB.php";
                                     $query = 'select namecategory from category';
                                     $result = mysqli_query($db, $query);
                                     $final = mysqli_fetch_all($result);
-                                    foreach ($final as $q) {?>
+                                    foreach ($final as $q) { ?>
                                         <li><a href="/catalog.php?category=<?= $q[0] ?>"><img alt="" src="images/icons/thum8.png"> <?= $q[0] ?> <i class="zmdi zmdi-chevron-right"></i></a></li>
-                                    <?}?>
+                                    <? } ?>
                                 </ul>
                             </div>
                         </div>
@@ -135,12 +135,12 @@ require "connectDB.php";
             </div>
         </div>
 
-        
+
         <!-- Start Our Product Area -->
         <section class="htc__product__area bg__white">
             <div class="container">
                 <div class="row">
-                
+
                     <div class="col-md-12">
                         <div class="product-style-tab">
                             <div class="product-tab-list">
@@ -177,7 +177,7 @@ require "connectDB.php";
                                             $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
                                                 where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
                                                  order by product.idproduct desc limit 8';
-                                            
+
                                             $result = mysqli_query($db, $query);
                                             $delete = '"';
                                             while ($q = mysqli_fetch_array($result)) {
@@ -193,20 +193,14 @@ require "connectDB.php";
                                                             <div class="product__hover__info">
                                                                 <ul class="product__action">
                                                                     <li>
-                                                                        <a  data-toggle="modal" 
-                                                                            data-target="#productModal"
-                                                                            title="Quick View"
-                                                                            class="quick-view modal-view detail-link"
-                                                                            href="#"
-                                                                            onclick="idelVer1('<?=$q[3]?>','<?=$q[1]?>','<?echo str_replace($delete, ' ', $q[0])?>' ,'Рейтинг','<?=$q[2]?>', '<?=$q[2]?>', '<?echo str_replace($delete, ' ', $q[4])?>')"
-                                                                            >
-                                                                             
+                                                                        <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $q[3] ?>','<?= $q[1] ?>','<? echo str_replace($delete, ' ', $q[0]) ?>' ,'Рейтинг','<?= $q[2] ?>', '<?= $q[2] ?>', '<? echo str_replace($delete, ' ', $q[4]) ?>')">
+
                                                                             <span class="ti-eye"></span>
 
                                                                         </a>
                                                                     </li>
 
-                                                                    <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)" ><span class="ti-shopping-cart"></span></a></li>
+                                                                    <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -221,9 +215,9 @@ require "connectDB.php";
                                             <?
 
                                             }
-                                            
+
                                             ?>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -321,7 +315,7 @@ require "connectDB.php";
         </div>
 
         <!-- Start Our Product Area -->
-        
+
         <!-- End Our Product Area -->
 
 
@@ -342,7 +336,7 @@ require "connectDB.php";
                         <div class="modal-product">
                             <!-- Start product images -->
                             <div class="product-images">
-                                <div class="main-image images"> 
+                                <div class="main-image images">
                                     <img id="img-quick" alt="big images">
                                     <!-- тут фото -->
                                 </div>
@@ -370,12 +364,12 @@ require "connectDB.php";
                                     </div>
                                 </div>
 
-                                
+
 
                                 <div id="quick-desc" class="quick-desc"> описание (если ты это видишь, то оно сломалось )
                                 </div>
-                                
-                            
+
+
                             </div><!-- .product-info -->
                         </div><!-- .modal-product -->
                     </div><!-- .modal-body -->
@@ -400,7 +394,7 @@ require "connectDB.php";
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
 
-    
+
     <script src="js/idel.js"></script>
 
 </body>
