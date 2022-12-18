@@ -33,18 +33,14 @@
 
                         <? 
                         session_start();
-                        if (isset($_SESSION['idUsers'])){ 
-                             // ссылка на профиль. Сделайте профиль!!!!! Арслан
-                        ?>
-                        <!-- пока вот это-->
-                        <li><a href="profile.php"><span class="ti-user"></span></a></li>
-                        
+                        if (isset($_SESSION['idUsers'])) { ?>
+                            <li><a href="profile.php"><span class="ti-user"></span></a></li>
+                        <? } else { ?>
+                            <li><a href="login-register.php"><span class="ti-user"></span></a></li>
                         <? }
-                        else {?>
-                        <li><a href="login-register.php"><span class="ti-user"></span></a></li>
-                        <?} 
-                        
-                        session_write_close();?>
+
+                        session_write_close(); 
+                        ?>
 
 
                         <!-- <li class="cart__menu"><span class="ti-shopping-cart"></span></li> -->
