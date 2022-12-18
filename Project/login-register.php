@@ -122,7 +122,7 @@ require "connectDB.php";
                                         die;
                                     }
                                 }
-                            }var_dump($_COOKIE);
+                            }
                             ?>
                             <!-- Добавить паттерны для строк, очистить форму -->
                             <div id="register" role="tabpanel" class="single__tabs__panel tab-pane fade">

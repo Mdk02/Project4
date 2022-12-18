@@ -129,7 +129,7 @@ if (isset($_SESSION['idUsers'])) {
                                                     <div class="htc__login__btn red">
                                                         <!-- СДЕЛАТЬ ВЫХОД -->
                                                         <!-- <input type="submit" onclick="exit()" value="Выйти"> -->
-                                                        <a href="exit.php">Выйти</a>
+                                                        <a class="p--20 btn-red" href="exit.php">ВЫЙТИ</a>
                                                     </div>
                                                 </div>
                                             </div>
