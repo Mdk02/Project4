@@ -127,7 +127,9 @@ if (isset($_SESSION['idUsers'])) {
                                                     </form>
                                                     <br>
                                                     <div class="htc__login__btn red">
-                                                        <input type="submit" onclick="exit()" value="Выйти"> <!-- СДЕЛАТЬ ВЫХОД -->
+                                                        <!-- СДЕЛАТЬ ВЫХОД -->
+                                                        <!-- <input type="submit" onclick="exit()" value="Выйти"> -->
+                                                        <a href="exit.php">Выйти</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -329,14 +331,16 @@ if (isset($_SESSION['idUsers'])) {
         <!-- Main js file that contents all jQuery plugins activation. -->
         <script src="js/main.js"></script>
 
-        <script>
+        <!-- <script>
             function exit() {
-                <? session_start();
-                session_unset();
-                session_destroy();
-                header("Location: login-register.php"); ?>
+                <?
+                // session_start();
+                // session_unset();
+                // session_destroy();
+                // header("Location: login-register.php"); 
+                ?>
             }
-        </script>
+        </script> -->
     </body>
 
     </html>
