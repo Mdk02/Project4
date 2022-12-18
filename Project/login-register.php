@@ -90,6 +90,10 @@ require "connectDB.php";
                                             session_start();
                                             $id = $row[0];
                                             $_SESSION['idUsers'] = $id;
+                                            ?> <script>
+                                                sessionStorage.setItem('idUsers', 'lol');
+                                                // console.log(sessionStorage.getItem('idUsers'));
+                                            </script> <?
                                             session_write_close();
                                             $new_url = 'index.php';
                                             header('Location: ' . $new_url);

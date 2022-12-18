@@ -134,19 +134,26 @@ require "connectDB.php";
             </div>
             <script>
                 function SumProduct() {
-
                     sum = 0;
-                    console.log(sum);
+                    // console.log(sum);
                     buy_product = '';
                     product = document.getElementsByClassName('product-price');
                     nameProduct = document.getElementsByClassName('product-name');
                     for (i = 0; i < product.length; i++) {
                         buy_product += i + 1 + '. ' + nameProduct[i].textContent + '-               -\n';
-                        console.log(buy_product);
+                        // console.log(buy_product);
                         sum += Number(product[i].textContent.slice(0, product[i].textContent.length - 1));
                     }
 
-                    document.getElementById('buy_but').href = 'https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount=' + sum + '&successUrl=http://project/index.php&comment=' + buy_product;
+                    user = sessionStorage.getItem("idUsers");
+                    // alert(user);
+                    if (user) {
+                        document.getElementById('buy_but').href = 'https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount=' + sum + '&successUrl=http://project/success.php&comment=' + buy_product + '&sum=' + sum;
+                    } else {
+                        document.getElementById('buy_but').href = "login-register.php";
+                    }
+
+
                     document.getElementById("amount_cart").textContent = sum + '₽';
                 }
 
