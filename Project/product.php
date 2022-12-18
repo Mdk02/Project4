@@ -236,7 +236,7 @@ require 'connectDB.php';
                                         <h2 class="rating-title">Ваш отзыв</h2>
                                         <!-- End RAting Area -->
                                         <div class="review__box">
-                                            <form id="comment-form" action="product.php?id=<?= $_GET['id'] ?>&" method="post">
+                                            <form id="comment-form" action="product.php?id=<?= $_GET['id'] ?>" method="post">
                                                 <div class="single-review-form">
                                                     <div class="review-box message">
                                                         <textarea name="сommentText" placeholder="Напишите ваш отзыв"></textarea>

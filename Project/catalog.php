@@ -1,5 +1,5 @@
 <!doctype php>
-<php class="no-js" lang="en">
+<htmml class="no-js" lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -164,95 +164,217 @@
                                     <!-- 
                                 монитр: диаганаль , разрешение , частота -->
 
-                                    <?
 
-                                    if ($category_id == 1) { ?>
+                                    <form id="filter-form" action="catalog.php?category=<?= $_GET['category'] ?>" method="post">
+                                        <script>
+                                            function Filter(aColorFilter, classFilter) {
+                                                if (!(aColorFilter.classList.contains(classFilter))) {
+                                                    aColorFilter.style.backgroundColor = '#C0C0C0';
+                                                    aColorFilter.classList.add(classFilter);
+                                                } else {
+                                                    aColorFilter.style.backgroundColor = ''
+                                                    aColorFilter.className = '';
+                                                }
+                                            }
+                                        </script>
+                                        <?
+                                        $category_list_sql = "";
+
+                                        $Diagonal = '';
+                                        $Matric = '';
+                                        if ($category_id == 1) { ?>
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Диаганаль</h4>
+                                                <ul class="sidebar__list">
+                                                    <?
+                                                    $query = 'SELECT product_properties.Value , COUNT(*) from product_properties join product on product_properties.IdProduct = product.IdProduct WHERE product_properties.IdCharacteristic = 13 and product.IdCategory = 1 GROUP BY product_properties.Value;';
+                                                    $result1 = mysqli_query($db, $query);
+                                                    $final_Diag = mysqli_fetch_all($result1);
+                                                    foreach ($final_Diag as $monitors_diag) {
+                                                    ?>
+                                                        <li><a onclick="Filter(this,'FilterSelectedDiag')" href="#"><?= $monitors_diag[0] ?><span><?= $monitors_diag[1] ?></span></a></li>
+                                                    <?
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Тип матрицы</h4>
+                                                <ul class="sidebar__list">
+                                                    <?
+                                                    $query = 'SELECT `Value`, COUNT(*) FROM `product_properties` WHERE `IdCharacteristic` = 16 GROUP BY `Value`';
+                                                    $result = mysqli_query($db, $query);
+                                                    $final_monitor = mysqli_fetch_all($result);
+                                                    foreach ($final_monitor as $monitors_ips) {
+                                                    ?>
+                                                        <li><a onclick="Filter(this,'FilterSelectedMonitorMatric')" href="#"><?= $monitors_ips[0] ?><span><?= $monitors_ips[1] ?></span></a></li>
+                                                    <?
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                        <? };
+
+                                        if ($category_id == 3) { ?>
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Диаганаль</h4>
+                                                <ul class="sidebar__list">
+                                                    <li><a href="#"> Меннее 20</a></li>
+                                                    <li><a href="#"> 20 - 25</a></li>
+                                                    <li><a href="#"> 25.1 - 27</a></li>
+                                                    <li><a href="#"> 27.1 - 32</a></li>
+                                                    <li><a href="#"> 32 - 38.9</a></li>
+                                                    <li><a href="#"> 39 - 48.9</a></li>
+                                                    <li><a href="#"> 49 - 54.9 3</a></li>
+                                                    <li><a href="#"> 65 и более</a></li>
+
+
+
+                                                </ul>
+                                            </div>
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Тип матрицы</h4>
+                                                <ul class="sidebar__list">
+                                                    <li><a href="#"> MVA<span>0</span></a></li>
+                                                    <li><a href="#"> VA<span>0</span></a></li>
+                                                    <li><a href="#"> HVA<span>0</span></a></li>
+                                                    <li><a href="#"> TFT<span>0</span></a></li>
+                                                </ul>
+                                            </div>
+
+                                        <? };
+
+                                        if ($category_id == 2) { ?>
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Диаганаль</h4>
+                                                <ul class="sidebar__list">
+                                                    <li><a href="#"> Менее 12.9<span>0</span></a></li>
+                                                    <li><a href="#"> 13 - 13.9<span>0</span></a></li>
+                                                    <li><a href="#"> 14 - 14.9<span>0</span></a></li>
+                                                    <li><a href="#"> 15 - 15.9<span>0</span></a></li>
+                                                    <li><a href="#"> 16 и более<span>0</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Тип матрицы</h4>
+                                                <ul class="sidebar__list">
+                                                    <li><a href="#"> MVA<span>0</span></a></li>
+                                                    <li><a href="#"> VA<span>0</span></a></li>
+                                                    <li><a href="#"> HVA<span>0</span></a></li>
+                                                    <li><a href="#"> TFT<span>0</span></a></li>
+                                                </ul>
+                                            </div>
+
+                                        <? };
+
+
+
+                                        if ($category_id == 4) { ?>
+                                            <div class="htc__shop__cat">
+
+                                                <h4 class="section-title-4">Диаганаль</h4>
+                                                <ul class="sidebar__list">
+                                                    <?
+                                                    $query = 'SELECT product_properties.Value , COUNT(*) from product_properties join product on product_properties.IdProduct = product.IdProduct WHERE product_properties.IdCharacteristic = 13 and product.IdCategory = 4 GROUP BY product_properties.Value;';
+                                                    $result = mysqli_query($db, $query);
+                                                    $final_monitor = mysqli_fetch_all($result);
+                                                    foreach ($final_monitor as $monitors_ips) {
+                                                        if (strpos($_POST['PhoneDiag'], '\'' .str_replace('"', '*', $monitors_ips[0]) . '\'')    !==  false){
+                                                    ?>
+                                                        <li><a onclick="getSelectedPhoneFilter()"><input class="checkboxPhoneDiag" type="checkbox" name="PhoneDiag" value="<?= $monitors_ips[0] ?>" checked> <?= $monitors_ips[0] ?><span><?= $monitors_ips[1] ?></span></a></li>
+                                                        <?}else{?>
+
+                                                        <li><a onclick="getSelectedPhoneFilter()"><input class="checkboxPhoneDiag" type="checkbox" name="PhoneDiag" value="<?= $monitors_ips[0] ?>"> <?= $monitors_ips[0] ?><span><?= $monitors_ips[1] ?></span></a></li>
+                                                    
+                                                    <?
+                                                    }}
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Тип матрицы</h4>
+                                                <ul class="sidebar__list">
+                                                    <?
+                                                    $query = 'SELECT `Value`, count(*) FROM `product_properties` WHERE `IdCharacteristic` = 205 group BY `Value`;';
+                                                    $result = mysqli_query($db, $query);
+                                                    $final_monitor = mysqli_fetch_all($result);
+                                                    foreach ($final_monitor as $monitors_ips) {
+
+                                                        if (strpos($_POST['PhoneMatric'], '\'' . $monitors_ips[0] . '\'')    !==  false) {
+                                                    ?>
+                                                            <li><a onclick="getSelectedPhoneFilter()"><input class="checkboxPhoneMatric" type="checkbox" name="PhoneMatric" value="<?= $monitors_ips[0] ?>" checked> <?= $monitors_ips[0] ?><span><?= $monitors_ips[1] ?></span></a></li>
+                                                        <? } else {
+
+                                                        ?>
+
+                                                            <li><a onclick="getSelectedPhoneFilter()"><input class="checkboxPhoneMatric" type="checkbox" name="PhoneMatric" value="<?= $monitors_ips[0] ?>"> <?= $monitors_ips[0] ?><span><?= $monitors_ips[1] ?></span></a></li>
+                                                    <?
+                                                        }
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="htc__shop__cat">
+                                                <h4 class="section-title-4">Объем встроенной памяти</h4>
 
 
 
 
 
-                                        <div class="htc__shop__cat">
-                                            <h4 class="section-title-4">Диаганаль</h4>
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> 0 - 20<span>0</span></a></li>
-                                                <li><a href="#"> 20 - 25<span>0</span></a></li>
-                                                <li><a href="#"> 25.1 - 27<span>0</span></a></li>
-                                                <li><a href="#"> 27.1 - 32<span>0</span></a></li>
-                                                <li><a href="#"> 32 -<span>0</span></a></li>
-                                            </ul>
+
+                                                <ul class="sidebar__list">
+                                                    <?
+                                                    $query = 'SELECT `Value` , COUNT(*) FROM `product_properties` WHERE `IdCharacteristic` = 214 GROUP BY `Value`';
+                                                    $result = mysqli_query($db, $query);
+                                                    $final_monitor = mysqli_fetch_all($result);
+                                                    foreach ($final_monitor as $monitors_ips) {
+                                                        
+                                                        if (strpos($_POST['PhoneGB'], '\'' .$monitors_ips[0] . '\'')    !==  false) {
+                                                    ?>
+                                                            <li><a onclick="getSelectedPhoneFilter()"><input class="checkboxPhoneGB" type="checkbox" name="PhoneGB" value="<?= $monitors_ips[0] ?>" checked> <?= $monitors_ips[0] ?><span><?= $monitors_ips[1] ?></span></a></li>
+                                                        <?
+                                                        } else {
+
+
+                                                        ?>
+                                                            <li><a onclick="getSelectedPhoneFilter()"><input class="checkboxPhoneGB" type="checkbox" name="PhoneGB" value="<?= $monitors_ips[0] ?>"> <?= $monitors_ips[0] ?><span><?= $monitors_ips[1] ?></span></a></li>
+                                                    <?
+                                                        }
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+
+                                        <?
+
+                                        }; ?>
+
+
+
+
+
+
+
+                                    </form>
+
+
+                                    <form id="comment-form2" name="form1" action="catalog.php?category=<?= $_GET['category'] ?>" method="post">
+
+
+
+                                        <div id="addInfo">
                                         </div>
-                                        <div class="htc__shop__cat">
-                                            <h4 class="section-title-4">Тип матрицы</h4>
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> IPS<span>0</span></a></li>
-                                                <li><a href="#"> VA<span>0</span></a></li>
-                                                <li><a href="#"> TN<span>0</span></a></li>
-                                            </ul>
+
+
+                                        <div class="htc__login__btn mt--30">
+
+                                            <input form="comment-form2" type="submit" value="Показать">
                                         </div>
-
-                                    <? };
-
-                                    if ($category_id == 3) { ?>
-                                        <div class="htc__shop__cat">
-                                            <h4 class="section-title-4">Диаганаль</h4>
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> Меннее 20<span>0</span></a></li>
-                                                <li><a href="#"> 20 - 25<span>0</span></a></li>
-                                                <li><a href="#"> 25.1 - 27<span>0</span></a></li>
-                                                <li><a href="#"> 27.1 - 32<span>0</span></a></li>
-                                                <li><a href="#"> 32 - 38.9<span>0</span></a></li>
-                                                <li><a href="#"> 39 - 48.9<span>0</span></a></li>
-                                                <li><a href="#"> 49 - 54.9 3<span>0</span></a></li>
-                                                <li><a href="#"> 65 и более<span>0</span></a></li>
-
-
-
-                                            </ul>
-                                        </div>
-                                        <div class="htc__shop__cat">
-                                            <h4 class="section-title-4">Тип матрицы</h4>
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> MVA<span>0</span></a></li>
-                                                <li><a href="#"> VA<span>0</span></a></li>
-                                                <li><a href="#"> HVA<span>0</span></a></li>
-                                                <li><a href="#"> TFT<span>0</span></a></li>
-                                            </ul>
-                                        </div>
-
-                                    <? };
-
-                                    if ($category_id == 2) { ?>
-                                        <div class="htc__shop__cat">
-                                            <h4 class="section-title-4">Диаганаль</h4>
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> Менее 12.9<span>0</span></a></li>
-                                                <li><a href="#"> 13 - 13.9<span>0</span></a></li>
-                                                <li><a href="#"> 14 - 14.9<span>0</span></a></li>
-                                                <li><a href="#"> 15 - 15.9<span>0</span></a></li>
-                                                <li><a href="#"> 16 и более<span>0</span></a></li>
-
-                                            </ul>
-                                        </div>
-                                        <div class="htc__shop__cat">
-                                            <h4 class="section-title-4">Тип матрицы</h4>
-                                            <ul class="sidebar__list">
-                                                <li><a href="#"> MVA<span>0</span></a></li>
-                                                <li><a href="#"> VA<span>0</span></a></li>
-                                                <li><a href="#"> HVA<span>0</span></a></li>
-                                                <li><a href="#"> TFT<span>0</span></a></li>
-                                            </ul>
-                                        </div>
-
-                                    <? };
-                                    ?>
-
-
-
-
-
-
-
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -289,22 +411,12 @@
                                                 }
                                             </script>
                                         </div>
-<<<<<<< HEAD
 
                                         <!-- <ul class="view__mode" role="tablist">
                                             <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
                                             <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
                                         </ul> -->
 
-=======
-                                        <!-- End Short Form -->
-                                        <!-- Start List And Grid View -->
-                                        <ul class="view__mode" role="tablist">
-                                            <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
-                                            <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
-                                        </ul>
-                                        <!-- End List And Grid View -->
->>>>>>> 6c248b0a325c3be315af52e9822f3f07a69f3217
                                     </div>
                                 </div>
                             </div>
@@ -313,23 +425,117 @@
                                     <!-- Start Single View -->
                                     <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
                                         <?
+
+
+
                                         $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
                                         where ' . $category_sql . $search_by_text_sql . ' product.idproduct = product_properties.idproduct 
                                         and product_properties.idcharacteristic=3 
                                         order by ' . $sort;
+
+
+
+
+
+
+                                        if (isset($_POST['PhoneGB']) & isset($_POST['PhoneMatric']) & isset($_POST['PhoneDiag'])) {
+                                            $delete = '"';
+                                            $query = 'SELECT nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from  product,product_properties WHERE product.idproduct = product_properties.IdProduct and product_properties.IdCharacteristic=3 and product.IdProduct in 
+                                        (select product.idproduct from product,product_properties where product.IdCategory =4 and product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=214 and VALUE IN (' . $_POST['PhoneGB'] . ') and product.IdProduct in
+                                        (select product.idproduct from product,product_properties where product.IdCategory =4 and product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=205 and VALUE IN (' . $_POST['PhoneMatric'] . ')
+                                        and product.IdProduct in 
+                                        (SELECT product.idproduct from product_properties join product on product_properties.IdProduct = product.IdProduct WHERE product_properties.IdCharacteristic = 13 and product.IdCategory = 4 and VALUE in (' . str_replace("*", $delete,  $_POST['PhoneDiag']) . ') 
+                                        
+                                        
+                                        )))';
+                                        }
+
+
+
+
+
+
+
+
+
                                         $result = mysqli_query($db, $query);
                                         $delete = '"';
                                         ?>
                                         <script>
-                                                a = <?=((mysqli_fetch_array($result))[3]);?>;
-                                                console.log('asdfsadfds');
-                                                console.log(a);
-                                            </script>
+                                            function getSelectedPhoneFilter() {
+
+
+                                                PhoneDiag = getSelectedFiltersDiag('checkboxPhoneDiag');
+                                                PhoneMatric = getSelectedFiltersCharac('checkboxPhoneMatric');
+                                                PhoneGB = getSelectedFiltersCharac('checkboxPhoneGB');
+
+                                                if (PhoneDiag.length == 0) {
+
+                                                }
+
+                                                document.getElementById('addInfo').innerHTML = '<input  type="hidden" name="PhoneGB" value=\"' + PhoneGB + '\">';
+                                                document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="PhoneDiag" value=\"' + PhoneDiag + '\">';
+                                                document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="PhoneMatric" value=\"' + PhoneMatric + '\">';
+
+
+
+
+
+
+                                            }
+
+                                            function getSelectedFiltersDiag(nameClass) {
+                                                var checkboxes = document.getElementsByClassName(nameClass);
+                                                var checkboxesChecked = [];
+
+                                                for (var index = 0; index < checkboxes.length; index++) {
+                                                    if (checkboxes[index].checked) {
+                                                        checkboxesChecked.push('\'' + checkboxes[index].value + '*' + '\'');
+                                                    }
+                                                }
+                                                if (checkboxesChecked.length == 0) {
+                                                    for (var index = 0; index < checkboxes.length; index++) {
+
+                                                        checkboxesChecked.push('\'' + checkboxes[index].value + '*' + '\'');
+
+                                                    }
+                                                }
+
+                                                return checkboxesChecked;
+                                            }
+
+
+                                            function getSelectedFiltersCharac(nameClass) {
+                                                var checkboxes = document.getElementsByClassName(nameClass);
+                                                var checkboxesChecked = [];
+                                                for (var index = 0; index < checkboxes.length; index++) {
+                                                    if (checkboxes[index].checked) {
+                                                        checkboxesChecked.push('\'' + checkboxes[index].value + '\'');
+
+                                                    }
+                                                }
+                                                if (checkboxesChecked.length == 0) {
+                                                    for (var index = 0; index < checkboxes.length; index++) {
+
+                                                        checkboxesChecked.push('\'' + checkboxes[index].value + '\'');
+
+
+                                                    }
+                                                }
+
+
+                                                return checkboxesChecked;
+                                            }
+
+                                            a = <?= ((mysqli_fetch_array($result))[3]); ?>;
+                                            console.log('asdfsadfds');
+                                            console.log(a);
+                                        </script>
                                         <?
                                         while ($all_product_list = mysqli_fetch_array($result)) {
                                         ?>
 
-                                            
+
                                             <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12" id=''>
                                                 <div class="product">
                                                     <div class="product__inner">
@@ -341,8 +547,7 @@
                                                         <div class="product__hover__info">
                                                             <ul class="product__action">
                                                                 <li>
-                                                                    <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" 
-                                                                    onclick="idelVer1('<?= $all_product_list[3] ?>','<?=$all_product_list[1] ?>','<? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
+                                                                    <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $all_product_list[3] ?>','<?= $all_product_list[1] ?>','<? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
                                                                         <span class="ti-eye"></span>
                                                                     </a>
                                                                 </li>
@@ -362,11 +567,7 @@
                                         }
                                         ?>
                                     </div>
-<<<<<<< HEAD
-
-=======
                                     <!-- End Single View -->
->>>>>>> 6c248b0a325c3be315af52e9822f3f07a69f3217
                                 </div>
                             </div>
                         </div>
@@ -469,4 +670,4 @@
 
     </body>
 
-</php>
+</htmml>
