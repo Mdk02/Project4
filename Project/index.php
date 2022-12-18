@@ -163,7 +163,7 @@ require "connectDB.php";
                                     <li>
                                         <a href="#home3" data-toggle="tab">
                                             <div class="tab-menu-text">
-                                                <h4>Популяроне</h4>
+                                                <h4>Популярное</h4>
                                             </div>
                                         </a>
                                     </li>

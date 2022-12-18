@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3307
--- Время создания: Дек 08 2022 г., 06:25
--- Версия сервера: 8.0.24
--- Версия PHP: 7.4.27
+-- Хост: 127.0.0.1:3306
+-- Время создания: Дек 18 2022 г., 20:44
+-- Версия сервера: 8.0.30
+-- Версия PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,6 +60,14 @@ CREATE TABLE `order` (
   `Status` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Дамп данных таблицы `order`
+--
+
+INSERT INTO `order` (`IdOrder`, `IdUser`, `Sum`, `DateOrder`, `ArrivalDate`, `Status`) VALUES
+(1, 3, 1000, '2022-12-01', '2022-12-02', 'доставлен'),
+(2, 3, 2000, '2022-12-08', '2022-12-09', 'доставлен');
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +80,15 @@ CREATE TABLE `order_product` (
   `Count` int NOT NULL,
   `IdOrderProduct` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `order_product`
+--
+
+INSERT INTO `order_product` (`IdOrder`, `IdProduct`, `Count`, `IdOrderProduct`) VALUES
+(1, 115, 1, 1),
+(1, 114, 2, 2),
+(2, 113, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -6393,10 +6410,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUsers`, `SurnameUser`, `NameUser`, `LastnameUser`, `BirthDay`, `Email`, `TelNumber`, `Password`, `IdRole`) VALUES
-(1, 'qdada', 'dadad', 'adad', '2022-12-01', 'dkajd@mail.ru', '12313', '1111', 2),
-(2, '1134313', '113113', '1313131', '2022-12-01', '33132@aa', '31313113', '1111', 2),
-(3, 'aminov', 'aminov', 'aminov', '2003-12-08', 'neverket@gmail.com', '88005553535', '123456', 1),
-(4, 's', 'qa', 'a', '2022-12-03', '331312@aa', '3131311311', '1', 2);
+(1, 'Хисамут', 'Булатто', 'Булатович', '2022-12-01', 'mdk02@mail.ru', '12313', '1111', 2),
+(2, 'Джексон', 'Майкл', NULL, '2022-12-01', 'jackson@gmail.com', '31313113', '1234', 2),
+(3, 'Аминов', 'Арслан', 'Арсланович', '2003-12-08', 'neverket@gmail.com', '88005553535', '123456', 1),
+(4, 'Шариков', 'Идель', 'МЯЧикович', '2022-12-03', 'sharik@kek.lol', '3131311311', 'qwerty', 2);
 
 -- --------------------------------------------------------
 
@@ -6692,6 +6709,14 @@ CREATE TABLE `сomment` (
   `Score` float NOT NULL,
   `CommentText` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `сomment`
+--
+
+INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES
+(1, 3, 115, '2022-12-18', 5, 'очень крутой моник'),
+(2, 1, 115, '2022-12-18', 4, 'ла-ла-ла-ла-ла-ла-ла-ла-ла-ла-ла-ла');
 
 --
 -- Индексы сохранённых таблиц
