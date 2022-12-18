@@ -209,12 +209,13 @@
                                                 }
                                             </script>
                                         </div>
-                                        
-                                        <!-- <ul class="view__mode" role="tablist">
+                                        <!-- End Short Form -->
+                                        <!-- Start List And Grid View -->
+                                        <ul class="view__mode" role="tablist">
                                             <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
                                             <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
-                                        </ul> -->
-                                        
+                                        </ul>
+                                        <!-- End List And Grid View -->
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +264,7 @@
                                         }
                                         ?>
                                     </div>
-                                    
+                                    <!-- End Single View -->
                                 </div>
                             </div>
                         </div>
