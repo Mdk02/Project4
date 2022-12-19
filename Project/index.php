@@ -59,17 +59,17 @@ require "connectDB.php";
                     <!-- Start Left Feature -->
                     <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12 float-left-style">
                         <!-- Start Slider Area -->
-                        <div class="slider__container slider--one">
+                        <div class="slider__container slider--one with-shadow">
                             <div class="slider__activation__wrap owl-carousel owl-theme">
                                 <!-- Start Single Slide -->
-                                <div class="slide slider__full--screen slider-height-inherit slider-text-right slider-text-down" style="background: rgba(0, 0, 0, 0) url(images/slider/bg/camera_intro_endframe__bj2geltijuqa_large.jpg) no-repeat scroll center center / cover ;">
+                                <div class="slide slider__full--screen slider-height-inherit  slider-text-left" style="background: rgba(0, 0, 0, 0) url(images/slider/bg/aoc.png) no-repeat scroll center center / cover ;">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-md-10 col-lg-8 col-sm-12 col-xs-12  col-md-offset-4 col-lg-offset-4 ">
+                                            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
                                                 <div class="slider__inner">
-                                                    <h1 class="text--white">New <br><span class="text--theme">Iphone 14 Pro</span></h1>
+                                                    <h1 class="text--white">Монитор <br><span class="text--theme">AOC 24B2XH</span></h1>
                                                     <div class="slider__btn">
-                                                        <a class="htc__btn text--white" href="cart.php">see now</a>
+                                                        <a class="htc__btn text--white" href="product.php?id=115">Посмотреть</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,15 +78,15 @@ require "connectDB.php";
                                 </div>
                                 <!-- End Single Slide -->
                                 <!-- Start Single Slide -->
-                                <div class="slide slider__full--screen slider-height-inherit  slider-text-left" style="background: rgba(0, 0, 0, 0) url(images/slider/bg/iphone14pro.jpeg) no-repeat scroll center center / cover ;">
+                                <div class="slide slider__full--screen slider-height-inherit slider-text-left" style="background: rgba(0, 0, 0, 0) url(images/slider/bg/iphones_14_pro.png) no-repeat scroll center center / cover ;">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                                            <div class="col-md-10 col-lg-8 col-sm-12 col-xs-12   ">
                                                 <div class="slider__inner">
-                                                    <h1>New Product <span class="text--theme">Collection</span></h1>
+                                                    <h1 class="text--black"><span class="text--theme">Iphone<br>14 Pro</span></h1>
                                                     <div class="slider__btn">
-
-                                                        <a class="htc__btn" href="cart.php">shop now</a>
+                                                        <a class="htc__btn text--black" href="catalog.php">Посмотреть</a>
+                                                        <!-- ИЗМЕНИТЬ ССЫЛКУ -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,7 +127,7 @@ require "connectDB.php";
         <!-- End Our Product Area -->
 
         <!-- Черная пятница 1 -->
-        <div class="only-banner ptb--100 bg__white">
+        <div class="only-banner ptb--50 bg__white">
             <div class="container">
                 <div class="only-banner-img">
                     <img style="width: 100%;" src="/images/new-year/new-year-banner.png" alt="s ng">
@@ -195,12 +195,9 @@ require "connectDB.php";
                                                                 <ul class="product__action">
                                                                     <li>
                                                                         <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $q[3] ?>','<?= $q[1] ?>','<? echo str_replace($delete, ' ', $q[0]) ?>' ,'Рейтинг','<?= $q[2] ?>', '<?= $q[2] ?>', '<? echo str_replace($delete, ' ', $q[4]) ?>')">
-
                                                                             <span class="ti-eye"></span>
-
                                                                         </a>
                                                                     </li>
-
                                                                     <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
@@ -226,7 +223,7 @@ require "connectDB.php";
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                            $query = 'select nameproduct, value, priceproduct from product,product_properties 
+                                            $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
                                             where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
                                              order by product.priceproduct asc limit 8';
                                             $result = mysqli_query($db, $query);
@@ -242,7 +239,11 @@ require "connectDB.php";
                                                             </div>
                                                             <div class="product__hover__info">
                                                                 <ul class="product__action">
-                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-eye"></span></a></li>
+                                                                    <li>
+                                                                        <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $q[3] ?>','<?= $q[1] ?>','<? echo str_replace($delete, ' ', $q[0]) ?>' ,'Рейтинг','<?= $q[2] ?>', '<?= $q[2] ?>', '<? echo str_replace($delete, ' ', $q[4]) ?>')">
+                                                                            <span class="ti-eye"></span>
+                                                                        </a>
+                                                                    </li>
                                                                     <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
@@ -265,7 +266,7 @@ require "connectDB.php";
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                            $query = 'select nameproduct, value, priceproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.score desc limit 8';
+                                            $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.score desc limit 8';
                                             $result = mysqli_query($db, $query);
                                             while ($q = mysqli_fetch_array($result)) {
                                             ?>
@@ -279,7 +280,11 @@ require "connectDB.php";
                                                             </div>
                                                             <div class="product__hover__info">
                                                                 <ul class="product__action">
-                                                                    <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-eye"></span></a></li>
+                                                                    <li>
+                                                                        <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $q[3] ?>','<?= $q[1] ?>','<? echo str_replace($delete, ' ', $q[0]) ?>' ,'Рейтинг','<?= $q[2] ?>', '<?= $q[2] ?>', '<? echo str_replace($delete, ' ', $q[4]) ?>')">
+                                                                            <span class="ti-eye"></span>
+                                                                        </a>
+                                                                    </li>
                                                                     <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
@@ -307,7 +312,7 @@ require "connectDB.php";
         <!-- End Our Product Area -->
 
         <!-- Черная пятница 2 -->
-        <div class="only-banner ptb--100 bg__white">
+        <div class="only-banner pt--50 pb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
                     <a href="shop-sidebar.php"><img src="images/new-product/6.jpg" alt="new product"></a>
