@@ -56,8 +56,10 @@ $result_op_p = mysqli_query($db, $query_op_p);
 // $pdf->Cell(0, 12, iconv('utf-8', 'windows-1251', "PROJECT4"), 0, 1, 'C', false);
 // $pdf->Cell(0, 12, "", 0, 1, '', false);
 
-$pdf->Image('images/logo.png',10, 16, 10, 10 );
-$pdf->Write(0, iconv('utf-8', 'windows-1251', "        PROJECT4"));
+$pdf->Image('images/logo/logo2.png',10, 16, 11, 11 );
+$pdf->Write(0, iconv('utf-8', 'windows-1251', "         PROJECT4"));
+$pdf->Cell(0, 8, "", 0, 1, '', false);
+$pdf->Cell(0, 0, "", 1, 1, '', false); // просто линия
 $pdf->Cell(0, 12, "", 0, 1, '', false);
 
 $pdf->SetTextColor(96, 96, 96);
