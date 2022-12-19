@@ -92,7 +92,7 @@ require "connectDB.php";
                                             $_SESSION['idUsers'] = $id;
                                             ?> <script>
                                                 sessionStorage.setItem('idUsers', 'lol');
-                                                // console.log(sessionStorage.getItem('idUsers'));
+                                                console.log(sessionStorage.getItem('idUsers'));
                                             </script> <?
                                             session_write_close();
                                             $new_url = 'index.php';

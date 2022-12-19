@@ -223,9 +223,10 @@ require "connectDB.php";
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                            $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties 
+                                            $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
                                             where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
-                                             order by product.priceproduct asc limit 8';
+                                             order by product.idproduct desc limit 8';
+
                                             $result = mysqli_query($db, $query);
                                             while ($q = mysqli_fetch_array($result)) {
                                             ?>
@@ -233,7 +234,7 @@ require "connectDB.php";
                                                     <div class="product">
                                                         <div class="product__inner">
                                                             <div class="pro__thumb">
-                                                                <a href="#">
+                                                                <a href="product.php?id=<?= $q[3] ?>">
                                                                     <img src="<?= $q[1] ?>" alt="product images">
                                                                 </a>
                                                             </div>
@@ -266,15 +267,18 @@ require "connectDB.php";
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                            $query = 'select nameproduct, value, priceproduct, product.idproduct from product,product_properties where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 order by product.score desc limit 8';
-                                            $result = mysqli_query($db, $query);
+                                           $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
+                                           where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
+                                            order by product.idproduct desc limit 8';
+
+                                           $result = mysqli_query($db, $query);
                                             while ($q = mysqli_fetch_array($result)) {
                                             ?>
                                                 <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
                                                     <div class="product">
                                                         <div class="product__inner">
                                                             <div class="pro__thumb">
-                                                                <a href="#">
+                                                                <a href="product.php?id=<?= $q[3] ?>">
                                                                     <img src="<?= $q[1] ?>" alt="product images">
                                                                 </a>
                                                             </div>
@@ -351,22 +355,9 @@ require "connectDB.php";
                             <div class="product-info">
                                 <!-- вот тут имя -->
                                 <h1 id="product-name-quick"></h1>
-                                <div class="rating__and__review">
-                                    <ul class="rating">
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                    </ul>
-                                    <div class="review">
-                                        <a href="#">4 customer reviews</a>
-                                    </div>
-                                </div>
                                 <div class="price-box-3">
                                     <div class="s-price-box">
                                         <span id="new-price-quick" class="new-price">новыая цена</span>
-                                        <span id="old-price-quick" class="old-price">старая цена</span>
                                     </div>
                                 </div>
 

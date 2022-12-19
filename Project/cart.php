@@ -146,12 +146,15 @@ require "connectDB.php";
                     }
 
                     user = sessionStorage.getItem("idUsers");
-                    // alert(user);
-                    if (user) {
+
+                    <?
+                    if ($_SESSION['idUsers']) {
+                    ?>
+
                         document.getElementById('buy_but').href = 'https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPqL6r9k4rCb9NrdmV8vVUNYLzDi2HvXpwwquSbSCKx6VNhYAPDgW1mFwV1jJYn6BCWzgSaZjjbo7M2LRmCwpfhnhzXGNs1BRRZEjvXy45r&amount=' + sum + '&successUrl=http://project/success.php&comment=' + buy_product + '&sum=' + sum;
-                    } else {
+                    <?}else {?> 
                         document.getElementById('buy_but').href = "login-register.php";
-                    }
+                    <?}?>
 
 
                     document.getElementById("amount_cart").textContent = sum + '₽';

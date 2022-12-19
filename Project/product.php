@@ -29,8 +29,6 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- User style -->
     <link rel="stylesheet" href="css/custom.css">
-
-
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -59,7 +57,7 @@ require 'connectDB.php';
                 <div class="scroll-active">
                     <div class="row">
                         <?
-                        $query = 'select nameproduct, priceproduct, descriptionproduct, idproduct from product where product.idproduct = ' . $_GET["id"] . '';
+                        $query = 'select nameproduct, priceproduct, descriptionproduct, idproduct , Score from product where product.idproduct = ' . $_GET["id"] . '';
                         $result = mysqli_query($db, $query);
                         $q = mysqli_fetch_array($result);
 
@@ -92,16 +90,23 @@ require 'connectDB.php';
                                 <div class="pro__detl__title">
                                     <h2><?= $q[0] ?></h2>
                                 </div>
-                                <div class="pro__dtl__rating">
-                                    <ul class="pro__rating">
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                        <li><span class="ti-star"></span></li>
-                                    </ul>
-                                    <span class="rat__qun">(Рейтинг)</span>
+
+
+                                <div class="rating-result pro__dtl__rating">
+                                    <? for ($i = 0; $i < $q[4]; $i++) { ?>
+                                        <span class="active"></span>
+
+                                    <? }
+                                    for ($i = 0; $i < (5 - $q[4]); $i++) { ?>
+
+                                        <span></span>
+
+                                    <? } ?>
+                                    
+                                    
                                 </div>
+                                <span class="rat__qun">  (Рейтинг товара <?=$q[4]?>)</span>
+                                
 
                                 <ul class="pro__dtl__prize">
                                     <li><?= $q[1] ?> ₽</li>
@@ -209,7 +214,9 @@ require 'connectDB.php';
                                                             <span></span>
 
                                                         <? } ?>
+                                                        
                                                     </div>
+                                                    
                                                 </div>
                                                 <div class="comment_row">
                                                     <div><?= $comments[7] ?></div>
@@ -229,63 +236,69 @@ require 'connectDB.php';
                                     $queryChars = 'select order_product.IdProduct from `order` join order_product 
                                         on `order`.IdOrder = order_product.IdOrder 
                                         WHERE order_product.IdProduct =' . $_GET['id'] .
-                                        'and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
+                                        ' and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
                                     $resultChars = mysqli_query($db, $queryChars);
-                                    if (!$resultChars) {
+                                    $buyuser = mysqli_fetch_array($resultChars);
+                                    if (count($buyuser) > 0) {
+                                        $queryChars = 'SELECT * FROM `сomment` WHERE `IdUser` = ' . $_SESSION['idUsers'] . ';' . '';
+                                        $resultCommentUser = mysqli_query($db, $queryChars);
+                                        $CommetsOfuser = mysqli_fetch_array($resultCommentUser);
+                                        if (count($CommetsOfuser) == 0) {
                                 ?>
-                                        <h2 class="rating-title">Ваш отзыв</h2>
-                                        <!-- End RAting Area -->
-                                        <div class="review__box">
-                                            <form id="comment-form" action="product.php?id=<?= $_GET['id'] ?>&" method="post">
-                                                <div class="single-review-form pb--50">
-                                                    <div class="review-box message">
-                                                        <textarea name="сommentText" placeholder="Напишите ваш отзыв"></textarea>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="rating__wrap">
-                                                    <h4 class="rating-title-2"> Ваш рейтинг товара</h4>
-                                                    <div class="rating-area1">
-                                                        <input type="radio" id="star-5" name="rating" value="5">
-                                                        <label for="star-5" title="Оценка «5»"></label>
-                                                        <input type="radio" id="star-4" name="rating" value="4">
-                                                        <label for="star-4" title="Оценка «4»"></label>
-                                                        <input type="radio" id="star-3" name="rating" value="3">
-                                                        <label for="star-3" title="Оценка «3»"></label>
-                                                        <input type="radio" id="star-2" name="rating" value="2">
-                                                        <label for="star-2" title="Оценка «2»"></label>
-                                                        <input type="radio" id="star-1" name="rating" value="1">
-                                                        <label for="star-1" title="Оценка «1»"></label>
+                                            <h2 class="rating-title">Ваш отзыв</h2>
+                                            <!-- End RAting Area -->
+                                            <div class="review__box">
+                                                <form id="comment-form" action="product.php?id=<?= $_GET['id'] ?>" method="post">
+                                                    <div class="single-review-form pb--50">
+                                                        <div class="review-box message">
+                                                            <textarea name="сommentText" placeholder="Напишите ваш отзыв"></textarea>
+                                                        </div>
                                                     </div>
 
 
-                                                </div>
+                                                    <div class="rating__wrap">
+                                                        <h4 class="rating-title-2"> Ваш рейтинг товара</h4>
+                                                        <div class="rating-area1">
+                                                            <input type="radio" id="star-5" name="rating" value="5">
+                                                            <label for="star-5" title="Оценка «5»"></label>
+                                                            <input type="radio" id="star-4" name="rating" value="4">
+                                                            <label for="star-4" title="Оценка «4»"></label>
+                                                            <input type="radio" id="star-3" name="rating" value="3">
+                                                            <label for="star-3" title="Оценка «3»"></label>
+                                                            <input type="radio" id="star-2" name="rating" value="2">
+                                                            <label for="star-2" title="Оценка «2»"></label>
+                                                            <input type="radio" id="star-1" name="rating" value="1">
+                                                            <label for="star-1" title="Оценка «1»"></label>
+                                                        </div>
+
+
+                                                    </div>
 
 
 
-                                                <div class="htc__login__btn mt--30">
-                                                    <input class="fv-btn" form="comment-form" type="submit" value="Оставить отзыв" />
-                                                </div>
-                                            </form>
+                                                    <div class="htc__login__btn mt--30">
+                                                        <input class="fv-btn" form="comment-form" type="submit" value="Оставить отзыв" />
+                                                    </div>
+                                                </form>
+                                                <?if (isset($_POST['сommentText']) & isset($_POST['rating'])) {
+                                                    
 
-                                            <? if (isset($_POST['сommentText']) & isset($_POST['rating'])) {
-
-                                                $today = date("Y-m-d");
-                                                //INSERT INTO 'comment' (IdСomment, IdUser, IdProduct, DateOfCreate, Score, CommentText) VALUES (NULL,'20','113','2022-12-17','2', '222')
-
-                                                //INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '20', '113', '2022-12-02', '2', '2223123wdsads');
-                                                //$sql = "INSERT INTO 'comment' ('IdСomment', 'IdUser', 'IdProduct', 'DateOfCreate', 'Score', 'CommentText') VALUES (NULL,'{$_SESSION['idUsers']}','{$_GET['id']}','{$today}','{$_POST['rating']}', '{$_POST['сommentText']}')";
-                                                $sql = "INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '{$_SESSION['idUsers']}', '{$_GET['id']}', '{$today}', '{$_POST['rating']}', '{$_POST['сommentText']}')";
-
-                                                mysqli_query($db, $sql);
-                                                //header( 'Location: index.php' );
-                                            } ?>
-
-
-                                        </div>
-                                <? }
-                                }; ?>
+                                                    $today = date("Y-m-d");
+                                                    //INSERT INTO 'comment' (IdСomment, IdUser, IdProduct, DateOfCreate, Score, CommentText) VALUES (NULL,'20','113','2022-12-17','2', '222')
+                                                
+                                                    //INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '20', '113', '2022-12-02', '2', '2223123wdsads');
+                                                    //$sql = "INSERT INTO 'comment' ('IdСomment', 'IdUser', 'IdProduct', 'DateOfCreate', 'Score', 'CommentText') VALUES (NULL,'{$_SESSION['idUsers']}','{$_GET['id']}','{$today}','{$_POST['rating']}', '{$_POST['сommentText']}')";
+                                                    $sql = "INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '{$_SESSION['idUsers']}', '{$_GET['id']}', '{$today}', '{$_POST['rating']}', '{$_POST['сommentText']}')";
+                                                    
+                                                    mysqli_query($db, $sql);
+                                                    // header( 'Location: index.php' );
+                                                } ?>
+                                                
+                                            </div>
+                                    <? }
+                                    }
+                                } 
+                                ?>
                             </div>
                             <!-- End Single Content -->
                         </div>
