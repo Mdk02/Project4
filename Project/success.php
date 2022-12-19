@@ -67,7 +67,10 @@
 
             foreach ($_COOKIE as $key => $val) {
                 if (!(strpos($key, 'product') === false)) {             
-                    $sqlOrderProduct = "INSERT INTO `order_product` (IdOrder, IdProduct, Count) VALUES ('$id', '$val', 1)";
+                    $getPrice = "SELECT PriceProduct from Product where IdProduct = '$val'";
+                    $price = mysqli_fetch_array(mysqli_query($db, $getPrice))[0];
+
+                    $sqlOrderProduct = "INSERT INTO `order_product` (IdOrder, IdProduct, Count, Price) VALUES ('$id', '$val', 1, '$price')";
                     mysqli_query($db, $sqlOrderProduct);
                     setcookie($key, "", time() - 3600);
                 }
