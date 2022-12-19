@@ -85,7 +85,7 @@ require "connectDB.php";
                                                 <div class="slider__inner">
                                                     <h1 class="text--black"><span class="text--theme">Iphone<br>14 Pro</span></h1>
                                                     <div class="slider__btn">
-                                                        <a class="htc__btn text--black" href="catalog.php">Посмотреть</a>
+                                                        <a class="htc__btn text--black" href="catalog.php?search=iphone 14 pro">Посмотреть</a>
                                                         <!-- ИЗМЕНИТЬ ССЫЛКУ -->
                                                     </div>
                                                 </div>
