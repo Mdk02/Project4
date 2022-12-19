@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico in the root directory -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo/logo2.svg">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
@@ -71,7 +71,7 @@
         };
         $page = "catalog.php?category=";
 
-        if (   $_GET['category'] == ""){
+        if ($_GET['category'] == "") {
             $page = 'catalog.php';
         }
 
@@ -80,18 +80,14 @@
         <div class="wrapper fixed__footer">
             <!-- components/header.php -->
             <? include('components/header.php'); ?>
-            <div class="body__overlay"></div>
-            <!-- Start Offset Wrapper -->
-            <!-- End Offset Wrapper -->
-            <div style="height: 100px;">
-                <!-- offset top -->
-            </div>
 
-            <section class="htc__shop__sidebar bg__white ">
+            <div class="body__overlay"></div>
+
+            <section class="htc__shop__sidebar bg__white ptb--100">
                 <div class="container">
 
                     <div class="row">
-                        <form id="comment-form2" name="form1" action="<?=($page.$_GET['category'])?>" method="post">
+                        <form id="comment-form2" name="form1" action="<?= ($page . $_GET['category']) ?>" method="post">
                             <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
 
                                 <div class="htc__shop__left__sidebar">
@@ -105,9 +101,9 @@
                                     if (!isset($category_id)) {
 
                                         $query = 'select category.NameCategory , Count(*) from product , category
-                                where ' . $search_by_text_sql . '
-                                product.IdCategory = category.IdCategory
-                                GROUP BY category.NameCategory';
+                                            where ' . $search_by_text_sql . '
+                                            product.IdCategory = category.IdCategory
+                                            GROUP BY category.NameCategory';
                                         $result = mysqli_query($db, $query);
                                         $final = mysqli_fetch_all($result);
 
@@ -161,7 +157,7 @@
                                                 <div class="slider__range--output">
                                                     <div class="price__output--wrap">
                                                         <div class="price--output">
-                                                            <span>Цена :</span><input type="text" name="amount" value="<?=$_POST['amount']?>" id="amount" readonly>
+                                                            <span>Цена :</span><input type="text" name="amount" value="<?= $_POST['amount'] ?>" id="amount" readonly>
                                                         </div>
 
                                                         <div class="htc__login__btn mt--30">
@@ -557,7 +553,7 @@
                                                         <option value=" product.Score ASC ">Рейтинг</option>
                                                     </select>
                                                 </div>
-                                                
+
 
                                             </div>
 
@@ -630,12 +626,12 @@
                                             }
 
 
-                                            if (isset($_POST['amount']) & $_POST['amount'] != "" ) {
+                                            if (isset($_POST['amount']) & $_POST['amount'] != "") {
                                                 $sql_amount = ' and product.PriceProduct BETWEEN ' . str_replace('-', 'AND', str_replace('₽', '', $_POST['amount']));
                                                 $query = $query . $sql_amount;
                                             }
                                             if (isset($_POST['sortCatalog'])) {
-                                                $sql_sort =  ' ORDER BY '.$_POST['sortCatalog'] ;
+                                                $sql_sort =  ' ORDER BY ' . $_POST['sortCatalog'];
                                                 $query = $query . $sql_sort;
                                             }
 
@@ -656,6 +652,7 @@
                                                     document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="NoteRam" value=\"' + NoteRam + '\">';
                                                     document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="NoteCap" value=\"' + NoteCap + '\">';
                                                 }
+
                                                 function getSelectedMonoFilter() {
                                                     MonoDiag = getSelectedFiltersDiag('checkboxMonoDiag');
                                                     MonoMatric = getSelectedFiltersCharac('checkboxMonoMatric');
@@ -664,6 +661,7 @@
                                                     document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="MonoMatric" value=\"' + MonoMatric + '\">';
                                                     document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="MonoHz" value=\"' + MonoHz + '\">';
                                                 }
+
                                                 function getSelectedTeleFilter() {
                                                     TeleDiag = getSelectedFiltersDiag('checkboxTeleDiag');
                                                     TeleHDTV = getSelectedFiltersCharac('checkboxTeleHDTV');
@@ -672,6 +670,7 @@
                                                     document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="TeleDiag" value=\"' + TeleDiag + '\">';
                                                     document.getElementById('addInfo').innerHTML += '<input  type="hidden" name="TeleBri" value=\"' + TeleBri + '\">';
                                                 }
+
                                                 function getSelectedPhoneFilter() {
                                                     PhoneDiag = getSelectedFiltersDiag('checkboxPhoneDiag');
                                                     PhoneMatric = getSelectedFiltersCharac('checkboxPhoneMatric');
@@ -769,7 +768,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+        </div>
         </section>
         <!-- End Our ShopSide Area -->
 
@@ -842,29 +841,29 @@
 
         <!-- components/footer.php -->
         <? include('components/footer.php'); ?>
-    </div>
-    <!-- Body main wrapper end -->
+        </div>
+        <!-- Body main wrapper end -->
 
-    <!-- Placed js at the end of the document so the pages load faster -->
+        <!-- Placed js at the end of the document so the pages load faster -->
 
-    <!-- jquery latest version -->
-    <script src="js/vendor/jquery-1.12.0.min.js"></script>
-    <!-- Bootstrap framework js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- All js plugins included in this file. -->
-    <script src="js/plugins.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Waypoints.min.js. -->
-    <script src="js/waypoints.min.js"></script>
-    <!-- Main js file that contents all jQuery plugins activation. -->
-    <script src="js/main.js"></script>
+        <!-- jquery latest version -->
+        <script src="js/vendor/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap framework js -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- All js plugins included in this file. -->
+        <script src="js/plugins.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- Waypoints.min.js. -->
+        <script src="js/waypoints.min.js"></script>
+        <!-- Main js file that contents all jQuery plugins activation. -->
+        <script src="js/main.js"></script>
 
-    <script src="js/idel.js"></script>
-
-
+        <script src="js/idel.js"></script>
 
 
-</body>
+
+
+    </body>
 
 </htmml>
