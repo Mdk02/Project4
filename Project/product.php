@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo/logo2.svg">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
