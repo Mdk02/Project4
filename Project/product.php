@@ -231,7 +231,7 @@ require 'connectDB.php';
                                         WHERE order_product.IdProduct =' . $_GET['id'] .
                                         'and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
                                     $resultChars = mysqli_query($db, $queryChars);
-                                    if ($resultChars) {
+                                    if (!$resultChars) {
                                 ?>
                                         <h2 class="rating-title">Ваш отзыв</h2>
                                         <!-- End RAting Area -->

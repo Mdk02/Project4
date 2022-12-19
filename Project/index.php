@@ -290,7 +290,7 @@ require "connectDB.php";
                                                             </div>
                                                         </div>
                                                         <div class="product__details">
-                                                            <h2><a href="product-details.php"><?= $q[0] ?></a></h2>
+                                                            <h2><a href="product.php?id="><?= $q[0] ?></a></h2>
                                                             <ul class="product__price">
                                                                 <li class="new__price"><?= $q[2] ?> ₽</li>
                                                             </ul>
