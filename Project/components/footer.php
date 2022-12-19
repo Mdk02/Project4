@@ -120,7 +120,7 @@
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     <div class="copyright__inner">
                         <div class="copyright">
-                            <p>© 2022 <a href="index.php">PROJECT4</a>. All Right Reserved.</p>
+                            <p>© 2022 <a href="index.php">PROJECT4</a></p>
                         </div>
                         <!-- <ul class="footer__menu">
                         <li><a href="index.php">Home</a></li>
