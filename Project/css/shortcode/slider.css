@@ -66,7 +66,7 @@
 -------------------------------------------*/
 
 .slider__inner h1 {
-  color: #fff;
+  /* color: #fff; */
   font-size: 60px;
   font-weight: 500;
   text-align: center;
@@ -88,7 +88,7 @@
     text-align: center;
 }
 .slider__btn a.htc__btn {
-    color: #fff;
+    /* color: #fff; */
     font-family: Dosis;
     font-size: 16px;
     font-weight: 500;
@@ -99,7 +99,7 @@
     transition: all 0.3s ease 0s;
 }
 .slider__btn a.htc__btn::before {
-    background: #fff none repeat scroll 0 0;
+    /* background: #fff none repeat scroll 0 0; */
     content: "";
     height: 1px;
     position: absolute;
@@ -279,7 +279,7 @@
 
 .slider__activation__wrap.owl-carousel .owl-nav div {
   background: transparent none repeat scroll 0 0;
-  height: 50px;
+  /* height: 50px; */
   left: 100px;
   line-height: 41px;
   position: absolute;
@@ -387,7 +387,7 @@
 }
 
 .slider-text-left.slider-height-inherit .slider__inner {
-  padding: 184px 0px 184px 40px;
+  padding: 120px 0px 120px 60px;
 }
 
 .slider__full--screen.slider-height-inherit {
@@ -412,9 +412,11 @@
 
 
 
+/* OWN */
 
-
-
+.slider__container.with-shadow {
+  box-shadow: 0 8px 20px rgb(0 0 0 / 8%);
+}
 
 
 

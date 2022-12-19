@@ -91,8 +91,8 @@
 }
 
 .rating-result {
-	width: 265px;
-	margin: 0 auto;
+	/* width: 265px; */
+	/* margin: 0 auto; */
 }
 .rating-result span {
 	padding: 0;
@@ -906,6 +906,7 @@
 .product-images img {
     height: 100%;
     padding: 15px;
+    object-fit: contain;
 }
 
 .product-info h1 {
@@ -4179,7 +4180,7 @@ a.shipping-calculator-button:hover {
 }
 .portfolio-social ul li a:hover,
 .portfolio-info ul li a:hover {
-    color: #ff4136;
+    color: rgb(255, 65, 54);
 }
 .portfolio-social {
     margin-top: 30px;
@@ -4262,6 +4263,8 @@ a.shipping-calculator-button:hover {
 
 
 /* own */
+
+/* CHARACTERISTICS */
 .сharacteristics_list {
     margin: 0 auto;
     width: fit-content;
@@ -4292,15 +4295,19 @@ div.сharacteristic_value {
     padding: 5px;
 }
 
+
 .wide {
     padding: 7px;
 }
 
 .btn-red {
     background: #f31c39;
+    color: #fff;
+    height: 50px;
 }
 .btn-red:hover {
     background: #d11830;
+    color: #fff;
 }
 
 /* .orange {
@@ -4330,3 +4337,79 @@ div.сharacteristic_value {
     line-height: 30px;
     /* color: #606060; */
 }
+
+
+
+/* ORDERS */
+.order-thumbnail {
+    min-width: 8%;
+}
+.order-dates {
+    min-width: 8%;
+}
+.order-content {
+    min-width: auto;
+}
+.order-price {
+    min-width: 10%;
+}
+.order-status {
+    min-width: 10%;
+}
+
+/* COMMENTS */
+.comment-product {
+    min-width: 10%;
+}
+.comment-date {
+    min-width: 8%;
+}
+.comment-score {
+    min-width: 8%;
+}
+.comment-text {
+    min-width: auto;
+}
+
+.comment_row {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #606060;
+}
+
+
+
+/* PADDINGS */
+.p--20 {
+    padding: 20px;
+}
+
+
+/* NEW YEAR */
+/* .mainmenu__area.sticky__header.scroll-header:before {
+    position: absolute;
+    content: "";
+    top: -30px;
+    left: 0;
+    width: 100%;
+    height: 63px;
+    background: url("/images/new-year/garland.svg") repeat 0;
+} */
+footer:before {
+    position: absolute;
+    content: "";
+    /* top: -30px; */
+    margin-top: -30px;
+    left: 0;
+    width: 100%;
+    height: 63px;
+    background: url("/images/new-year/garland.svg") repeat 0;
+}
+
+
+
+
+

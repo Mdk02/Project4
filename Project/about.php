@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $user[2] ?></title>
+    <title>О нас</title>
 
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/logo.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo/logo2.svg">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <!-- All css files are included here. -->
@@ -47,7 +47,7 @@
             <div class="container">
                 <div class="row">
                     <h2 class="section-title-3 pb--20 ">О проекте</h2>
-                    <div class="simple_text">*НАЗВАНИЕ* - это такой-то проект для чего-то там. 
+                    <div class="simple_text">PROJECT4 - это магазин эк.
                         привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет привет</div>
                 </div>
             </div>
@@ -56,18 +56,21 @@
         <section class="bg__white pb--100">
             <div class="container">
                 <div class="row">
-                    <h2 class="section-title-3 pb--20">Команда разработчиков</h2>
+                    <h2 class="section-title-3 pb--20">
+                        Команда разработчиков
+                    </h2>
+
                     <div class="portfolio-style">
                         <div class="row grid">
                             <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
                                 <div class="single-portfolio mb--30 border-simple">
                                     <div class="portfolio-img-title">
-                                        <a href="single-portfolio.html">
-                                            <img src="images/dev_profiles/github_bulat.png" alt="" />
+                                        <a href="https://github.com/Mdk02">
+                                            <img src="images/dev_profiles/vk_bulat.jpg" alt="" />
                                         </a>
                                         <div class="portfolio-title hover-title">
-                                            <h3><a href="single-portfolio.html">Булат</a></h3>
-                                            <span>Backеnd разработчик</span>
+                                            <h3><a href="https://github.com/Mdk02">Булат</a></h3>
+                                            <span>Backеnd разработчик, проектировщик БД</span>
                                         </div>
                                     </div>
                                 </div>
@@ -75,12 +78,12 @@
                             <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
                                 <div class="single-portfolio mb--30 border-simple">
                                     <div class="portfolio-img-title">
-                                        <a href="single-portfolio.html">
+                                        <a href="https://github.com/soterdone">
                                             <img src="images/dev_profiles/github_gosha.jfif" alt="" />
                                         </a>
                                         <div class="portfolio-title hover-title">
-                                            <h3><a href="single-portfolio.html">Георгий</a></h3>
-                                            <span>Тестировщик</span>
+                                            <h3><a href="https://github.com/soterdone">Георгий</a></h3>
+                                            <span>Backеnd разработчик, тестировщик</span>
                                         </div>
                                     </div>
                                 </div>
@@ -88,12 +91,12 @@
                             <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
                                 <div class="single-portfolio mb--30 border-simple">
                                     <div class="portfolio-img-title">
-                                        <a href="single-portfolio.html">
+                                        <a href="https://github.com/Sharik000Idel">
                                             <img src="images/dev_profiles/github_idel.png" alt="" />
                                         </a>
                                         <div class="portfolio-title hover-title">
-                                            <h3><a href="single-portfolio.html">Идель</a></h3>
-                                            <span>Менеджер программы</span>
+                                            <h3><a href="https://github.com/Sharik000Idel">Идель</a></h3>
+                                            <span>Backеnd разработчик, менеджер программы</span>
                                         </div>
                                     </div>
                                 </div>
@@ -101,12 +104,12 @@
                             <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
                                 <div class="single-portfolio mb--30 border-simple">
                                     <div class="portfolio-img-title">
-                                        <a href="single-portfolio.html">
+                                        <a href="">
                                             <img src="images/dev_profiles/github_zahar.png" alt="" />
                                         </a>
                                         <div class="portfolio-title hover-title">
-                                            <h3><a href="single-portfolio.html">Захар</a></h3>
-                                            <span>Менеджер продукта</span>
+                                            <h3><a href="">Захар</a></h3>
+                                            <span>Менеджер продукта, тестировщик</span>
                                         </div>
                                     </div>
                                 </div>
@@ -114,12 +117,12 @@
                             <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat1 cat3">
                                 <div class="single-portfolio mb--30 border-simple">
                                     <div class="portfolio-img-title">
-                                        <a href="single-portfolio.html">
+                                        <a href="https://github.com/aaaminov">
                                             <img src="images/dev_profiles/github_arslan.jfif" alt="" />
                                         </a>
                                         <div class="portfolio-title hover-title">
-                                            <h3><a href="single-portfolio.html">Арслан</a></h3>
-                                            <span>Frontеnd Разработчик</span>
+                                            <h3><a href="https://github.com/aaaminov">Арслан</a></h3>
+                                            <span>Frontеnd Разработчик, тестировщик</span>
                                         </div>
                                     </div>
                                 </div>
