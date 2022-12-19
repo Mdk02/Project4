@@ -64,7 +64,7 @@
                 <div class="ft__widget">
                     <h2 class="ft__title">Infomation</h2>
                     <ul class="footer-categories">
-                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="about.php">About</a></li>
                     </ul>
                 </div>
             </div>

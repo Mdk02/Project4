@@ -1,47 +1,109 @@
 <?
 
-ob_end_clean();
+// ob_end_clean();
 require('connectDB.php');
-require('fpdf.php');
 
-// Instantiate and use the FPDF class 
+// подключаем шрифты
+define('FPDF_FONTPATH', "fpdf/font/");
+
+// подключаем библиотеку
+require('fpdf/fpdf.php');
+
+// создаем PDF документ
 $pdf = new FPDF();
+// устанавливаем заголовок документа
+$pdf->SetTitle("check");
 
-//Add a new page
-$pdf->AddPage();
+// создаем страницу
+$pdf->AddPage('P');
+// $pdf->SetDisplayMode(real,'default');
 
-// Set the font for the text
-$pdf->SetFont('Arial', 'B', 14);
+// добавляем шрифт ариал
+$pdf->AddFont('Arial', '', 'arial.php');
+// устанавливаем шрифт Ариал
+$pdf->SetFont('Arial');
+// устанавливаем цвет шрифта
+$pdf->SetTextColor(0, 0, 0);
+// устанавливаем размер шрифта
+$pdf->SetFontSize(14);
 
-// Prints a cell with given text 
+$pdf->Cell(0, 12, iconv('utf-8', 'windows-1251', ""), 0, 1, 'lol', false);
 
+
+
+
+
+
+
+// запросы
 $orderID = $_GET['id_order'];
 
-$query_o = "SELECT o.* 
-    FROM `order` as o 
-    WHERE o.IdOrder = $orderID";
+$query_o = "SELECT o.*, u.* 
+    FROM `order` as o, `users` as u 
+    WHERE o.IdOrder = $orderID AND o.IdUser = u.IdUsers";
 $result_o = mysqli_query($db, $query_o);
 $order = mysqli_fetch_array($result_o);
 
-
-$pdf->Cell(0, 12, "id = " . $order[0], 0, 1, 'lol', false);
-
-$query_op_p = "SELECT p.IdProduct, p.NameProduct, op.Count 
+$query_op_p = "SELECT p.IdProduct, p.NameProduct, p.PriceProduct, op.Count 
     FROM `order_product` as op, `product` as p 
     WHERE op.IdProduct = p.IdProduct AND op.IdOrder = " . $orderID . "";
 $result_op_p = mysqli_query($db, $query_op_p);
+
+// данные
+
+
+
+// $pdf->Cell(0, 12, iconv('utf-8', 'windows-1251', "PROJECT4"), 0, 1, 'C', false);
+// $pdf->Cell(0, 12, "", 0, 1, '', false);
+
+$pdf->Image('images/logo.png',10, 16, 10, 10 );
+$pdf->Write(0, iconv('utf-8', 'windows-1251', "        PROJECT4"));
+$pdf->Cell(0, 12, "", 0, 1, '', false);
+
+$pdf->SetTextColor(96, 96, 96);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', "Номер квитанции: "));
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', $order[0]));
+$pdf->Cell(0, 12, "", 0, 1, '', false);
+
+$pdf->SetTextColor(96, 96, 96);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', "Дата платежа: "));
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', $order[3]));
+$pdf->Cell(0, 12, "", 0, 1, '', false);
+
+$pdf->SetTextColor(96, 96, 96);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', "Получатель: "));
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', $order[7] . " " . $order[8] . " " . $order[9]));
+$pdf->Cell(0, 12, "", 0, 1, '', false);
+
+$pdf->SetTextColor(96, 96, 96);
+$pdf->Cell(0, 12, iconv('utf-8', 'windows-1251', "Товары"), 0, 0, '', false);
+$pdf->Cell(0, 12, "", 0, 1, '', false);
+$pdf->SetTextColor(0, 0, 0);
+
+$pdf->Cell(150, 12, iconv('utf-8', 'windows-1251', "Название"), 1, 0, 'C', false);
+$pdf->Cell(40, 12, iconv('utf-8', 'windows-1251', "Цена"), 1, 0, 'C', false);
+$pdf->Cell(0, 12, "", 0, 1, '', false);
+
+// таблица
+$i = 1;
 while ($row = mysqli_fetch_array($result_op_p)) {
-    $pdf->Cell(0, 12, "name = " . $row[1], 0, 1, 'lol', false);
+    $pdf->Cell(150, 12, iconv('utf-8', 'windows-1251', "  " . $row[1]), 1, 0, 'L', false);
+    $pdf->Cell(40, 12, iconv('utf-8', 'windows-1251', "  " . $row[2]), 1, 1, 'C', false);
+    $i++;
 }
 
+$pdf->Cell(150, 12, iconv('utf-8', 'windows-1251', "  " . "Итого  "), 0, 0, 'L', false);
+$pdf->Cell(40, 12, iconv('utf-8', 'windows-1251', $order[2]), 1, 1, 'C', false);
+$pdf->Cell(0, 12, "", 0, 1, '', false);
 
-
-$pdf->Cell(0, 12, "sum = " . $order[2], 0, 2, 'lol', false);
-$pdf->Cell(0, 12, "date order = " . $order[3], 0, 2, 'lol', false);
-$pdf->Cell(0, 12, "arrival date = " . $order[4], 0, 2, 'lol', false);
-$pdf->Cell(0, 12, "status = " . $order[5], 0, 2, 'lol', false);
-
-
+$pdf->SetTextColor(96, 96, 96);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', "Статус: "));
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Write(0, iconv('utf-8', 'windows-1251', $order[5]));
+$pdf->Cell(0, 12, "", 0, 1, '', false);
 
 // var_dump($order);
 

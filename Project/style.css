@@ -906,6 +906,7 @@
 .product-images img {
     height: 100%;
     padding: 15px;
+    object-fit: contain;
 }
 
 .product-info h1 {
@@ -4179,7 +4180,7 @@ a.shipping-calculator-button:hover {
 }
 .portfolio-social ul li a:hover,
 .portfolio-info ul li a:hover {
-    color: #ff4136;
+    color: rgb(255, 65, 54);
 }
 .portfolio-social {
     margin-top: 30px;

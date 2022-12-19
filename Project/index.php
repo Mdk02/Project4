@@ -130,7 +130,8 @@ require "connectDB.php";
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
-                    <a href="shop-sidebar.php"><img src="images/new-product/6.jpg" alt="new product"></a>
+                    <img style="width: 100%;" src="/images/new-year/new-year-banner.png" alt="s ng">
+
                 </div>
             </div>
         </div>
@@ -242,7 +243,7 @@ require "connectDB.php";
                                                             <div class="product__hover__info">
                                                                 <ul class="product__action">
                                                                     <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-eye"></span></a></li>
-                                                                    <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                    <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -279,7 +280,7 @@ require "connectDB.php";
                                                             <div class="product__hover__info">
                                                                 <ul class="product__action">
                                                                     <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-eye"></span></a></li>
-                                                                    <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>
+                                                                    <li><a title="Добавить в корзину" id=<?= $q[3] ?> onclick="addToCart(this)"><span class="ti-shopping-cart"></span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>

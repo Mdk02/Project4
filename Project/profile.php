@@ -212,14 +212,13 @@ if (isset($_SESSION['idUsers'])) {
                                                             <th class="order-content">Содержимое</th>
                                                             <th class="order-price">Цена</th>
                                                             <th class="order-status">Статус</th>
-                                                            <th class="order-download"></th>
+                                                            <th class="order-download">Чек</th>
                                                         </tr>
                                                     </thead>
                                                     <?
-
                                                     $query_o = "SELECT o.* 
                                                         FROM `order` as o 
-                                                        WHERE o.IdUser = '3'";
+                                                        WHERE o.IdUser = " . $_SESSION['idUsers'];
 
                                                     $result_o = mysqli_query($db, $query_o);
 
@@ -263,7 +262,6 @@ if (isset($_SESSION['idUsers'])) {
                                                             </td>
                                                         </tr>
                                                     <? }
-
                                                     ?>
                                                 </table>
                                             </div>
@@ -282,10 +280,9 @@ if (isset($_SESSION['idUsers'])) {
                                                         </tr>
                                                     </thead>
                                                     <?
-
                                                     $query_c_p = "SELECT c.*, p.idProduct, p.NameProduct 
                                                         FROM `сomment` as c, `product` as p 
-                                                        WHERE c.IdProduct = p.IdProduct AND c.IdUser = '3'";
+                                                        WHERE c.IdProduct = p.IdProduct AND c.IdUser = " . $_SESSION['idUsers'];
 
                                                     $result_c_p = mysqli_query($db, $query_c_p);
 
@@ -305,7 +302,6 @@ if (isset($_SESSION['idUsers'])) {
                                                             </td>
                                                         </tr>
                                                     <? }
-
                                                     ?>
                                                 </table>
                                             </div>

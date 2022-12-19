@@ -109,7 +109,7 @@ require 'connectDB.php';
 
 
                                 <ul class="pro__dtl__btn">
-                                    <li class="buy__now__btn"><a href="#">В корзину</a></li>
+                                    <li class="buy__now__btn"><a id=<?= $q[3] ?> onclick="addToCart(this)">В корзину</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -314,6 +314,8 @@ require 'connectDB.php';
     <script src="js/waypoints.min.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
+
+    <script src="js/idel.js"></script>
 
 </body>
 
