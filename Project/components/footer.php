@@ -6,7 +6,7 @@
                 <div class="col-md-4 col-lg-3 col-sm-5">
                     <div class="ft__widget separate-window">
                         <div class="ft__logo">
-                            <a href="index.php">
+                            <a href="/images/dev_profiles/adun.gif">
                                 <img src="images/logo/project4.svg" alt="footer logo">
                             </a>
                         </div>
