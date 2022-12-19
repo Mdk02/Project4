@@ -8,7 +8,9 @@
                 <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
                     <div class="logo">
                         <a href="index.php">
-                            <img src="images/logo/logo.svg" alt="logo">
+                            <!-- <img src="images/logo/logo.svg" alt="logo"> -->
+                            <img src="images/logo/logo2.svg" alt="logo">
+                            <img src="images/logo/project4.svg" alt="logo">
                         </a>
                     </div>
                 </div>

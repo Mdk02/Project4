@@ -190,7 +190,16 @@
 .sticky__header.scroll-header .logo a {
   height: 70px;
   line-height: 70px;
+  display: flex;
+  align-items: center;
 }
+
+/* OWN */
+.sticky__header.scroll-header .logo a :first-child {
+  height: 60%;
+}
+/* /OWN */
+
 .sticky__header.scroll-header .main__menu > li > a {
   height: 70px;
   line-height: 70px;
