@@ -797,22 +797,9 @@
                                 <div class="product-info">
                                     <!-- вот тут имя -->
                                     <h1 id="product-name-quick"></h1>
-                                    <div class="rating__and__review">
-                                        <ul class="rating">
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                        </ul>
-                                        <div class="review">
-                                            <a href="#">4 customer reviews</a>
-                                        </div>
-                                    </div>
                                     <div class="price-box-3">
                                         <div class="s-price-box">
                                             <span id="new-price-quick" class="new-price">новыая цена</span>
-                                            <span id="old-price-quick" class="old-price">старая цена</span>
                                         </div>
                                     </div>
 

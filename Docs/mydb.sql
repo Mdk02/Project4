@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Дек 19 2022 г., 21:28
--- Версия сервера: 8.0.30
--- Версия PHP: 7.2.34
+-- Хост: 127.0.0.1:3307
+-- Время создания: Дек 19 2022 г., 23:26
+-- Версия сервера: 8.0.24
+-- Версия PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,9 +20,7 @@ SET time_zone = "+00:00";
 --
 -- База данных: `mydb`
 --
-DROP DATABASE IF EXISTS `mydb`;
-CREATE DATABASE IF NOT EXISTS `mydb`;
-USE `mydb`;
+
 -- --------------------------------------------------------
 
 --
@@ -6722,8 +6720,8 @@ CREATE TABLE `сomment` (
 --
 
 INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES
-(1, 3, 115, '2022-12-18', 5, 'очень крутой моник'),
-(2, 1, 115, '2022-12-18', 4, 'ла-ла-ла-ла-ла-ла-ла-ла-ла-ла-ла-ла');
+(2, 1, 115, '2022-12-18', 4, 'ла-ла-ла-ла-ла-ла-ла-ла-ла-ла-ла-ла'),
+(7, 3, 115, '2022-12-19', 5, 'Проблемный монитор');
 
 --
 -- Индексы сохранённых таблиц
@@ -6841,6 +6839,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `сharacteristic`
   MODIFY `IdСharacteristic` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+
+--
+-- AUTO_INCREMENT для таблицы `сomment`
+--
+ALTER TABLE `сomment`
+  MODIFY `IdСomment` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
