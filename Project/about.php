@@ -88,19 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
-                                <div class="single-portfolio mb--30 border-simple">
-                                    <div class="portfolio-img-title">
-                                        <a href="https://github.com/Sharik000Idel">
-                                            <img src="images/dev_profiles/github_idel.png" alt="" />
-                                        </a>
-                                        <div class="portfolio-title hover-title">
-                                            <h3><a href="https://github.com/Sharik000Idel">Идель</a></h3>
-                                            <span>Backеnd разработчик, менеджер программы</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
                                 <div class="single-portfolio mb--30 border-simple">
                                     <div class="portfolio-img-title">
@@ -123,6 +111,20 @@
                                         <div class="portfolio-title hover-title">
                                             <h3><a href="https://github.com/aaaminov">Арслан</a></h3>
                                             <span>Frontеnd Разработчик, тестировщик</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12 grid-item cat5 cat2">
+                                <div class="single-portfolio mb--30 border-simple">
+                                    <div class="portfolio-img-title">
+                                        <a href="https://github.com/Sharik000Idel">
+                                            <img src="https://sun9-83.userapi.com/impg/k-MsedLzQptT5bVjYKc1tw7AaSS-HdVJmJ-z9g/gdHdOXPEk74.jpg?size=604x522&quality=95&sign=2aa40c5e5023e816553c96436470486d&c_uniq_tag=WhBtTVVJ__plxcYpFC2hH57w7l8-omra_nqBzcOptNo&type=album" alt="" />
+                                        </a>
+                                        <div class="portfolio-title hover-title">
+                                            <h3><a href="https://github.com/Sharik000Idel">Идель</a></h3>
+                                            <span>Backеnd разработчик, менеджер программы</span>
                                         </div>
                                     </div>
                                 </div>
