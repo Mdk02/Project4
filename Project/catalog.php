@@ -311,9 +311,7 @@
                                     $delete = '"';
                                     ?>
                                     <script>
-                                        a = <?= ((mysqli_fetch_array($result))[3]); ?>;
-                                        console.log('asdfsadfds');
-                                        console.log(a);
+                                        
                                     </script>
                                     <?
                                     while ($all_product_list = mysqli_fetch_array($result)) {
@@ -331,7 +329,10 @@
                                                     <div class="product__hover__info">
                                                         <ul class="product__action">
                                                             <li>
-                                                                <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $all_product_list[3] ?>','<?= $all_product_list[1] ?>','<? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '<? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
+                                                                <a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#" onclick="idelVer1('<?= $all_product_list[3] ?>','<?= $all_product_list[1] ?>',
+                                                                '
+                                                                <? echo str_replace($delete, ' ', $all_product_list[0]) ?>' ,'Рейтинг','<?= $all_product_list[2] ?>', '<?= $all_product_list[2] ?>', '
+                                                                <? echo str_replace($delete, ' ', $all_product_list[4]) ?>')">
                                                                     <span class="ti-eye"></span>
                                                                 </a>
                                                             </li>
