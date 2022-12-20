@@ -1,4 +1,4 @@
-#СДЕЛАТЬ ССЫЛКУ НА SUCCESS.PHP ИЗ КОРЗИНЫ, БЕЗ QUIWI
+# СДЕЛАТЬ ССЫЛКУ НА SUCCESS.PHP ИЗ КОРЗИНЫ, БЕЗ QUIWI
 
 Project4В
 
