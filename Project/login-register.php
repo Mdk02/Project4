@@ -65,8 +65,8 @@ require "connectDB.php";
                             <!-- Start Single Content -->
                             <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
                                 <form class="login" method="post" action="login-register.php" id="login_form">
-                                    <input type="email" placeholder="Почта*" name="userEmail">
-                                    <input type="password" placeholder="Пароль*" name="userPassword">
+                                    <input type="email" placeholder="Почта*" name="userEmail" required >
+                                    <input type="password" placeholder="Пароль*" name="userPassword" required>
                                 </form>
                                 <div class="tabs__checkbox">
                                     <input type="checkbox">
