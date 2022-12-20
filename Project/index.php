@@ -103,7 +103,7 @@ require "connectDB.php";
                     <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 float-right-style">
                         <div class="categories-menu mrg-xs">
                             <div class="category-heading">
-                                <h3>Categories</h3>
+                                <h3>Категории</h3>
                             </div>
                             <div class="category-menu-list">
                                 <ul>
@@ -225,7 +225,7 @@ require "connectDB.php";
                                             <?
                                             $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
                                             where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
-                                             order by product.idproduct desc limit 8';
+                                             order by `product`.`PriceProduct` ASC limit 8';
 
                                             $result = mysqli_query($db, $query);
                                             while ($q = mysqli_fetch_array($result)) {
@@ -267,11 +267,11 @@ require "connectDB.php";
                                     <div class="row">
                                         <div class="product-slider-active owl-carousel">
                                             <?
-                                           $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product,product_properties 
-                                           where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3
-                                            order by product.idproduct desc limit 8';
-
-                                           $result = mysqli_query($db, $query);
+                                            $query = 'select nameproduct, value, priceproduct, product.idproduct , product.DescriptionProduct from product, product_properties 
+                                            where product.idproduct = product_properties.idproduct and product_properties.idcharacteristic=3 and product.idproduct in 
+                                            (SELECT IdProduct FROM `order_product` GROUP BY IdProduct order by Count(*) desc) limit 8';
+                                            
+                                            $result = mysqli_query($db, $query);
                                             while ($q = mysqli_fetch_array($result)) {
                                             ?>
                                                 <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">

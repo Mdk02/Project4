@@ -93,7 +93,7 @@
                                 <div class="single-portfolio mb--30 border-simple">
                                     <div class="portfolio-img-title">
                                         <a href="">
-                                            <img src="images/dev_profiles/github_zahar.png" alt="" />
+                                            <img src="images/dev_profiles/zahar.jfif" alt="" />
                                         </a>
                                         <div class="portfolio-title hover-title">
                                             <h3><a href="">Захар</a></h3>

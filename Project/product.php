@@ -48,6 +48,7 @@ require 'connectDB.php';
 
         <!-- components/header.php -->
         <? include('components/header.php'); ?>
+        
 
         <div class="body__overlay"></div>
 
@@ -56,6 +57,9 @@ require 'connectDB.php';
             <div class="container">
                 <div class="scroll-active">
                     <div class="row">
+
+
+                    
                         <?
                         $query = 'select nameproduct, priceproduct, descriptionproduct, idproduct , Score from product where product.idproduct = ' . $_GET["id"] . '';
                         $result = mysqli_query($db, $query);
@@ -93,19 +97,19 @@ require 'connectDB.php';
 
 
                                 <div class="rating-result pro__dtl__rating">
-                                    <? for ($i = 0; $i < $q[4]; $i++) { ?>
+                                    <!-- <? // for ($i = 0; $i <= $q[4]-1; $i++) { ?>
                                         <span class="active"></span>
 
-                                    <? }
-                                    for ($i = 0; $i < (5 - $q[4]); $i++) { ?>
+                                    <? // }
+                                    //for ($i = 0; $i < (5 - $q[4]); $i++) { ?>
 
                                         <span></span>
 
-                                    <? } ?>
+                                    <?// } ?> -->
                                     
+                                    <span class="active"> (<?=$q[4]?>)</span>
                                     
                                 </div>
-                                <span class="rat__qun">  (Рейтинг товара <?=$q[4]?>)</span>
                                 
 
                                 <ul class="pro__dtl__prize">
@@ -239,15 +243,30 @@ require 'connectDB.php';
                                         ' and `order`.`IdUser` =' . $_SESSION['idUsers'] . ';' . '';
                                     $resultChars = mysqli_query($db, $queryChars);
                                     $buyuser = mysqli_fetch_array($resultChars);
-                                    if (count($buyuser) > 0) {
-                                        $queryChars = 'SELECT * FROM `сomment` WHERE `IdUser` = ' . $_SESSION['idUsers'] . ';' . '';
+                                    if ($buyuser  != NULL) {
+                                        $queryChars = 'SELECT * FROM `сomment` WHERE IdProduct = '.  $_GET['id']  .' and `IdUser` = ' . $_SESSION['idUsers'] . ';' . '';
                                         $resultCommentUser = mysqli_query($db, $queryChars);
                                         $CommetsOfuser = mysqli_fetch_array($resultCommentUser);
-                                        if (count($CommetsOfuser) == 0) {
+                                        if ($CommetsOfuser == NULL) {
                                 ?>
                                             <h2 class="rating-title">Ваш отзыв</h2>
                                             <!-- End RAting Area -->
                                             <div class="review__box">
+
+
+                                            <?if (isset($_POST['сommentText']) & isset($_POST['rating'])) {
+                                                    
+
+                                                    $today = date("Y-m-d");
+                                                    //INSERT INTO 'comment' (IdСomment, IdUser, IdProduct, DateOfCreate, Score, CommentText) VALUES (NULL,'20','113','2022-12-17','2', '222')
+                                                
+                                                    //INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '20', '113', '2022-12-02', '2', '2223123wdsads');
+                                                    //$sql = "INSERT INTO 'comment' ('IdСomment', 'IdUser', 'IdProduct', 'DateOfCreate', 'Score', 'CommentText') VALUES (NULL,'{$_SESSION['idUsers']}','{$_GET['id']}','{$today}','{$_POST['rating']}', '{$_POST['сommentText']}')";
+                                                    $sql = "INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '{$_SESSION['idUsers']}', '{$_GET['id']}', '{$today}', '{$_POST['rating']}', '{$_POST['сommentText']}')";
+                                                    
+                                                    mysqli_query($db, $sql);
+                                                } ?>
+
                                                 <form id="comment-form" action="product.php?id=<?= $_GET['id'] ?>" method="post">
                                                     <div class="single-review-form pb--50">
                                                         <div class="review-box message">
@@ -280,19 +299,6 @@ require 'connectDB.php';
                                                         <input class="fv-btn" form="comment-form" type="submit" value="Оставить отзыв" />
                                                     </div>
                                                 </form>
-                                                <?if (isset($_POST['сommentText']) & isset($_POST['rating'])) {
-                                                    
-
-                                                    $today = date("Y-m-d");
-                                                    //INSERT INTO 'comment' (IdСomment, IdUser, IdProduct, DateOfCreate, Score, CommentText) VALUES (NULL,'20','113','2022-12-17','2', '222')
-                                                
-                                                    //INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '20', '113', '2022-12-02', '2', '2223123wdsads');
-                                                    //$sql = "INSERT INTO 'comment' ('IdСomment', 'IdUser', 'IdProduct', 'DateOfCreate', 'Score', 'CommentText') VALUES (NULL,'{$_SESSION['idUsers']}','{$_GET['id']}','{$today}','{$_POST['rating']}', '{$_POST['сommentText']}')";
-                                                    $sql = "INSERT INTO `сomment` (`IdСomment`, `IdUser`, `IdProduct`, `DateOfCreate`, `Score`, `CommentText`) VALUES (NULL, '{$_SESSION['idUsers']}', '{$_GET['id']}', '{$today}', '{$_POST['rating']}', '{$_POST['сommentText']}')";
-                                                    
-                                                    mysqli_query($db, $sql);
-                                                    // header( 'Location: index.php' );
-                                                } ?>
                                                 
                                             </div>
                                     <? }

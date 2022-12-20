@@ -139,7 +139,7 @@ if (isset($_SESSION['idUsers'])) {
                                         <div class="row">
                                             <div class="col-md-6 col-md-offset-3">
                                                 <div role="tabpanel" class="single__tabs__panel tab-pane fade active in">
-                                                    <form class="сharacteristics_list" method="post">
+                                                    <form id="form_izmena" class="сharacteristics_list" method="post">
                                                         <div class="сharacteristic_row">
                                                             <div class="сharacteristic_name vert-middle">
                                                                 Фамилия
@@ -175,7 +175,7 @@ if (isset($_SESSION['idUsers'])) {
                                                                 Номер телефона
                                                             </div>
                                                             <div class="сharacteristic_value"><small class="validation_error"><?php echo $errors['tel'] ?? '' ?></small>
-                                                                <input type="text" placeholder="Номер телефона*" name="tel" required pattern="[0-9]{10}" value="<?= $user[6] ?>">
+                                                                <input type="text" placeholder="Номер телефона*" name="tel" required pattern="[0-9]{11}" value="<?= $user[6] ?>">
                                                             </div>
                                                         </div>
                                                         <div class="сharacteristic_row">
@@ -193,10 +193,43 @@ if (isset($_SESSION['idUsers'])) {
                                                             <div class="сharacteristic_value"><input type="password" placeholder="Пароль*" name="password" required value="<?= $user[7] ?>">
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="htc__login__btn">
-                                                            <input type="submit" value="Сохранить"> <!-- СДЕЛАТЬ СОХРАНЕНИЕ -->
+                                                            <input form="form_izmena" type="submit" value="Сохранить"> <!-- СДЕЛАТЬ СОХРАНЕНИЕ -->
                                                         </div>
+                                                        
                                                     </form>
+
+
+
+                                                    
+                                                    <?$sql1 = "UPDATE users set SurnameUser = '{$_POST['surname']}', NameUser = '{$_POST['name']}', LastnameUser = '{$_POST['lastname']}', Birthday = '{$_POST['birth']}', Email = '{$_POST['mail']}', TelNumber = '{$_POST['tel']}' where users.idUsers = ". $_SESSION['idUsers'];
+                                                          
+                                                    if (isset($_POST['mail']) & isset($_POST['password']) & isset($_POST['surname']) & isset($_POST['name']) & isset($_POST['lastname'])  & isset($_POST['birth']) & isset($_POST['birth'])   )
+                                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                        $sql = 'SELECT * from mydb.users where users.idUsers != '. $_SESSION['idUsers'] ;
+                                                        $result1 = mysqli_query($db, $sql);
+                                                        $errors = [];
+                                                        
+                    
+                                                        while ($row = mysqli_fetch_array($result1)) {
+                                                            if ($row[6] == $_POST['tel']  ) {
+                                                                $errors['tel'] = "Этот номер телефона уже использует кто-то другой";
+                                                            } else if ($row[5] == $_POST['mail']) {
+                                                                $errors['mail'] = "Эта почта используется кем-то другим";
+                                                            }
+                                                        }
+
+
+                                                        var_dump( $errors);
+                                                        if (count($errors) < 1) {
+                                                            $sql = "UPDATE users set SurnameUser = '{$_POST['surname']}', NameUser = '{$_POST['name']}', LastnameUser = '{$_POST['lastname']}', Birthday = '{$_POST['birth']}', Email = '{$_POST['mail']}', TelNumber = '{$_POST['tel']}' where users.idUsers = ". $_SESSION['idUsers'];
+                                                           
+                                                            mysqli_query($db, $sql);
+                                                        }
+                                                    }
+                                                    ?>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -352,4 +385,4 @@ if (isset($_SESSION['idUsers'])) {
 } else {
     session_write_close();
     header("Location: login-register.php");
-} ?>
+}; ?>
